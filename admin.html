@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administrativo | Breshopp</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-light bg-gradient-warning">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="admin.html" class="nav-link">Painel</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index.html" class="brand-link">
+      <img src="./dist/img/logo.jpg" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Breshopp</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="./dist/img/avatarRobson.webp" alt="avatar" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="profile.html" class="d-block">Robson Silva</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Gerenciamento
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="manage-publications.html" class="nav-link">
+                  <i class="nav-icon fa fa-file"></i>
+                  <p>Publicações</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="manage-users.html" class="nav-link">
+                  <i class="nav-icon fa fa-users"></i>
+                  <p>Usuários</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="manage-categories.html" class="nav-link">
+                  <i class="nav-icon fa fa-list"></i>
+                  <p>Categorias</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="reports.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Relatórios
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav><!-- /.sidebar-menu -->
+    </div><!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Painel Administrativo</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="../breshopp/index.html">Home</a></li>
+              <li class="breadcrumb-item active">Administrativo</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div><!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row justify-content-around">
+          <div class="col-lg-3 col-4">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>150</h3>
+
+                <p>Novas Publicações</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="reports.html" class="small-box-footer">Detalhes <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div><!-- ./col -->
+          <div class="col-lg-3 col-4">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>44</h3>
+
+                <p>Usuários Cadastrados</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="reports.html" class="small-box-footer">Detalhes <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div><!-- ./col -->
+          <div class="col-lg-3 col-4">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Novos Visitantes</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="reports.html" class="small-box-footer">Detalhes <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Visitantes</h3>
+                  <a href="reports.html">Ver Relatório</a>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex">
+                  <p class="d-flex flex-column">
+                    <span class="text-bold text-lg">820</span>
+                    <span>Visitantes ao longo do Tempo</span>
+                  </p>
+                  <p class="ml-auto d-flex flex-column text-right">
+                    <span class="text-success">
+                      <i class="fas fa-arrow-up"></i> 12,5%
+                    </span>
+                    <span class="text-muted">Variação Semanal</span>
+                  </p>
+                </div>
+                <!-- /.d-flex -->
+
+                <div class="position-relative mb-4">
+                  <canvas id="visitors-chart" height="200"></canvas>
+                </div>
+
+                <div class="d-flex flex-row justify-content-end">
+                  <span class="mr-2">
+                    <i class="fas fa-square text-primary"></i> Semana Atual
+                  </span>
+
+                  <span>
+                    <i class="fas fa-square text-gray"></i> Semana Passada
+                  </span>
+                </div>
+              </div>
+            </div><!-- /.card -->
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Vendas</h3>
+                  <a href="reports.html">Ver Relatório</a>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex">
+                  <p class="d-flex flex-column">
+                    <span class="text-bold text-lg">R$ 8.230,00</span>
+                    <span>Vendas ao longo do Tempo</span>
+                  </p>
+                  <p class="ml-auto d-flex flex-column text-right">
+                    <span class="text-success">
+                      <i class="fas fa-arrow-up"></i> 33,1%
+                    </span>
+                    <span class="text-muted">Variação Mensal</span>
+                  </p>
+                </div>
+                <!-- /.d-flex -->
+
+                <div class="position-relative mb-4">
+                  <canvas id="sales-chart" height="200"></canvas>
+                </div>
+
+                <div class="d-flex flex-row justify-content-end">
+                  <span class="mr-2">
+                    <i class="fas fa-square text-primary"></i> Ano Atual
+                  </span>
+
+                  <span>
+                    <i class="fas fa-square text-gray"></i> Ano Passado
+                  </span>
+                </div>
+              </div>
+            </div><!-- /.card -->
+          </div><!-- /.col-md-6 -->
+        </div><!-- /.row -->
+        
+        <div class="row">
+          <div class="card">
+            <div class="card-header border-0">
+              <h3 class="card-title">Negociações Recentes</h3>
+              <div class="card-tools">
+                <a href="#" class="btn btn-tool btn-sm">
+                  <i class="fas fa-download"></i>
+                </a>
+              </div>
+            </div>
+            <div class="card-body table-responsive p-0">
+              <table class="table table-striped table-valign-middle">
+                <thead>
+                <tr class="text-center">
+                  <th>Publicação</th>
+                  <th>Preço</th>
+                  <th>Resultado</th>
+                  <th>Detalhes</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-center">
+                  <td class="text-left">
+                    <img src="dist/img/batmanshirt.jpeg" alt="Product 1" class="img-circle img-size-32 mr-2">
+                    Camisa "The Batman"
+                  </td>
+                  <td>R$ 33,00</td>
+                  <td>
+                    <small class="text-success mr-1">
+                      <i class="fas fa-check"></i>
+                    </small>
+                  </td>
+                  <td>
+                    <a href="#" class="text-muted">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr class="text-center">
+                  <td class="text-left">
+                    <img src="dist/img/airjordan.jpeg" alt="Product 1" class="img-circle img-size-32 mr-2">
+                    Nike Air Jordan
+                  </td>
+                  <td>Troca</td>
+                  <td>
+                    <small class="text-warning mr-1">
+                      <i class="fas fa-exclamation"></i>
+                    </small>
+                  </td>
+                  <td>
+                    <a href="#" class="text-muted">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr class="text-center">
+                  <td class="text-left">
+                    <img src="dist/img/petcage.jpg" alt="Product 1" class="img-circle img-size-32 mr-2">
+                    Gaiola para Pet
+                  </td>
+                  <td>R$ 200,00</td>
+                  <td>
+                    <small class="text-danger mr-1">
+                      <i class="fas fa-ban"></i>
+                    </small>
+                  </td>
+                  <td>
+                    <a href="#" class="text-muted">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr class="text-center">
+                  <td class="text-left">
+                    <img src="dist/img/ps5.jpg" alt="Product 1" class="img-circle img-size-32 mr-2">
+                    PlayStation 5
+                    <span class="badge bg-danger">NEW</span><!-- Negociações finalizadas dentro das primeiras 24hrs -->
+                  </td>
+                  <td>Troca</td>
+                  <td>
+                    <small class="text-success mr-1">
+                      <i class="fas fa-check"></i>
+                    </small>
+                  </td>
+                  <td>
+                    <a href="#" class="text-muted">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div><!-- /.card-body -->
+          </div><!-- /.card -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div><!-- /.content-wrapper -->
+  </div><!-- /.wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+      &copy; 2023 Breshopp Team
+    </div>
+    <!-- Default to the left -->
+    <strong>Template by <a href="https://adminlte.io">AdminLTE.io</a></strong>
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="dist/js/pages/dashboard3.js"></script><!-- ChartJS custom script-->
+</body>
+</html>
