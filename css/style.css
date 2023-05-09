@@ -29,15 +29,38 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
+body {
+	background-image: linear-gradient(
+  0deg,
+  hsl(25deg 86% 40%) 0%,
+  hsl(27deg 89% 40%) 6%,
+  hsl(29deg 91% 41%) 11%,
+  hsl(31deg 95% 41%) 17%,
+  hsl(33deg 98% 42%) 22%,
+  hsl(35deg 100% 42%) 28%,
+  hsl(36deg 100% 43%) 33%,
+  hsl(38deg 100% 44%) 39%,
+  hsl(39deg 100% 45%) 44%,
+  hsl(41deg 100% 45%) 50%,
+  hsl(42deg 100% 46%) 56%,
+  hsl(44deg 100% 47%) 61%,
+  hsl(45deg 100% 48%) 67%,
+  hsl(47deg 100% 48%) 72%,
+  hsl(48deg 100% 49%) 78%,
+  hsl(50deg 100% 49%) 83%,
+  hsl(52deg 100% 49%) 89%,
+  hsl(53deg 100% 50%) 94%,
+  hsl(55deg 100% 50%) 100%
+);
+}
 
 html,
 body {
-	height: 100%;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
 	background-color: #ffeace;
-}
+} /* height: 100%; has been removed*/
 
 h1,
 h2,
