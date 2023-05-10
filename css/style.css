@@ -753,9 +753,9 @@ ol {
 .hero__item {
 	height: 431px;
 	display: flex;
-	align-items: center;
-	padding-left: 75px;
+	/*padding-left: 75px;*/
 }
+
 
 .hero__text span {
 	font-size: 14px;
@@ -770,7 +770,9 @@ ol {
 	color: #252525;
 	line-height: 52px;
 	font-weight: 700;
-	margin: 10px 0;
+	margin: 10px 30px;
+	/*position: absolute;
+	background-color: black;*/
 }
 
 .hero__text p {
@@ -2638,7 +2640,7 @@ ol {
 -----------------------*/
 
 .footer {
-	background: #F3F6FA;
+	/*background: #F3F6FA;*/
 	padding-top: 70px;
 	padding-bottom: 0;
 }
