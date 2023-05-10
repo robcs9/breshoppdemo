@@ -19,6 +19,13 @@
     <link rel="stylesheet" href="./css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="./css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
+
+    <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
 <body>
@@ -140,12 +147,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="hero__categories" style="background-color: #fff;">
+                    <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
                             <span>Categorias</span>
                         </div>
-                        <ul>
+                        <ul style="display: none;">
                             <li><a href="#">Moda e beleza</a></li>
                             <li><a href="#">Colecionáveis</a></li>
                             <li><a href="#">Eletrodomésticos</a></li>
@@ -163,7 +170,7 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                        <div class="hero__search__form" style="background-color: #fff;">
+                        <div class="hero__search__form">
                             <form action="shop-grid.html">
                                 <div class="hero__search__categories">
                                     Todas as categorias
@@ -173,98 +180,82 @@
                                 <button type="submit" class="site-btn">PROCURAR</button>
                             </form>
                         </div>
-                        
                     </div>
-                    <div class="overlay">
-                        <div class="hero__item set-bg" data-setbg="img/banner/banner.png">
-                            <div class="hero__text">
-                                <h2>BRESHOPP: <br>Tem de tudo <br> e mais um pouco</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- banner original -->
-                    <!--<div class="hero__item set-bg" data-setbg="./img/banner/banner.png" style="background-image: url(&quot;img/banner/banner.png;&quot;);">
-                        <div class="hero__text">
-                            <h2>BRESHOPP: <br>Tem de tudo <br> e mais um pouco</h2>
-                        </div>
-                    </div>-->
                 </div>
             </div>
         </div>
     </section>
     <!-- Hero Section End -->
-
-    <!-- Categories Section Begin -->
-    
-    <!-- Categories Section End -->
-
-    <!-- Featured Section Begin -->
-    <section class="featured spad">
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="img/shelves.jpeg" style="background-position: center;">
         <div class="container">
-            
-            <div class="row featured__filter" id="MixItUp2FB95C">
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                    <a href="details.html"><div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/product/details/flamethrower1.webp" style="background-image: url(&quot;img/product/details/flamethrower1.webp&quot;);">
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="details.html">Lança-chamas "Not A Flamethrower"
-                            </a></h6>
-                            <h6>Colecionáveis</h6>
-                            <h5>R$ 8350,00</h5>
-                        </div>
-                    </div></a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/RoupaDormir.jpg" style="background-image: url(&quot;img/featured/RoupaDormir.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>                           
-                                <li><a href="details.html"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Baby Doll Sensual</a></h6>
-                            <h6>MODA E BELEZA</h6>
-                            <h5>R$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/pcGamer.jpg" style="background-image: url(&quot;img/featured/pcGamer.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>                               
-                                <li><a href="details.html"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Pc Gamer</a></h6>
-                            <h6>ELETRÔNICOS</h6>
-                            <h5>R$3.000</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="./img/featured/Peugeot207Hatch.jpg" style="background-image: url(&quot;img/featured/Peugeot207Hatch.jpg&quot;);">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="details.html"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Peugeot 207 2010/2011</a></h6>
-                            <h6>VEÍCULOS</h6>
-                            <h5>R$60.000</h5>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Criar Publicação</h2>
+                        <div class="breadcrumb__option">
+                            <a href="./index.html">Home</a>
+                            <span>Template</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Featured Section End -->
-
+    <!-- Breadcrumb Section End -->
+    
+    <!-- Main Content Begin -->
+    <section class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">Dados do Produto</h3>
+  
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="inputName">Título da Publicação</label>
+                  <input type="text" id="inputName" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="inputDescription">Descrição simplificada</label>
+                  <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="inputStatus">Tipo de Negociação</label>
+                  <select id="inputStatus" class="form-control custom-select">
+                    <option selected="" disabled="">Selecione uma</option>
+                    <option>Venda</option>
+                    <option>Troca</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputClientCompany">Preço ou item(s) de troca desejado(s)</label>
+                  <input type="text" id="inputClientCompany" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="inputProjectLeader">Detalhes do Anunciante</label>
+                  <input type="text" id="inputProjectLeader" class="form-control">
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          
+          <div class="col-12">
+            <a href="#" class="btn btn-secondary">Cancelar</a>
+            <input type="submit" value="Publicar Produto" class="btn btn-success float-right">
+          </div>
+      </section>
+    <!-- Main Content End -->
+    
     <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
@@ -337,5 +328,13 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
-</body>
-</html>
+    <!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+
+
+
+</body></html>
