@@ -1,356 +1,239 @@
 <!DOCTYPE html>
-<html lang="zxx"><head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Breshopp</title>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Breshopp</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&amp;display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="./css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="./css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="./css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="./css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="./css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="./css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="./css/style.css" type="text/css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
 
-<body>
-    <!-- Page Preloder -->
-    <div id="preloder" style="display: none;">
-        <div class="loader" style="display: none;"></div>
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-light bg-gradient-warning">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index.html" class="brand-link">
+      <img src="./dist/img/logo.jpg" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Breshopp</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="./dist/img/avatarElon.webp" alt="avatar" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="profile.html" class="d-block">Elon Junior</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="user-settings.html" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>Perfil e Conta</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="user-publications.html" class="nav-link">
+              <i class="nav-icon fa fa-file"></i>
+              <p>Publicações</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="history.html" class="nav-link active">
+              <i class="nav-icon fas fa-shopping-bag"></i>
+              <p>
+                Negociações
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="user-reports.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Relatórios
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav><!-- /.sidebar-menu -->
+    </div><!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Histórico de Negociações</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active">Negociações</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div><!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row-lg-12">
+            <div class="card">
+              <div class="card-body table-responsive p-0">
+                <table class="table table-striped table-valign-middle">
+                  <thead>
+                  <tr class="text-center">
+                    <th>Publicação</th>
+                    <th>Preço</th>
+                    <th>Resultado</th>
+                    <th>Detalhes</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="text-center">
+                    <td class="text-left">
+                      <img src="dist/img/batmanshirt.jpeg" alt="Product 1" class="img-circle img-size-32 mr-2">
+                      Camisa "The Batman"
+                    </td>
+                    <td>R$ 33,00</td>
+                    <td>
+                      <small class="text-success mr-1">
+                        <i class="fas fa-check"></i>
+                      </small>
+                    </td>
+                    <td>
+                      <a href="#" class="text-muted">
+                        <i class="fas fa-search"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td class="text-left">
+                      <img src="dist/img/airjordan.jpeg" alt="Product 1" class="img-circle img-size-32 mr-2">
+                      Nike Air Jordan
+                    </td>
+                    <td>Troca</td>
+                    <td>
+                      <small class="text-warning mr-1">
+                        <i class="fas fa-exclamation"></i>
+                      </small>
+                    </td>
+                    <td>
+                      <a href="#" class="text-muted">
+                        <i class="fas fa-search"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td class="text-left">
+                      <img src="dist/img/petcage.jpg" alt="Product 1" class="img-circle img-size-32 mr-2">
+                      Gaiola para Pet
+                    </td>
+                    <td>R$ 200,00</td>
+                    <td>
+                      <small class="text-danger mr-1">
+                        <i class="fas fa-ban"></i>
+                      </small>
+                    </td>
+                    <td>
+                      <a href="#" class="text-muted">
+                        <i class="fas fa-search"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td class="text-left">
+                      <img src="dist/img/ps5.jpg" alt="Product 1" class="img-circle img-size-32 mr-2">
+                      PlayStation 5
+                      <span class="badge bg-danger">NOVO</span><!-- Negociações finalizadas dentro das primeiras 24hrs -->
+                    </td>
+                    <td>Troca</td>
+                    <td>
+                      <small class="text-success mr-1">
+                        <i class="fas fa-check"></i>
+                      </small>
+                    </td>
+                    <td>
+                      <a href="#" class="text-muted">
+                        <i class="fas fa-search"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div><!-- /.card-body -->
+            </div><!-- /.card -->
+          </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div><!-- /.content-wrapper -->
+  </div><!-- /.wrapper -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
     </div>
+  </aside>
+  <!-- /.control-sidebar -->
 
-    <!-- Humberger Begin -->
-    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
-        </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                
-            </ul>
-            <div class="header__cart__price">item: <span>R$0.00</span></div>
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="https://seuladogeek.com.br/wp-content/uploads/2022/03/download-bandeira-do-brasil-vetor-e-png.png" alt="">
-                <div>Portuguese</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanish</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
-            <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-            <ul>
-                <li class="active"><a href="./index.html" role="menuitem">Home</a></li>
-                <li><a href="./shop-grid.html" role="menuitem">Shop</a></li>
-                <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#">Pages</a>
-                    <span class="slicknav_arrow">►</span></a><ul class="header__menu__dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
-                        <li><a href="./shop-details.html" role="menuitem" tabindex="-1">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html" role="menuitem" tabindex="-1">Shoping Cart</a></li>
-                        <li><a href="./checkout.html" role="menuitem" tabindex="-1">Check Out</a></li>
-                        <li><a href="./blog-details.html" role="menuitem" tabindex="-1">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html" role="menuitem">Blog</a></li>
-                <li><a href="./contact.html" role="menuitem">Contact</a></li>
-            </ul>
-        </nav></div></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> breshopp@gmail.com</li>
-                <li>Frete grátis a partir de R$99</li>
-            </ul>
-        </div>
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+      &copy; 2023 Breshopp Team
     </div>
-    <!-- Humberger End -->
+    <!-- Default to the left -->
+    <strong>Template by <a href="https://adminlte.io">AdminLTE.io</a></strong>
+  </footer>
+</div>
+<!-- ./wrapper -->
 
-    <!-- Header Section Begin -->
-    <header class="header">
-        
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt="logo"></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./history.html">Histórico</details></a></li>
-                            <li><a href="profile.html">Perfil</a>
-                            </li>
-                            <li><a href="admin.html">Painel Admin</a></li>
-                        </ul>
-                    </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3 mt-4 mb-4">
-                    <a href="./login.html" class="header_entrar btn site-btn">Entrar</a>
-                </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
+<!-- REQUIRED SCRIPTS -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>Categorias</span>
-                        </div>
-                        <ul style="display: none;">
-                            <li><a href="#">Moda e beleza</a></li>
-                            <li><a href="#">Colecionáveis</a></li>
-                            <li><a href="#">Eletrodomésticos</a></li>
-                            <li><a href="#">Cama mesa e banho</a></li>
-                            <li><a href="#">Eletrônicos</a></li>
-                            <li><a href="#">Móveis</a></li>
-                            <li><a href="#">Venda</a></li>
-                            <li><a href="#">Troca</a></li>
-                            <li><a href="#">Antiguidades</a></li>
-                            <li><a href="#">Imóveis</a></li>
-                            <li><a href="#">Veículos</a></li>
-                            <li><a href="#">Equipamentos de segurança</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    Todas as categorias
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="Do que você precisa?">
-                                <button type="submit" class="site-btn">PROCURAR</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="./img/cart/cardboardboxes.jpg" style="background-position: center;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>HISTÓRICO</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>Histórico</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
 
-    <!-- Shoping Cart Section Begin -->
-    <section class="shoping-cart spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping__cart__table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="shoping__product">Produtos</th>
-                                    <th>Preço</th>                               
-                                    <th>Status</th>                                   
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/maquiagem2.png" alt="">
-                                        <h5>Maquiagem</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        R$25.00
-                                    </td>                                    
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__status">
-                                        <b>CONCLUÍDO</b>
-                                    </td>                                             
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/ps.jpg" alt="">
-                                        <h5>Playstation 4</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        R$2.000
-                                    </td>                               
-                                    </td>
-                                    <td class="shoping__cart__status">
-                                        <b>REJEITADO</b>
-                                    </td>                                                                     
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/mesa.png" alt="">
-                                        <h5>Mesa usada</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        R$600.00
-                                    </td>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__status">
-                                        <b>PENDENTE</b>
-                                    </td>                                
-                                    </td>
-                                </tr>
-                                <td class="shoping__cart__item">
-                                    <img src="img/cart/moeda.png" alt="">
-                                    <h5>Moeda/Medalha cavalaria </h5>
-                                </td>
-                                <td class="shoping__cart__price">
-                                    R$139.00
-                                </td>                                    
-                                    </div>
-                                </td>
-                                <td class="shoping__cart__status">
-                                    <b>CONCLUÍDO</b>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Shoping Cart Section End -->
-    
-    
-    <!-- Footer Section Begin -->
-    <footer class="footer spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li>Endereço: Rua perto dali,9099</li>
-                            <li>Contato: +55 (81)4002-8922</li>
-                            <li>Email: breshopp@gmail.com</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                    <div class="footer__widget">
-                        <h6>Links Úteis</h6>
-                        <ul>
-                            <li><a href="#">Sobre Nós</a></li>
-                            <li><a href="#">Sobre nosso site</a></li>
-                            <li><a href="#">Segurança</a></li>
-                            <li><a href="#">Informações</a></li>
-                            <li><a href="#">Política de Privacidade</a></li>
-                            <li><a href="#">Nosso mapa do site</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Quem somos nós</a></li>
-                            <li><a href="#">Nossos Serviços</a></li>
-                            <li><a href="#">Projetos</a></li>
-                            <li><a href="#">Contatos</a></li>
-                            <li><a href="#">Inovação</a></li>
-                         
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="footer__widget">
-                        <div class="footer__widget__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright ©<script>document.write(new Date().getFullYear());</script>2023 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    
-    </footer>
-    <!-- Footer Section End -->
-
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-
-
-
-
-
-</body></html>
+<!-- OPTIONAL SCRIPTS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="dist/js/pages/dashboard3.js"></script><!-- ChartJS custom script-->
+</body>
+</html>
