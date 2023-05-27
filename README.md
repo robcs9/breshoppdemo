@@ -7,8 +7,10 @@
   
  Detalhes do Projeto:
  
+ https://github.com/robcs9/Breshopp
+ 
  https://vhmb28.wixsite.com/breshopp
 
-APIs:
+Backend:
 
-https://github.com/robcs9/breshopp-api
+https://github.com/robcs9/breshopp-backend
