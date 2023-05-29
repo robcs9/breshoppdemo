@@ -54,9 +54,9 @@ body {
   hsl(55deg 100% 50%) 100%
 );*/
 	/*background: linear-gradient(180deg, #fcff9e 0%, #c67700 100%);*/
-	background: #FDC830;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to bottom, #F37335, #FDC830);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to bottom, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #fcfcfc;  /* fallback for old browsers */
+	/*background: -webkit-linear-gradient(to bottom, #F37335, #FDC830);*/  /* Chrome 10-25, Safari 5.1-6 */
+	/*background: linear-gradient(to bottom, #F37335, #FDC830);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
@@ -2656,7 +2656,7 @@ ol {
 -----------------------*/
 
 .footer {
-	/*background: #F3F6FA;*/
+	background: #F3F6FA;
 	padding-top: 70px;
 	padding-bottom: 0;
 }

@@ -10,6 +10,14 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+/* Custom CSS Breshopp */
+/*.info.profile>a:visited::after,
+.info.profile>a:active::after {
+  color:#fff;
+}*/
+/* /Custom CSS Breshopp */
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
