@@ -4,20 +4,29 @@
     "password": "breshopp",
     "database": "breshopp",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "define": {
+      "freezeTableName": true
+    }
   },
   "test": {
     "username": "breshopp",
     "password": "breshopp",
     "database": "breshopp",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "define": {
+      "freezeTableName": true
+    }
   },
   "production": {
     "username": "breshopp",
     "password": "breshopp",
     "database": "breshopp",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "define": {
+      "freezeTableName": true
+    }
   }
 }

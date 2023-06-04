@@ -1,0 +1,1 @@
+Diretório reservado para funções adicionais ou genéricas que possam ser úteis em partes diferentes ou similares do projeto.
