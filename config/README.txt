@@ -1,0 +1,1 @@
+config.json - configurações usadas pelo sequelize para conexão com o BD

@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "breshopp",
+    "password": "breshopp",
+    "database": "breshopp",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "breshopp",
+    "password": "breshopp",
+    "database": "breshopp",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "breshopp",
+    "password": "breshopp",
+    "database": "breshopp",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
