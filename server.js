@@ -88,7 +88,7 @@ app.get("/api/admins/buscar", (req, res) => {
     );
 });*/
 
-// Cria novo administrador (sem uso de req.param, req.query ou req.body)
+// Cria novo administrador internamente (sem uso de req.param, req.query ou req.body)
 app.get("/api/admins/add", (req, res) => {
     db.sequelize.query(`INSERT INTO administrador (nome, sobrenome, email, senha)` +
     `VALUES ("admin3", "minda3", "admin3@example.com", "senha3")`).then(
