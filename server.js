@@ -77,17 +77,6 @@ app.get("/api/admins/buscar", (req, res) => {
     }
 });
 
-
-/*app.get("/api/admins/buscar", (req, res) => {
-    db.sequelize.query("SELECT * FROM administrador WHERE email=" + String(req.query.email)).then(
-        (resultado) => {
-            res.json({ "administrador": resultado[0] });
-        }
-    ).catch(
-        (err) => console.log("Leitura falhou. Error: " + err)
-    );
-});*/
-
 // Cria novo administrador internamente (sem uso de req.param, req.query ou req.body)
 app.get("/api/admins/add", (req, res) => {
     db.sequelize.query(`INSERT INTO administrador (nome, sobrenome, email, senha)` +
