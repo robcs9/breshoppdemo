@@ -223,7 +223,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
                     <div class="featured__item">
-                        <a href="#"><div class="featured__item__pic set-bg" data-setbg="img/featured/pcGamer.jpg" style="background-image: url(&quot;img/featured/pcGamer.jpg&quot;);">
+                        <a href="#" id="testlink"><div class="featured__item__pic set-bg" data-setbg="img/featured/pcGamer.jpg" style="background-image: url(&quot;img/featured/pcGamer.jpg&quot;);">
                         </div>
                         </a><div class="featured__item__text"><a href="#">
                             <h6>Pc Gamer</h6></a>
@@ -329,7 +329,21 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-
+    <script>
+        const testlink = document.getElementById('testlink');
+        testlink.addEventListener("click", () => {
+            let api = "http://localhost:3000/api/admins";
+            fetch(api).then(data => {
+                return data.json();
+                let p = document.createElement('p');
+                //p.innerHTML = JSON.stringify(data.administrador[0]);
+                testlink.append(p);
+            }).then(
+                (data) => console.log(data)
+            ).catch((err) => console.log("Error: " + err))
+        });
+        
+    </script>
 
 </body>
 </html>

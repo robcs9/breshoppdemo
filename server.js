@@ -3,7 +3,7 @@
 // handle JSON requests
 // app.use(express.json());
 
-// [LEMBRETE]
+// [LEMBRETE para Robson]
 // Detalhar os passos necessários para realizar a conexão com o BD local
 // de qualquer outra máquina em ./config/config.json posteriormente
 
@@ -90,7 +90,7 @@ app.get("/api/admins/add", (req, res) => {
     );
 });
 
-// Limpa todos os dados dos administradores
+// Apaga todos os dados dos administradores
 app.get("/api/admins/reset", (req, res) => {
     db.sequelize.query(`DELETE FROM administrador`).then(
         (resultado) => {
@@ -130,6 +130,17 @@ app.get("/api/admins/recreate", (req, res) => {
 
 // APIs Foto [GET]
 
+
 // APIs Administrador [POST]
+
+
+// APIs Usuário [POST]
+
+
+// APIs Publicação [POST]
+
+
+// APIs Categoria [POST]
+
 
 // Rotas adicionais
