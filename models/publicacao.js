@@ -14,10 +14,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        id_fotos: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
         titulo: {
             type: DataTypes.STRING(45),
             allowNull: false
@@ -39,8 +35,8 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(300),
             allowNull: false
         },
-        descricao_produto: {
-            type: DataTypes.STRING(300),
+        id_fotos: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         validada: {

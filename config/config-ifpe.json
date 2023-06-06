@@ -1,0 +1,32 @@
+{
+  "development": {
+    "username": "aluno",
+    "password": "ifpe2023",
+    "database": "breshopp",
+    "host": "localhost",
+    "dialect": "mysql",
+    "define": {
+      "freezeTableName": true
+    }
+  },
+  "test": {
+    "username": "aluno",
+    "password": "ifpe2023",
+    "database": "breshopp",
+    "host": "localhost",
+    "dialect": "mysql",
+    "define": {
+      "freezeTableName": true
+    }
+  },
+  "production": {
+    "username": "aluno",
+    "password": "ifpe2023",
+    "database": "breshopp",
+    "host": "localhost",
+    "dialect": "mysql",
+    "define": {
+      "freezeTableName": true
+    }
+  }
+}
