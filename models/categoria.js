@@ -13,8 +13,12 @@ module.exports = function (sequelize, DataTypes) {
     }, {
         timestamps: false,
     });
-    /*const publicacao = require('publicacao');
-    categoria.hasMany(publicacao);*/
+    //categoria.associate = (models) => {
+    //    // https://sequelize.org/docs/v6/core-concepts/assocs/
+    //    /*categoria.hasMany(models.publicacao, {
+    //        //onDelete: "CASCADE", // default?
+    //    });*/
+    //};
     
-    return administrador;
+    return categoria
 }

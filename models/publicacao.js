@@ -1,31 +1,91 @@
 module.exports = function (sequelize, DataTypes) {
-    const administrador = sequelize.define('administrador', {
+    const publicacao = sequelize.define('publicacao', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
-        nome: {
+        id_usuario: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        id_categoria: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        id_fotos: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        titulo: {
             type: DataTypes.STRING(45),
             allowNull: false
         },
-        sobrenome: {
+        tipo_negociacao: {
             type: DataTypes.STRING(45),
             allowNull: false
         },
-        email: {
-            type: DataTypes.STRING(45),
+        preco: {
+            type: DataTypes.FLOAT,
             allowNull: false,
             unique: true
         },
-        senha: {
-            type: DataTypes.STRING(45),
+        descricao_produto: {
+            type: DataTypes.STRING(300),
             allowNull: false
+        },
+        descricao_vendedor: {
+            type: DataTypes.STRING(300),
+            allowNull: false
+        },
+        descricao_produto: {
+            type: DataTypes.STRING(300),
+            allowNull: false
+        },
+        validada: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
+        },
+        finalizada: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
+        motivo_rejeicao: {
+            type: DataTypes.STRING(100),
+            allowNull: true
         }
     }, {
         timestamps: false
     });
+
+    //publicacao.associate = (models) => {
+    //    // https://sequelize.org/docs/v6/core-concepts/assocs/
+    //    /*publicacao.belongsTo(models.usuario, {
+    //        foreignKey: "id_usuario"
+    //    });
+    //    publicacao.hasOne(models.categoria, {
+    //        foreignKey: "id_categoria"
+    //    });
+    //    publicacao.hasOne(models.fotos, {
+    //        foreignKey: "id_fotos"
+    //    });*/
+    //};
     
-    return administrador;
+    // Criando chaves estrangeiras
+    //sequelize.query(`ALTER TABLE publicacao
+    //                ADD FOREIGN KEY(id_usuario) REFERENCES usuario(id),
+    //                ADD FOREIGN KEY(id_categoria) REFERENCES categoria(id),
+    //                ADD FOREIGN KEY(id_fotos) REFERENCES fotos(id)`).then(
+    //    (resultado) => {
+    //        console.log("Chaves estrangeiras criadas com sucesso.")
+    //        return publicacao;
+    //    }
+    //).catch(
+    //    (err) => {
+    //        console.log("Falha na criação das chaves estrangeiras. Error: " + err);
+    //        return publicacao;
+    //    }
+    //);
+    return publicacao;
 }

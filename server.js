@@ -18,11 +18,27 @@ const lib = require("./lib/");
 app.use(express.static('public'));
 
 // Sincronização inicial seguida pela inicialização do servidor
-db.sequelize.sync().then(
+// Se for realizar rebuild (force) da base, lembrar de fazer DROP FOREIGN KEY previamente para evitar erros.
+db.sequelize.sync({ force: false, alter: false }).then(
     () => {
         console.log("Sincronização realizada com o BD!");
+
+        // Criando chaves estrangeiras de publicacao
+        //db.sequelize.query(`ALTER TABLE publicacao
+        //                ADD FOREIGN KEY(id_usuario) REFERENCES usuario(id),
+        //                ADD FOREIGN KEY(id_categoria) REFERENCES categoria(id),
+        //                ADD FOREIGN KEY(id_fotos) REFERENCES fotos(id)`).then(
+        //    (resultado) => {
+        //        console.log("Chaves estrangeiras criadas com sucesso.")
+        //    }
+        //).catch(
+        //    (err) => {
+        //        console.log("Falha na criação das chaves estrangeiras. Error: " + err);
+        //    }
+        //);
+
         app.listen(port, () => {
-            console.log("Servidor funcionando na porta " + port);
+            console.log("Servidor escutando na porta " + port);
         });
     }
 ).catch(
@@ -31,6 +47,7 @@ db.sequelize.sync().then(
     }
 );
 
+// Tela com a lista de APIs em ./api
 
 // APIs Administrador [GET]
 
@@ -54,7 +71,7 @@ app.get("/api/admins", (req, res) => {
 
 // Busca de administradores por queries (id, email)
 app.get("/api/admins/buscar", (req, res) => {
-    if(req.query.id) {
+    if (req.query.id) {
         // Retorna administrador correspondente a id fornecida. Ex: /api/admins/buscar?id=1
         db.sequelize.query(`SELECT * FROM administrador WHERE id=${req.query.id}`).then(
             (resultado) => {
@@ -63,7 +80,7 @@ app.get("/api/admins/buscar", (req, res) => {
         ).catch(
             (err) => console.log("Leitura falhou. Error: " + err)
         );
-    } else if(req.query.email) {
+    } else if (req.query.email) {
         // Retorna administrador correspondente ao email fornecido. Ex: /api/admins/buscar?email="admin3@example.com"
         db.sequelize.query(`SELECT * FROM administrador WHERE email="${req.query.email}"`).then(
             (resultado) => {
@@ -79,14 +96,44 @@ app.get("/api/admins/buscar", (req, res) => {
 
 // Cria novo administrador internamente (sem uso de req.param, req.query ou req.body)
 app.get("/api/admins/add", (req, res) => {
-    db.sequelize.query(`INSERT INTO administrador (nome, sobrenome, email, senha)` +
-    `VALUES ("admin3", "minda3", "admin3@example.com", "senha3")`).then(
+    //db.sequelize.query(`INSERT INTO administrador (nome, sobrenome, email, senha)` +
+    //    `VALUES ("admin2", "admin2", "admin2@example.com", "senha2")`).then(
+    //        (resultado) => {
+    //            res.sendStatus(200);
+    //            console.log("Inserção de administrador realizada com sucesso.");
+    //            //res.redirect("/api/admins");
+    //        }
+    //    ).catch(
+    //        (err) => console.log("Inserção falhou. Error: " + err)
+    //    );
+    db.administrador.create({
+        nome: "admin3",
+        sobrenome: "admin3",
+        email: "admin3@example.com",
+        senha: "senha3"
+    }).then(
         (resultado) => {
             res.sendStatus(200);
-            //res.redirect("/api/admins");
+            console.log("Inserção de administrador realizada com sucesso.");
         }
     ).catch(
-        (err) => console.log("Inserção falhou. Error: " + err)
+        (err) => {
+            console.log("Inserção falhou. Error: " + err);
+        }
+    );
+});
+
+// Criando administradores em grande quantidade ou backup da tabela
+app.get("/api/admins/addAll", (req, res) => {
+    db.administrador.bulkCreate(administradores).then(
+        (resultado) => {
+            res.sendStatus(200);
+            console.log("Inserção de administradores realizada com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log("Inserção falhou. Error: " + err);
+        }
     );
 });
 
@@ -123,7 +170,47 @@ app.get("/api/admins/recreate", (req, res) => {
 
 
 // APIs Publicação [GET]
+//Busca de publicação por título
+app.get("/api/publicacao/buscarTitulo", (req, res) => {
+    if (req.query.titulo) {
+        // Retorna o título da publicação correspondente ao titulo fornecido. Ex: /api/publicação/buscaTitulo?titulo="This Is Not A Flamethrower"
+        db.sequelize.query(`SELECT * FROM publicacao WHERE titulo=${req.query.titulo}`).then(
+            (resultado) => {
+                res.json({ "Título": resultado[0] });
+            }
+        ).catch(
+            (err) => console.log("Leitura falhou. Error: " + err)
+        );
+    } else {
+        res.send("Parâmetro de busca inválido");
+    }
+});
 
+app.get("/api/publicacao/categoriaId", (req, res) => {
+    if (req.query.id_categoria) {
+        // Retorna publicação correspondente a id de categoria fornecida. Ex: /api/publicacao/buscar?id_categoria=1
+        db.sequelize.query(`SELECT * FROM publicacao WHERE id_categoria=${req.query.id_categoria}`).then(
+            (resultado) => {
+                res.json({ "Id categoria da publicação": resultado[0] });
+            }
+        ).catch(
+            (err) => console.log("Leitura falhou. Error: " + err)
+        );
+    }
+});
+
+app.get("/api/publicacao/nomeCategoria", (req, res) => {
+    if (req.query.id_categoria) {
+        // Retorna publicação correspondente a id de categoria fornecida. Ex: /api/publicacao/buscar?id_categoria=1
+        db.sequelize.query(`SELECT * FROM publicacao INNER JOIN categoria ON publicacao.id_categoria = categoria.id WHERE categoria.nome =${req.query.id_categoria}`).then(
+            (resultado) => {
+                res.json({ "Id categoria da publicação": resultado[0] });
+            }
+        ).catch(
+            (err) => console.log("Leitura falhou. Error: " + err)
+        );
+    }
+});
 
 // APIs Categoria [GET]
 
@@ -144,3 +231,415 @@ app.get("/api/admins/recreate", (req, res) => {
 
 
 // Rotas adicionais
+
+// Dados para testes com a base
+
+let administradores = [
+    {
+        "nome": "Administrador 1",
+        "sobrenome": "Sobrenome 1",
+        "email": "admin1@example.com",
+        "senha": "senha1"
+    },
+    {
+        "nome": "Administrador 2",
+        "sobrenome": "Sobrenome 2",
+        "email": "admin2@example.com",
+        "senha": "senha2"
+    },
+    {
+        "nome": "Administrador 3",
+        "sobrenome": "Sobrenome 3",
+        "email": "admin3@example.com",
+        "senha": "senha3"
+    },
+    {
+        "nome": "Administrador 4",
+        "sobrenome": "Sobrenome 4",
+        "email": "admin4@example.com",
+        "senha": "senha4"
+    },
+    {
+        "nome": "Administrador 5",
+        "sobrenome": "Sobrenome 5",
+        "email": "admin5@example.com",
+        "senha": "senha5"
+    },
+    {
+        "nome": "Administrador 6",
+        "sobrenome": "Sobrenome 6",
+        "email": "admin6@example.com",
+        "senha": "senha6"
+    },
+    {
+        "nome": "Administrador 7",
+        "sobrenome": "Sobrenome 7",
+        "email": "admin7@example.com",
+        "senha": "senha7"
+    },
+    {
+        "nome": "Administrador 8",
+        "sobrenome": "Sobrenome 8",
+        "email": "admin8@example.com",
+        "senha": "senha8"
+    },
+    {
+        "nome": "Administrador 9",
+        "sobrenome": "Sobrenome 9",
+        "email": "admin9@example.com",
+        "senha": "senha9"
+    },
+    {
+        "nome": "Administrador 10",
+        "sobrenome": "Sobrenome 10",
+        "email": "admin10@example.com",
+        "senha": "senha10"
+    }
+];
+
+let categorias = {
+    "categoria": [
+        {
+            "id_categoria": 1,
+            "nome": "Eletrônicos"
+        },
+        {
+            "id_categoria": 2,
+            "nome": "Roupas"
+        },
+        {
+            "id_categoria": 3,
+            "nome": "Acessórios"
+        },
+        {
+            "id_categoria": 4,
+            "nome": "Livros"
+        },
+        {
+            "id_categoria": 5,
+            "nome": "Móveis"
+        },
+        {
+            "id_categoria": 6,
+            "nome": "Esportes"
+        },
+        {
+            "id_categoria": 7,
+            "nome": "Joias"
+        },
+        {
+            "id_categoria": 8,
+            "nome": "Beleza"
+        },
+        {
+            "id_categoria": 9,
+            "nome": "Brinquedos"
+        },
+        {
+            "id_categoria": 10,
+            "nome": "Instrumentos Musicais"
+        }
+    ]
+};
+
+let usuarios = {
+    "usuario": [
+        {
+            "id_usuario": 1,
+            "nome": "João",
+            "sobrenome": "Soares",
+            "email": "joaosoares@example.com",
+            "cpf": "12345678901",
+            "senha": "senha1",
+            "telefone": "123456789",
+            "foto": null,
+            "vendas": null,
+            "trocas": null,
+            "id_publicacoes": 1,
+            "suspenso": 0,
+            "motivo_suspensao": null
+        },
+        {
+            "id_usuario": 2,
+            "nome": "Ursula",
+            "sobrenome": "Silva",
+            "email": "Ursulasilva@example.com",
+            "cpf": "23456789012",
+            "senha": "senha2",
+            "telefone": "234567890",
+            "foto": null,
+            "vendas": null,
+            "trocas": null,
+            "id_publicacoes": 2,
+            "suspenso": 0,
+            "motivo_suspensao": null
+        },
+        {
+            "id_usuario": 3,
+            "nome": "Paulo",
+            "sobrenome": "Gomes",
+            "email": "paulogomex@example.com",
+            "cpf": "34567890123",
+            "senha": "senha3",
+            "telefone": "345678901",
+            "foto": null,
+            "vendas": null,
+            "trocas": null,
+            "id_publicacoes": 3,
+            "suspenso": 0,
+            "motivo_suspensao": null
+        },
+        {
+            "id_usuario": 4,
+            "nome": "Matias",
+            "sobrenome": "Saadhak",
+            "email": "matiassaadhak@example.com",
+            "cpf": "45678901234",
+            "senha": "senha4",
+            "telefone": "456789012",
+            "foto": null,
+            "vendas": null,
+            "trocas": null,
+            "id_publicacoes": 4,
+            "suspenso": 0,
+            "motivo_suspensao": null
+        },
+        {
+            "id_usuario": 5,
+            "nome": "Erick",
+            "sobrenome": "Santos",
+            "email": "ericksantos@example.com",
+            "cpf": "56789012345",
+            "senha": "senha5",
+            "telefone": "567890123",
+            "foto": null,
+            "vendas": null,
+            "trocas": null,
+            "id_publicacoes": 5,
+            "suspenso": 0,
+            "motivo_suspensao": null
+        },
+        {
+            "id_usuario": 6,
+            "nome": "cauan",
+            "sobrenome": "Pereira",
+            "email": "cauanpereira@example.com",
+            "cpf": "67890123456",
+            "senha": "senha6",
+            "telefone": "678901234",
+            "foto": null,
+            "vendas": null,
+            "trocas": null,
+            "id_publicacoes": 6,
+            "suspenso": 0,
+            "motivo_suspensao": null
+        },
+        {
+            "id_usuario": 7,
+            "nome": "Felipe",
+            "sobrenome": "Basso",
+            "email": "felipebasso@example.com",
+            "cpf": "78901234567",
+            "senha": "senha7",
+            "telefone": "789012345",
+            "foto": null,
+            "vendas": null,
+            "trocas": null,
+            "id_publicacoes": 7,
+            "suspenso": 0,
+            "motivo_suspensao": null
+        },
+        {
+            "id_usuario": 8,
+            "nome": "Arthur",
+            "sobrenome": "Vieira",
+            "email": "arthurvieira@example.com",
+            "cpf": "89012345678",
+            "senha": "senha8",
+            "telefone": "890123456",
+            "foto": null,
+            "vendas": null,
+            "trocas": null,
+            "id_publicacoes": 8,
+            "suspenso": 0,
+            "motivo_suspensao": null
+        },
+        {
+            "id_usuario": 9,
+            "nome": "Bryan",
+            "sobrenome": "Luna",
+            "email": "bryanluna@example.com",
+            "cpf": "90123456789",
+            "senha": "senha9",
+            "telefone": "901234567",
+            "foto": null,
+            "vendas": null,
+            "trocas": null,
+            "id_publicacoes": 9,
+            "suspenso": 0,
+            "motivo_suspensao": null
+        },
+        {
+            "id_usuario": 10,
+            "nome": "Gustavo",
+            "sobrenome": "Rossi",
+            "email": "gustavorossi@example.com",
+            "cpf": "69821304568",
+            "senha": "senha10",
+            "telefone": "89542136",
+            "foto": null,
+            "vendas": null,
+            "trocas": null,
+            "id_publicacoes": 10,
+            "suspenso": 0,
+            "motivo_suspensao": null
+        }
+    ]
+};
+
+let publicacoes = {
+    "publicacao": [
+        {
+            "id_publicacao": 1,
+            "id_usuario": 1,
+            "id_categoria": 1,
+            "titulo": "vestido g",
+            "tipo_negociacao": "Venda",
+            "preco": 19.99,
+            "descricao_produto": "Descrição do produto 1",
+            "descricao_vendedor": "Descrição do vendedor 1",
+            "id_fotos": 1,
+            "validada": 1,
+            "finalizada": 0,
+            "motivo_rejeicao": null
+        },
+        {
+            "id_publicacao": 2,
+            "id_usuario": 2,
+            "id_categoria": 1,
+            "titulo": "saia junina P",
+            "tipo_negociacao": "Venda",
+            "preco": 14.99,
+            "descricao_produto": "Descrição do produto 2",
+            "descricao_vendedor": "Descrição do vendedor 2",
+            "id_fotos": 2,
+            "validada": 1,
+            "finalizada": 0,
+            "motivo_rejeicao": null
+        },
+        {
+            "id_publicacao": 3,
+            "id_usuario": 3,
+            "id_categoria": 2,
+            "titulo": "compressor de pintura",
+            "tipo_negociacao": "Troca",
+            "preco": null,
+            "descricao_produto": "Descrição do produto 3",
+            "descricao_vendedor": "Descrição do vendedor 3",
+            "id_fotos": 3,
+            "validada": 1,
+            "finalizada": 0,
+            "motivo_rejeicao": null
+        },
+        {
+            "id_publicacao": 4,
+            "id_usuario": 4,
+            "id_categoria": 2,
+            "titulo": "celta 2000",
+            "tipo_negociacao": "Venda",
+            "preco": 8.000,
+            "descricao_produto": "Descrição do produto 4",
+            "descricao_vendedor": "Descrição do vendedor 4",
+            "id_fotos": 4,
+            "validada": 0,
+            "finalizada": 0,
+            "motivo_rejeicao": null
+        },
+        {
+            "id_publicacao": 5,
+            "id_usuario": 5,
+            "id_categoria": 3,
+            "titulo": "violao",
+            "tipo_negociacao": "Venda",
+            "preco": 99.99,
+            "descricao_produto": "Descrição do produto 5",
+            "descricao_vendedor": "Descrição do vendedor 5",
+            "id_fotos": 5,
+            "validada": 1,
+            "finalizada": 1,
+            "motivo_rejeicao": null
+        },
+        {
+            "id_publicacao": 6,
+            "id_usuario": 6,
+            "id_categoria": 3,
+            "titulo": "colecao moedas olimpicas",
+            "tipo_negociacao": "Venda",
+            "preco": 399.99,
+            "descricao_produto": "Descrição do produto 6",
+            "descricao_vendedor": "Descrição do vendedor 6",
+            "id_fotos": 6,
+            "validada": 1,
+            "finalizada": 1,
+            "motivo_rejeicao": null
+        },
+
+        {
+            "id_publicacao": 7,
+            "id_usuario": 7,
+            "id_categoria": 4,
+            "titulo": "mesa rustica 4 cadeiras",
+            "tipo_negociacao": "Venda",
+            "preco": 200.00,
+            "descricao_produto": "Descrição do produto 7",
+            "descricao_vendedor": "Descrição do vendedor 7",
+            "id_fotos": 7,
+            "validada": 1,
+            "finalizada": 1,
+            "motivo_rejeicao": null
+        },
+        {
+            "id_publicacao": 8,
+            "id_usuario": 8,
+            "id_categoria": 4,
+            "titulo": "guarda sol",
+            "tipo_negociacao": "Venda",
+            "preco": 25.00,
+            "descricao_produto": "Descrição do produto 8",
+            "descricao_vendedor": "Descrição do vendedor 8",
+            "id_fotos": 8,
+            "validada": 1,
+            "finalizada": 0,
+            "motivo_rejeicao": null
+        },
+        {
+            "id_publicacao": 9,
+            "id_usuario": 9,
+            "id_categoria": 5,
+            "titulo": "biquine pp",
+            "tipo_negociacao": "Venda",
+            "preco": 7.99,
+            "descricao_produto": "Descrição do produto 9",
+            "descricao_vendedor": "Descrição do vendedor 9",
+            "id_fotos": 9,
+            "validada": 1,
+            "finalizada": 0,
+            "motivo_rejeicao": null
+        },
+        {
+            "id_publicacao": 10,
+            "id_usuario": 10,
+            "id_categoria": 5,
+            "titulo": "notebook i5",
+            "tipo_negociacao": "Venda",
+            "preco": 800.00,
+            "descricao_produto": "Descrição do produto 10",
+            "descricao_vendedor": "Descrição do vendedor 10",
+            "id_fotos": 10,
+            "validada": 1,
+            "finalizada": 0,
+            "motivo_rejeicao": null
+        }
+
+    ]
+};
