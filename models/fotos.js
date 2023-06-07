@@ -7,27 +7,27 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         foto1: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING,
             allowNull: false
         },
         foto2: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING,
             allowNull: true
         },
         foto3: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING,
             allowNull: true
         },
         foto4: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING,
             allowNull: true
         },
         foto5: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING,
             allowNull: true
         },
         foto6: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING,
             allowNull: true
         }
     }, {

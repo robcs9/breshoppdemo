@@ -60,7 +60,10 @@ app.get("/api/admins", (req, res) => {
             res.json({ "administrador": resultado[0] });
         }
     ).catch(
-        (err) => console.log("Leitura falhou. Error: " + err)
+        (err) => {
+            res.send(err.message);
+            console.log("Leitura falhou. Error: " + err)
+        }
     );
     // Via método do Sequelize
     /*db.administrador.findAll().then(
@@ -79,7 +82,10 @@ app.get("/api/admins/buscar", (req, res) => {
                 res.json({ "administrador": resultado[0] });
             }
         ).catch(
-            (err) => console.log("Leitura falhou. Error: " + err)
+            (err) => {
+                res.send(err.message);
+                console.log("Leitura falhou. Error: " + err)
+            }
         );
     } else if (req.query.email) {
         // Retorna administrador correspondente ao email fornecido. Ex: /api/admins/buscar?email="admin3@example.com"
@@ -88,11 +94,13 @@ app.get("/api/admins/buscar", (req, res) => {
                 res.json({ "administrador": resultado[0] });
             }
         ).catch(
-            (err) => console.log("Leitura falhou. Error: " + err)
+            (err) => {
+                console.log("Leitura falhou. Error: " + err)
+            }
         );
     } else {
         res.send("Parâmetro de busca inválido");
-    }
+    }   
 });
 
 // Cria novo administrador internamente (sem uso de req.param, req.query ou req.body)
@@ -119,6 +127,7 @@ app.get("/api/admins/add", (req, res) => {
         }
     ).catch(
         (err) => {
+            res.send(err.message);
             console.log("Inserção falhou. Error: " + err);
         }
     );
@@ -133,6 +142,7 @@ app.get("/api/admins/addAll", (req, res) => {
         }
     ).catch(
         (err) => {
+            res.send(err.message);
             console.log("Inserção falhou. Error: " + err);
         }
     );
@@ -145,7 +155,10 @@ app.get("/api/admins/reset", (req, res) => {
             res.sendStatus(200);
         }
     ).catch(
-        (err) => console.log("Deleção falhou. Error: " + err)
+        (err) => {
+            res.send(err.message);
+            console.log("Deleção falhou. Error: " + err)
+        }
     );
 });
 // Exclui e recria a tabela administrador
@@ -158,11 +171,17 @@ app.get("/api/admins/recreate", (req, res) => {
                     res.sendStatus(200);
                 }
             ).catch(
-                (err) => console.log("Recriação da tabela falhou. Error: " + err)
+                (err) => {
+                    res.send(err.message);
+                    console.log("Recriação da tabela falhou. Error: " + err)
+                }
             )
         }
     ).catch(
-        (err) => console.log("Exclusão da tabela falhou. Error: " + err)
+        (err) => {
+            res.send(err.message);
+            console.log("Exclusão da tabela falhou. Error: " + err);
+        }
     );
 });
 
@@ -179,9 +198,10 @@ app.get("/api/publicacoes", (req, res) => {
         (resultado) => {
             res.json({ "publicacao": resultado[0] });
         }
-    ).catch(
-        (err) => console.log("Leitura falhou. Error: " + err)
-    );
+    ).catch((err) => {
+        res.send(err.message);
+        console.log("Leitura falhou. Error: " + err)
+    });
 });
 // Cria nova publicacao internamente (sem uso de req.param, req.query ou req.body)
 app.get("/api/publicacoes/add", (req, res) => {
@@ -205,6 +225,7 @@ app.get("/api/publicacoes/add", (req, res) => {
         }
     ).catch(
         (err) => {
+            res.send(err.message);
             console.log("Inserção falhou. Error: " + err);
         }
     );
@@ -219,6 +240,7 @@ app.get("/api/publicacoes/addAll", (req, res) => {
         }
     ).catch(
         (err) => {
+            res.send(err.message);
             console.log("Inserção falhou. Error: " + err);
         }
     );
@@ -231,7 +253,10 @@ app.get("/api/publicacoes/reset", (req, res) => {
             res.sendStatus(200);
         }
     ).catch(
-        (err) => console.log("Deleção falhou. Error: " + err)
+        (err) => {
+            res.send(err.message);
+            console.log("Deleção falhou. Error: " + err);
+        }
     );
 });
 // Exclui e recria a tabela publicacao
@@ -245,11 +270,17 @@ app.get("/api/publicacoes/recreate", (req, res) => {
                     res.sendStatus(200);
                 }
             ).catch(
-                (err) => console.log("Recriação da tabela falhou. Error: " + err)
+                (err) => {
+                    res.send(err.message);
+                    console.log("Recriação da tabela falhou. Error: " + err);
+                }
             )
         }
     ).catch(
-        (err) => console.log("Exclusão da tabela falhou. Error: " + err)
+        (err) => {
+            res.send(err.message);
+            console.log("Exclusão da tabela falhou. Error: " + err);
+        }
     );
 });
 
@@ -263,7 +294,10 @@ app.get("/api/publicação/buscarTitulo", (req, res) => {
                 res.json({ "Título": resultado[0] });
             }
         ).catch(
-            (err) => console.log("Leitura falhou. Error: " + err)
+            (err) => {
+                res.send(err.message);
+                console.log("Leitura falhou. Error: " + err);
+            }
         );
     } else {
         res.send("Parâmetro de busca inválido");
@@ -278,7 +312,10 @@ app.get("/api/publicacao/categoriaId", (req, res) => {
                 res.json({ "Id categoria da publicação": resultado[0] });
             }
         ).catch(
-            (err) => console.log("Leitura falhou. Error: " + err)
+            (err) => {
+                res.send(err.message);
+                console.log("Leitura falhou. Error: " + err);
+            }
         );
         }
     });
@@ -290,13 +327,16 @@ app.get("/api/publicacao/categoriaId", (req, res) => {
                         res.json({ "Id categoria da publicação": resultado[0] });
                     }
                 ).catch(
-                    (err) => console.log("Leitura falhou. Error: " + err)
+                    (err) => {
+                        res.send(err.message);
+                        console.log("Leitura falhou. Error: " + err);
+                    }
             );
                 }
         });
 
 //Aluska
-// Busca de publicacoes
+// Busca de Publicações
 app.get("/api/publicacoes/buscar", (req, res) => {
     if (req.query.id_usuario) {
         // Retorna publicacões correspondente a id do usuario fornecida. Ex: /api/publicacoes/buscar?id_usuario=1
@@ -305,7 +345,10 @@ app.get("/api/publicacoes/buscar", (req, res) => {
                 res.json({ "publicacao": resultado[0] });
             }
         ).catch(
-            (err) => console.log("Leitura falhou. Error: " + err)
+            (err) => {
+                res.send(err.message);
+                console.log("Leitura falhou. Error: " + err);
+            }
         );
     } else if (req.query.titulo) {
         // Retorna publicacao correspondente ao titulo fornecido. Ex: /api/publicacoes/buscar?titulo="Gaiola para Pet"
@@ -314,7 +357,10 @@ app.get("/api/publicacoes/buscar", (req, res) => {
                 res.json({ "publicacao": resultado[0] });
             }
         ).catch(
-            (err) => console.log("Leitura falhou. Error: " + err)
+            (err) => {
+                res.send(err.message);
+                console.log("Leitura falhou. Error: " + err);
+            }
         );
     } else {
         res.send("Parâmetro de busca inválido");
@@ -330,7 +376,10 @@ app.get("/api/publicacoes", (req, res) => {
             res.json({ "publicacao": resultado[0] });
         }
     ).catch(
-        (err) => console.log("Leitura falhou. Error: " + err)
+        (err) => {
+            res.send(err.message);
+            console.log("Leitura falhou. Error: " + err);
+        }
     );
 });
 // Cria nova publicacao internamente (sem uso de req.param, req.query ou req.body)
@@ -355,6 +404,7 @@ app.get("/api/publicacoes/add", (req, res) => {
         }
     ).catch(
         (err) => {
+            res.send(err.message);
             console.log("Inserção falhou. Error: " + err);
         }
     );
@@ -369,6 +419,7 @@ app.get("/api/publicacoes/addAll", (req, res) => {
         }
     ).catch(
         (err) => {
+            res.send(err.message);
             console.log("Inserção falhou. Error: " + err);
         }
     );
@@ -381,7 +432,10 @@ app.get("/api/publicacoes/reset", (req, res) => {
             res.sendStatus(200);
         }
     ).catch(
-        (err) => console.log("Deleção falhou. Error: " + err)
+        (err) => {
+            res.send(err.message);
+            console.log("Deleção falhou. Error: " + err);
+        }
     );
 });
 // Exclui e recria a tabela publicacao
@@ -395,11 +449,17 @@ app.get("/api/publicacoes/recreate", (req, res) => {
                     res.sendStatus(200);
                 }
             ).catch(
-                (err) => console.log("Recriação da tabela falhou. Error: " + err)
+                (err) => {
+                    res.send(err.message);
+                    console.log("Recriação da tabela falhou. Error: " + err);
+                }
             )
         }
     ).catch(
-        (err) => console.log("Exclusão da tabela falhou. Error: " + err)
+        (err) => {
+            res.send(err.message);
+            console.log("Exclusão da tabela falhou. Error: " + err);
+        }
     );
 });
 
@@ -413,7 +473,10 @@ app.get("/api/categoria/buscar", (req, res) => {
                 res.json({ "categoria": resultado[0] });
             }
         ).catch(
-            (err) => console.log("Leitura falhou. Error: " + err)
+            (err) => {
+                res.send(err.message);
+                console.log("Leitura falhou. Error: " + err);
+            }
         );
     } else if (req.query.nome) {
         // Retorna categoria correspondente ao nome fornecido. Ex: /api/categorias/buscar?nome="Eletrônicos"
@@ -422,7 +485,10 @@ app.get("/api/categoria/buscar", (req, res) => {
                 res.json({ "categoria": resultado[0] });
             }
         ).catch(
-            (err) => console.log("Leitura falhou. Error: " + err)
+            (err) => {
+                res.send(err.message);
+                console.log("Leitura falhou. Error: " + err);
+            }
         );
     } else {
         res.send("Parâmetro de busca inválido");
@@ -445,7 +511,16 @@ app.get("/api/categoria/buscar", (req, res) => {
 
 
 // Rotas adicionais
+// ...
+//app.get('/fotos', (req, res) => {
+//    res.send('public/api/fotos.html');
+//});
+app.post('/upload', urlencodedParser, (req, res) => {
+    console.log(req.body);
+    res.send("all good");
+});
 
+// Importar estes dados de arwuivos diferentes para cada tabela
 // Dados para testes com a base
 
 let administradores = [
@@ -746,7 +821,7 @@ let publicacoes = [
         "id_categoria": 2,
         "titulo": "compressor de pintura",
         "tipo_negociacao": "Troca",
-        "preco": null,
+        "preco": 159.90,
         "descricao_produto": "Descrição do produto 3",
         "descricao_vendedor": "Descrição do vendedor 3",
         "id_fotos": 3,

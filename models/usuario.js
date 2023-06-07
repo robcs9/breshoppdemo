@@ -33,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         foto: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING,
             allowNull: true
         },
         vendas: {
