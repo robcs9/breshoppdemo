@@ -37,6 +37,8 @@ exports.setPublicacao = async (req, res) => {
     }
 };
 
+//exports.finalizarPublicacao;
+
 let usuarios = [
     {
         "id": 1,

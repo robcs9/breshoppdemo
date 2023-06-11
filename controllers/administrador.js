@@ -112,10 +112,42 @@ exports.inserirTodos = async (req, res) => {
         res.sendStatus(200);
     }
 };
-//exports.validarPublicacao = async (req, res) => {
-//    const validacao = await db.publicacao.
-//};
-//exports.suspenderUsuario;
+
+exports.validarPublicacao = async (req, res) => {
+    const validacao = await db.publicacao.update(
+        {
+            validada: req.body.validar,
+            motivo_rejeicao: req.body.motivo
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }
+    );
+    if(validacao === null) {
+        res.sendStatus(400);
+    } else {
+        res.sendStatus(200);
+    }
+};
+
+exports.suspenderUsuario = async (req, res) => {
+    const suspensao = await db.usuario.update(
+        {
+            suspenso: req.body.suspender,
+            motivo_suspensao: req.body.motivo
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }
+    );
+    if(suspensao === null) {
+        res.sendStatus(400);
+    } else {
+        res.sendStatus(200);
+    }
+};
 
 exports.recriarTabela = async (req, res) => {
     const recriacao = await db.administrador.sync({ force: true });
