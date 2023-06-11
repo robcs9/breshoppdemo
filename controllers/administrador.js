@@ -40,13 +40,15 @@ exports.getAdminPorEmailForm = async (req, res) => {
 };
 
 exports.cadastrarAdmin = async (req, res) => {
-    const criar = await db.administrador.create({
-        id: req.body.id,
-		nome: req.body.nome,
-		sobrenome: req.body.sobrenome,
-		email: req.body.email,
-		senha: req.body.senha
-    });
+    const criar = await db.administrador.create(
+        {
+            id: req.body.id,
+	    	nome: req.body.nome,
+	    	sobrenome: req.body.sobrenome,
+	    	email: req.body.email,
+	    	senha: req.body.senha
+        }
+    );
     if(criar === null) {
         res.sendStatus(500);
     } else {
