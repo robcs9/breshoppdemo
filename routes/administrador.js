@@ -10,12 +10,13 @@ router.get('/', controller.getTodosAdmins);
 //router.get('/email/:email', controller.getAdminIdPorEmail); // "não-seguro"
 router.get('/buscar-admin', urlencodedParser, controller.getAdminPorEmailForm);
 router.post('/cadastrar-admin', urlencodedParser, controller.cadastrarAdmin);
-//router.put('/atualizar-admin', controller.setAdmin)
+router.patch('/atualizar-admin', urlencodedParser, controller.setAdmin)
 //router.patch('/validar-publicacao', controller.validarPublicacao);
-//router.patch('/suspender-usuario', controller.suspenderUsuario)
-//router.delete('/excluir-admin', controller.excluirAdmin);
-//router.post('/inserir-admins', urlencodedParser, controller.inserirTodos)
-//route.put('/recriar-admins', controller.recriarTodos);
-//router.delete('/limpar-admins', controller.limparTodos);
+//router.patch('/suspender-usuario', controller.suspenderUsuario);
+router.delete('/excluir-admin', urlencodedParser, controller.excluirAdmin);
+router.delete('/limpar-admin', controller.limparTodos);
+router.post('/popular-admin', controller.inserirTodos);
+router.put('/recriar-admin', controller.recriarTabela);
+router.put('/alterar-admin', controller.alterarTabela);
 
 module.exports = router;

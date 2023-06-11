@@ -52,66 +52,6 @@ db.sequelize.sync({ force: false, alter: false }).then(
 
 // Tela com a lista de APIs em /public/api
 
-// APIs Administrador [GET]
-
-// Cria novo administrador internamente (sem uso de req.param, req.query ou req.body)
-app.get("/api/admins/add", (req, res) => {
-    //db.sequelize.query(`INSERT INTO administrador (nome, sobrenome, email, senha)` +
-    //    `VALUES ("admin2", "admin2", "admin2@example.com", "senha2")`).then(
-    //        (resultado) => {
-    //            res.sendStatus(200);
-    //            console.log("Inserção de administrador realizada com sucesso.");
-    //            //res.redirect("/api/admins");
-    //        }
-    //    ).catch(
-    //        (err) => console.log("Inserção falhou. Error: " + err)
-    //    );
-    db.administrador.create({
-        nome: "admin3",
-        sobrenome: "admin3",
-        email: "admin3@example.com",
-        senha: "senha3"
-    }).then(
-        (resultado) => {
-            res.sendStatus(200);
-            console.log("Inserção de administrador realizada com sucesso.");
-        }
-    ).catch(
-        (err) => {
-            res.send(err.message);
-            console.log("Inserção falhou. Error: " + err);
-        }
-    );
-});
-
-// Criando administradores em grande quantidade ou backup da tabela
-app.get("/api/admins/addAll", (req, res) => {
-    db.administrador.bulkCreate(administradores).then(
-        (resultado) => {
-            res.sendStatus(200);
-            console.log("Inserção de administradores realizada com sucesso.");
-        }
-    ).catch(
-        (err) => {
-            res.send(err.message);
-            console.log("Inserção falhou. Error: " + err);
-        }
-    );
-});
-
-// Apaga todos os dados dos administradores
-app.get("/api/admins/reset", (req, res) => {
-    db.sequelize.query(`DELETE FROM administrador`).then(
-        (resultado) => {
-            res.sendStatus(200);
-        }
-    ).catch(
-        (err) => {
-            res.send(err.message);
-            console.log("Deleção falhou. Error: " + err)
-        }
-    );
-});
 // Exclui e recria a tabela administrador
 app.get("/api/admins/recreate", (req, res) => {
     db.sequelize.query(`DROP TABLE administrador`).then(
@@ -473,69 +413,6 @@ app.post('/upload', urlencodedParser, (req, res) => {
 
 // Importar estes dados de arwuivos diferentes para cada tabela
 // Dados para testes com a base
-
-let administradores = [
-    {
-        "nome": "Administrador 1",
-        "sobrenome": "Sobrenome 1",
-        "email": "admin1@example.com",
-        "senha": "senha1"
-    },
-    {
-        "nome": "Administrador 2",
-        "sobrenome": "Sobrenome 2",
-        "email": "admin2@example.com",
-        "senha": "senha2"
-    },
-    {
-        "nome": "Administrador 3",
-        "sobrenome": "Sobrenome 3",
-        "email": "admin3@example.com",
-        "senha": "senha3"
-    },
-    {
-        "nome": "Administrador 4",
-        "sobrenome": "Sobrenome 4",
-        "email": "admin4@example.com",
-        "senha": "senha4"
-    },
-    {
-        "nome": "Administrador 5",
-        "sobrenome": "Sobrenome 5",
-        "email": "admin5@example.com",
-        "senha": "senha5"
-    },
-    {
-        "nome": "Administrador 6",
-        "sobrenome": "Sobrenome 6",
-        "email": "admin6@example.com",
-        "senha": "senha6"
-    },
-    {
-        "nome": "Administrador 7",
-        "sobrenome": "Sobrenome 7",
-        "email": "admin7@example.com",
-        "senha": "senha7"
-    },
-    {
-        "nome": "Administrador 8",
-        "sobrenome": "Sobrenome 8",
-        "email": "admin8@example.com",
-        "senha": "senha8"
-    },
-    {
-        "nome": "Administrador 9",
-        "sobrenome": "Sobrenome 9",
-        "email": "admin9@example.com",
-        "senha": "senha9"
-    },
-    {
-        "nome": "Administrador 10",
-        "sobrenome": "Sobrenome 10",
-        "email": "admin10@example.com",
-        "senha": "senha10"
-    }
-];
 
 // Corrigir campos para ficarem alinhados com o model
 let categorias = [
