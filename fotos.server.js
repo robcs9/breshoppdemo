@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const fotosController = require('./fotos.controller');
 const fotosRoutes = require('./fotos.routes');
-const router = express.Router();
+//const router = express.Router();
 
 //app.get('/', (req,res) => {res.send("the home page is live!")})
 app.use('/fotos', fotosRoutes);

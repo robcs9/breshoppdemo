@@ -1,19 +1,20 @@
 const express = require('express');
+const urlencodedParser = require('body-parser').urlencoded({ extended: false });
 const router = express.Router();
-const adminController = require('../controllers/administrador');
+const controller = require('../controllers/administrador');
 
-// Administradores não precisam de API GET
+// /admin
+router.get('/', controller.getTodosAdmins);
+//router.get('/id/:id', controller.getAdminPorId); // "não-seguro"
+//router.get('/email/:email', controller.getAdminIdPorEmail); // "não-seguro"
+router.get('/buscar-admin', urlencodedParser, controller.getAdminPorEmailForm);
+router.post('/cadastrar-admin', urlencodedParser, controller.cadastrarAdmin);
+//router.put('/atualizar-admin', controller.setAdmin)
+//router.patch('/validar-publicacao', controller.validarPublicacao);
+//router.patch('/suspender-usuario', controller.suspenderUsuario)
+//router.delete('/excluir-admin', controller.excluirAdmin);
+//router.post('/inserir-admins', controller.inserirTodos)
+//route.put('/recriar-admins', controller.recriarTodos);
+//router.delete('/limpar-admins', controller.limparTodos);
 
-// Validate Publications
-// Suspend/Punish Users
-// Authentication API in login controller
-// /create
-router.put();
-
-// /update
-router.patch();
-
-// /delete
-router.delete();
-
-modules.export = router;
+module.exports = router;

@@ -1,3 +1,8 @@
+//Test
+exports.testPost = (req, res) => {
+    let id = req.body.id;
+    res.send(req.body);
+}
 // GET /fotos/:id
 exports.getFotosById = (req, res) => {
     fotos.forEach((elem) => {

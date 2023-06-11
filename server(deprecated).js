@@ -17,8 +17,8 @@ const app = express();
 const db = require("./models");
 const lib = require("./lib/");
 app.use(express.static('public'));
-const administradorRoutes = require('./routes/administrador');
-app.use('/api/admin', administradorRoutes);
+const adminRoutes = require('./routes/administrador');
+app.use('/admin', adminRoutes);
 
 // Sincronização inicial seguida pela inicialização do servidor
 // Se for realizar rebuild (force) da base, lembrar de fazer DROP FOREIGN KEY previamente para evitar erros.
@@ -50,9 +50,61 @@ db.sequelize.sync({ force: false, alter: false }).then(
     }
 );
 
-// Tela com a lista de APIs em /public/api
+// Tela com a lista de APIs em ./api
 
 // APIs Administrador [GET]
+
+
+// Retorna todos os dados de todos administradores
+app.get("/api/admins", (req, res) => {
+    // Via query do MySQL
+    db.sequelize.query(`SELECT * FROM administrador`).then(
+        (resultado) => {
+            res.json({ "administrador": resultado[0] });
+        }
+    ).catch(
+        (err) => {
+            res.send(err.message);
+            console.log("Leitura falhou. Error: " + err)
+        }
+    );
+    // Via método do Sequelize
+    /*db.administrador.findAll().then(
+        (res) => console.log(res[0].id)
+    ).catch(
+        (err) => console.log("Leitura falhou. Error: " + err)
+    );*/
+});
+
+// Busca de administradores por queries (id, email)
+app.get("/api/admins/buscar", (req, res) => {
+    if (req.query.id) {
+        // Retorna administrador correspondente a id fornecida. Ex: /api/admins/buscar?id=1
+        db.sequelize.query(`SELECT * FROM administrador WHERE id=${req.query.id}`).then(
+            (resultado) => {
+                res.json({ "administrador": resultado[0] });
+            }
+        ).catch(
+            (err) => {
+                res.send(err.message);
+                console.log("Leitura falhou. Error: " + err)
+            }
+        );
+    } else if (req.query.email) {
+        // Retorna administrador correspondente ao email fornecido. Ex: /api/admins/buscar?email="admin3@example.com"
+        db.sequelize.query(`SELECT * FROM administrador WHERE email="${req.query.email}"`).then(
+            (resultado) => {
+                res.json({ "administrador": resultado[0] });
+            }
+        ).catch(
+            (err) => {
+                console.log("Leitura falhou. Error: " + err)
+            }
+        );
+    } else {
+        res.send("Parâmetro de busca inválido");
+    }   
+});
 
 // Cria novo administrador internamente (sem uso de req.param, req.query ou req.body)
 app.get("/api/admins/add", (req, res) => {
