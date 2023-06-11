@@ -1,4 +1,3 @@
-const administrador = require("../models/administrador");
 const db = require("../models");
 
 exports.getTodosAdmins = async (req, res) => {
@@ -30,6 +29,7 @@ exports.getAdminIdPorEmail = async (req, res) => {
         res.json(busca.id);
     }
 };
+
 exports.getAdminPorEmailForm = async (req, res) => {
     const busca = await db.administrador.findOne({ where: { email: req.body.email } });
     if(busca === null) {
@@ -75,6 +75,7 @@ exports.setAdmin = async (req, res) => {
         res.sendStatus(200);
     }
 };
+
 exports.excluirAdmin = async (req, res) => {
     const exclusao = await db.administrador.destroy(
         {
