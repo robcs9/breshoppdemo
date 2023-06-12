@@ -32,6 +32,82 @@ exports.excluirPublicacao = async (req, res) => {
     }
 };
 
+exports.limparTodos = async (req, res) => {
+    const limpar = await db.administrador.destroy(
+        {
+            truncate: true
+        }
+    );
+    if(limpar === null) {
+        res.sendStatus(500);
+    } else {
+        res.sendStatus(200);
+    }
+};
+
+exports.inserirTodos = async (req, res) => {
+    const insercao = await db.administrador.bulkCreate(administradores);
+    if(insercao === null) {
+        res.sendStatus(500);
+    } else {
+        res.sendStatus(200);
+    }
+};
+
+exports.validarPublicacao = async (req, res) => {
+    const validacao = await db.publicacao.update(
+        {
+            validada: req.body.validar,
+            motivo_rejeicao: req.body.motivo
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }
+    );
+    if(validacao === null) {
+        res.sendStatus(400);
+    } else {
+        res.sendStatus(200);
+    }
+};
+
+exports.suspenderUsuario = async (req, res) => {
+    const suspensao = await db.usuario.update(
+        {
+            suspenso: req.body.suspender,
+            motivo_suspensao: req.body.motivo
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }
+    );
+    if(suspensao === null) {
+        res.sendStatus(400);
+    } else {
+        res.sendStatus(200);
+    }
+};
+
+exports.recriarTabela = async (req, res) => {
+    const recriacao = await db.administrador.sync({ force: true });
+    if(recriacao) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(500);
+    }
+};
+
+exports.alterarTabela = async (req, res) => {
+    const alteracao = await db.administrador.sync({ alter: true });
+    if(alteracao) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(500);
+    }
+};
+
 let categorias = [
     {
         "id": 1,

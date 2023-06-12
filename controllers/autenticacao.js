@@ -15,9 +15,11 @@ exports.fazerLogin = async (req, res) => {
     });
 
     if(admin) {
-        res.json({ "isAdmin": "true" });
+        console.log(`Seja bem vindo, ${admin.nome}`)
+        res.redirect('/')
     } else if(usuario) {
-        res.json({ "isAdmin": "false" });
+        console.log(`Seja bem vindo, ${usuario.nome}`)
+        res.redirect('/')
     } else {
         res.sendStatus(400);
     }
