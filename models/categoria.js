@@ -20,5 +20,5 @@ module.exports = function (sequelize, DataTypes) {
     //    });*/
     //};
     
-    return categoria
+    return categoria;
 }

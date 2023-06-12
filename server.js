@@ -15,10 +15,14 @@ const md5 = require("md5");
 const port = 3000;
 const app = express();
 const db = require("./models");
-const lib = require("./lib/");
+//const lib = require("./lib/");
+
 app.use(express.static('public'));
-const administradorRoutes = require('./routes/administrador');
-app.use('/api/admin', administradorRoutes);
+app.use('/api/admin', require('./routes/administrador'));
+app.use('/api/usuario', require('./routes/usuario'));
+app.use('/api/categoria', require('./routes/categoria'));
+app.use('/api/publicacao', require('./routes/publicacao'));
+app.use('/autenticar', require('./routes/autenticacao'));
 
 // Sincronização inicial seguida pela inicialização do servidor
 // Se for realizar rebuild (force) da base, lembrar de fazer DROP FOREIGN KEY previamente para evitar erros.
@@ -51,30 +55,6 @@ db.sequelize.sync({ force: false, alter: false }).then(
 );
 
 // Tela com a lista de APIs em /public/api
-
-// Exclui e recria a tabela administrador
-app.get("/api/admins/recreate", (req, res) => {
-    db.sequelize.query(`DROP TABLE administrador`).then(
-        (resultado) => {
-            // Recriação
-            db.sequelize.sync({ force: true }).then(
-                (resultado) => {
-                    res.sendStatus(200);
-                }
-            ).catch(
-                (err) => {
-                    res.send(err.message);
-                    console.log("Recriação da tabela falhou. Error: " + err)
-                }
-            )
-        }
-    ).catch(
-        (err) => {
-            res.send(err.message);
-            console.log("Exclusão da tabela falhou. Error: " + err);
-        }
-    );
-});
 
 
 // APIs Usuário [GET]
@@ -178,7 +158,7 @@ app.get("/api/publicacoes/recreate", (req, res) => {
 // Victória
 //Busca de publicação por título
 app.get("/api/publicação/buscarTitulo", (req, res) => {
-    if(req.query.titulo) {
+    if (req.query.titulo) {
         // Retorna o título da publicação correspondente ao titulo fornecido. Ex: /api/publicação/buscaTitulo?titulo="This Is Not A Flamethrower"
         db.sequelize.query(`SELECT * FROM publicacao WHERE titulo=${req.query.titulo}`).then(
             (resultado) => {
@@ -196,7 +176,7 @@ app.get("/api/publicação/buscarTitulo", (req, res) => {
 });
 
 app.get("/api/publicacao/categoriaId", (req, res) => {
-    if(req.query.id_categoria) {
+    if (req.query.id_categoria) {
         // Retorna publicação correspondente a id de categoria fornecida. Ex: /api/publicacao/buscar?id_categoria=1
         db.sequelize.query(`SELECT * FROM publicacao WHERE id_categoria=${req.query.id_categoria}`).then(
             (resultado) => {
@@ -208,23 +188,23 @@ app.get("/api/publicacao/categoriaId", (req, res) => {
                 console.log("Leitura falhou. Error: " + err);
             }
         );
-        }
-    });
-        app.get("/api/publicacao/nomeCategoria", (req, res) => {
-            if(req.query.id_categoria) {
-                // Retorna publicação correspondente a id de categoria fornecida. Ex: /api/publicacao/buscar?id_categoria=1
-                db.sequelize.query(`SELECT * FROM publicacao INNER JOIN categoria ON publicacao.id_categoria = categoria.id WHERE categoria.nome =${req.query.id_categoria}`).then(
-                    (resultado) => {
-                        res.json({ "Id categoria da publicação": resultado[0] });
-                    }
-                ).catch(
-                    (err) => {
-                        res.send(err.message);
-                        console.log("Leitura falhou. Error: " + err);
-                    }
-            );
-                }
-        });
+    }
+});
+app.get("/api/publicacao/nomeCategoria", (req, res) => {
+    if (req.query.id_categoria) {
+        // Retorna publicação correspondente a id de categoria fornecida. Ex: /api/publicacao/buscar?id_categoria=1
+        db.sequelize.query(`SELECT * FROM publicacao INNER JOIN categoria ON publicacao.id_categoria = categoria.id WHERE categoria.nome =${req.query.id_categoria}`).then(
+            (resultado) => {
+                res.json({ "Id categoria da publicação": resultado[0] });
+            }
+        ).catch(
+            (err) => {
+                res.send(err.message);
+                console.log("Leitura falhou. Error: " + err);
+            }
+        );
+    }
+});
 
 //Aluska
 // Busca de Publicações
@@ -384,29 +364,4 @@ app.get("/api/categoria/buscar", (req, res) => {
     } else {
         res.send("Parâmetro de busca inválido");
     }
-});
-
-// APIs Foto [GET]
-
-
-// APIs Administrador [POST]
-
-
-// APIs Usuário [POST]
-
-
-// APIs Publicação [POST]
-
-
-// APIs Categoria [POST]
-
-
-// Rotas adicionais
-// ...
-//app.get('/fotos', (req, res) => {
-//    res.send('public/api/fotos.html');
-//});
-app.post('/upload', urlencodedParser, (req, res) => {
-    console.log(req.body);
-    res.send("all good");
 });

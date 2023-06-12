@@ -4,6 +4,6 @@ const router = express.Router();
 const controller = require('../controllers/autenticacao');
 
 
-router.get('/autenticar', urlencodedParser, controller.autenticar);
+router.get('/', urlencodedParser, controller.fazerLogin);
 
 module.exports = router;

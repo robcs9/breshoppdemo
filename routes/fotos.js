@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const fotosController = require('./fotos.controller');
+const fotosController = require('../controllers/fotos');
 const urlencodedParser = require('body-parser').urlencoded({ extended: false });
 router.post('/test', urlencodedParser,fotosController.testPost);
 router.get('/', fotosController.getTodasFotos);
