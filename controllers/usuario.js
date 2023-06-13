@@ -1,29 +1,73 @@
 const db = require("../models");
 
-exports.criarPublicacao = async (req, res) => {
-    const criar = await db.administrador.create(
+exports.getTodosUsuario = async (req, res) => {
+    const busca = await db.usuario.findAll();
+    if(busca === null) {
+        console.log('Nenhum usuário encontrado.');
+        res.sendStatus(400);
+    } else {
+        res.json(busca);
+    }
+};
+
+exports.getUsuarioPorId = async (req, res) => {
+    const busca = await db.usuario.findByPk(req.params.id);
+    if(busca === null) {
+        console.log('Usuário não encontrado.');
+        res.sendStatus(400);
+    } else {
+        res.json(busca);
+    }
+};
+
+exports.getUsuarioPorEmail = async (req, res) => {
+    const busca = await db.usuario.findOne(req.params.email);
+    if(busca === null) {
+        console.log('Usuário não encontrado.');
+        res.sendStatus(400);
+    } else {
+        res.json(busca);
+    }
+};
+
+exports.cadastrarUsuario = async (req, res) => {
+    const criar = await db.usuario.create(
         {
             id: req.body.id,
-	    	nome: req.body.nome,
-	    	sobrenome: req.body.sobrenome,
-	    	email: req.body.email,
-	    	senha: req.body.senha
+            nome: req.body.nome,
+            sobrenome: req.body.sobrenome,
+            email: req.body.email,
+            cpf: req.body.cpf,
+            senha: req.body.senha,
+            telefone: req.body.telefone,
+            foto: req.body.foto,
+            vendas: 0,
+            trocas: 0,
+            suspenso: 0,
+            //motivo_suspensao: req.body.motivo_suspensao
         }
     );
-    if(criar === null) {
+    if (criar === null) {
         res.sendStatus(500);
     } else {
         res.sendStatus(200);
     }
 };
 
-exports.setPublicacao = async (req, res) => {
-    const atualizacao = await db.administrador.update(
+exports.setUsuario = async (req, res) => {
+    const atualizacao = await db.usuario.update(
         {
             nome: req.body.nome,
             sobrenome: req.body.sobrenome,
-            email: req.body.email,
-            senha: req.body.senha
+            //email: req.body.email,
+            //cpf: req.body.cpf,
+            senha: req.body.senha,
+            telefone: req.body.telefone,
+            foto: req.body.foto,
+            //vendas: 0,
+            //trocas: 0,
+            //suspenso: 0,
+            //motivo_suspensao: req.body.motivo_suspensao
         }, {
             where: {
                 id: req.body.id
@@ -37,15 +81,23 @@ exports.setPublicacao = async (req, res) => {
     }
 };
 
-//exports.finalizarPublicacao;
+exports.finalizarPublicacao = async (req, res) => {
+    const finalizacao = await db.publicacao.update({
+        finalizada: 1
+    }, {
+        where: {
+            id: req.body.id
+        }
+    });
+};
 
 exports.limparTodos = async (req, res) => {
-    const limpar = await db.administrador.destroy(
+    const limpar = await db.usuario.destroy(
         {
             truncate: true
         }
     );
-    if(limpar === null) {
+    if (limpar === null) {
         res.sendStatus(500);
     } else {
         res.sendStatus(200);
@@ -53,53 +105,18 @@ exports.limparTodos = async (req, res) => {
 };
 
 exports.inserirTodos = async (req, res) => {
-    const insercao = await db.administrador.bulkCreate(administradores);
-    if(insercao === null) {
+    const insercao = await db.usuario.bulkCreate(usuarios);
+    if (insercao === null) {
         res.sendStatus(500);
     } else {
         res.sendStatus(200);
     }
 };
 
-exports.validarPublicacao = async (req, res) => {
-    const validacao = await db.publicacao.update(
-        {
-            validada: req.body.validar,
-            motivo_rejeicao: req.body.motivo
-        }, {
-            where: {
-                id: req.body.id
-            }
-        }
-    );
-    if(validacao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
-};
-
-exports.suspenderUsuario = async (req, res) => {
-    const suspensao = await db.usuario.update(
-        {
-            suspenso: req.body.suspender,
-            motivo_suspensao: req.body.motivo
-        }, {
-            where: {
-                id: req.body.id
-            }
-        }
-    );
-    if(suspensao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
-};
 
 exports.recriarTabela = async (req, res) => {
-    const recriacao = await db.administrador.sync({ force: true });
-    if(recriacao) {
+    const recriacao = await db.usuario.sync({ force: true });
+    if (recriacao) {
         res.sendStatus(200);
     } else {
         res.sendStatus(500);
@@ -107,8 +124,8 @@ exports.recriarTabela = async (req, res) => {
 };
 
 exports.alterarTabela = async (req, res) => {
-    const alteracao = await db.administrador.sync({ alter: true });
-    if(alteracao) {
+    const alteracao = await db.usuario.sync({ alter: true });
+    if (alteracao) {
         res.sendStatus(200);
     } else {
         res.sendStatus(500);

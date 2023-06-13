@@ -38,11 +38,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         vendas: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         },
         trocas: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         },
         suspenso: {
             type: DataTypes.BOOLEAN,
@@ -50,7 +50,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         motivo_suspensao: {
             type: DataTypes.STRING(100),
-            allowNull: false
+            allowNull: true
         }
     }, {
         timestamps: false

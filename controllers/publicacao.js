@@ -1,36 +1,94 @@
 const db = require("../models");
+const { Op } = require('sequelize');
 
-exports.criarPublicacao = async (req, res) => {
-    const criar = await db.administrador.create(
+exports.getTodosPublicacao = async (req, res) => {
+    const busca = await db.publicacao.findAll();
+    if(busca === null) {
+        console.log('Nenhuma publicação encontrada.');
+        res.sendStatus(400);
+    } else {
+        res.json(busca);
+    }
+};
+
+exports.cadastrarPublicacao = async (req, res) => {
+    const criar = await db.publicacao.create(
         {
             id: req.body.id,
-	    	nome: req.body.nome,
-	    	sobrenome: req.body.sobrenome,
-	    	email: req.body.email,
-	    	senha: req.body.senha
+            id_usuario: req.body.id_usuario,
+            id_categoria: req.body.id_categoria,
+            titulo: req.body.titulo,
+            tipo_negociacao: req.body.tipo_negociacao,
+            preco: req.body.preco,
+            descricao_produto: req.body.descricao_produto,
+            descricao_vendedor: req.body.descricao_vendedor,
+            id_fotos: req.body.id_fotos,
+            validada: 0,
+            finalizada: 0,
         }
     );
-    if(criar === null) {
+    if (criar === null) {
         res.sendStatus(500);
     } else {
         res.sendStatus(200);
     }
 };
 
-exports.setPublicacao = async (req, res) => {
-    const atualizacao = await db.administrador.update(
-        {
-            nome: req.body.nome,
-            sobrenome: req.body.sobrenome,
-            email: req.body.email,
-            senha: req.body.senha
-        }, {
-            where: {
-                id: req.body.id
-            }
+exports.getPublicacaoPorId = async (req, res) => {
+    const busca = await db.publicacao.findByPk(req.params.id);
+    if(busca === null) {
+        console.log('Publicação não encontrada.');
+        res.sendStatus(400);
+    } else {
+        res.json(busca);
+    }
+};
+
+exports.getPublicacaoPorTitulo = async (req, res) => {
+    // Implementação incompleta de fuzzy search 
+    //const str = req.params.titulo;
+    //const palavras = str.split(/[\s,]+/);
+    //
+    //const busca = await db.publicacao.findAll({
+    //    where: {
+    //        titulo: {
+    //            [Op.like]: "%" + palavras[0] + "%"
+    //        }
+    //    }
+    //});
+    const busca = await db.publicacao.findOne({
+        where: {
+            titulo: req.params.titulo
         }
+    })
+    if(busca === null) {
+        console.log('Nenhuma publicação não encontrada.');
+        res.sendStatus(400);
+    } else {
+        res.json(busca);
+    }
+};
+
+exports.setPublicacao = async (req, res) => {
+    const atualizacao = await db.publicacao.update(
+        {
+            id_categoria: req.body.id_categoria,
+            titulo: req.body.titulo,
+            tipo_negociacao: req.body.tipo_negociacao,
+            preco: req.body.preco,
+            descricao_produto: req.body.descricao_produto,
+            descricao_vendedor: req.body.descricao_vendedor,
+            //id_fotos:req.body.id_fotos,
+            //validada:req.body.validada,
+            //finalizada:req.body.finalizada,
+            //motivo_rejeicao:req.body.motivo_rejeicao
+        }, {
+        where: {
+            id: req.body.id
+        }
+    }
     );
-    if(atualizacao === null) {
+    if (atualizacao === null) {
         res.sendStatus(400);
     } else {
         res.sendStatus(200);
@@ -38,14 +96,14 @@ exports.setPublicacao = async (req, res) => {
 };
 
 exports.excluirPublicacao = async (req, res) => {
-    const exclusao = await db.administrador.destroy(
+    const exclusao = await db.publicacao.destroy(
         {
             where: {
                 id: req.body.id
             }
         }
     );
-    if(exclusao === null) {
+    if (exclusao === null) {
         res.sendStatus(400);
     } else {
         res.sendStatus(200);
@@ -53,12 +111,12 @@ exports.excluirPublicacao = async (req, res) => {
 };
 
 exports.limparTodos = async (req, res) => {
-    const limpar = await db.administrador.destroy(
+    const limpar = await db.publicacao.destroy(
         {
             truncate: true
         }
     );
-    if(limpar === null) {
+    if (limpar === null) {
         res.sendStatus(500);
     } else {
         res.sendStatus(200);
@@ -66,8 +124,8 @@ exports.limparTodos = async (req, res) => {
 };
 
 exports.inserirTodos = async (req, res) => {
-    const insercao = await db.administrador.bulkCreate(administradores);
-    if(insercao === null) {
+    const insercao = await db.publicacao.bulkCreate(publicacoes);
+    if (insercao === null) {
         res.sendStatus(500);
     } else {
         res.sendStatus(200);
@@ -80,30 +138,12 @@ exports.validarPublicacao = async (req, res) => {
             validada: req.body.validar,
             motivo_rejeicao: req.body.motivo
         }, {
-            where: {
-                id: req.body.id
-            }
+        where: {
+            id: req.body.id
         }
-    );
-    if(validacao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
     }
-};
-
-exports.suspenderUsuario = async (req, res) => {
-    const suspensao = await db.usuario.update(
-        {
-            suspenso: req.body.suspender,
-            motivo_suspensao: req.body.motivo
-        }, {
-            where: {
-                id: req.body.id
-            }
-        }
     );
-    if(suspensao === null) {
+    if (validacao === null) {
         res.sendStatus(400);
     } else {
         res.sendStatus(200);
@@ -111,8 +151,8 @@ exports.suspenderUsuario = async (req, res) => {
 };
 
 exports.recriarTabela = async (req, res) => {
-    const recriacao = await db.administrador.sync({ force: true });
-    if(recriacao) {
+    const recriacao = await db.publicacao.sync({ force: true });
+    if (recriacao) {
         res.sendStatus(200);
     } else {
         res.sendStatus(500);
@@ -120,8 +160,8 @@ exports.recriarTabela = async (req, res) => {
 };
 
 exports.alterarTabela = async (req, res) => {
-    const alteracao = await db.administrador.sync({ alter: true });
-    if(alteracao) {
+    const alteracao = await db.publicacao.sync({ alter: true });
+    if (alteracao) {
         res.sendStatus(200);
     } else {
         res.sendStatus(500);

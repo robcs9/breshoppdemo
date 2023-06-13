@@ -80,7 +80,7 @@ exports.excluirAdmin = async (req, res) => {
     const exclusao = await db.administrador.destroy(
         {
             where: {
-                email: req.body.email
+                id: req.body.id
             }
         }
     );

@@ -1,13 +1,20 @@
 const db = require("../models");
 
-exports.criarPublicacao = async (req, res) => {
-    const criar = await db.administrador.create(
+exports.getTodosCategoria = async (req, res) => {
+    const busca = await db.categoria.findAll();
+    if(busca === null) {
+        console.log('Nenhuma categoria encontrada.');
+        res.sendStatus(400);
+    } else {
+        res.json(busca);
+    }
+};
+
+exports.cadastrarCategoria = async (req, res) => {
+    const criar = await db.categoria.create(
         {
             id: req.body.id,
 	    	nome: req.body.nome,
-	    	sobrenome: req.body.sobrenome,
-	    	email: req.body.email,
-	    	senha: req.body.senha
         }
     );
     if(criar === null) {
@@ -17,8 +24,30 @@ exports.criarPublicacao = async (req, res) => {
     }
 };
 
-exports.excluirPublicacao = async (req, res) => {
-    const exclusao = await db.administrador.destroy(
+exports.getCategoriaPorId = async (req, res) => {
+    const leitura = await db.categoria.findByPk(req.params.id)
+    if(leitura) {
+        res.json(leitura);
+    } else {
+        res.sendStatus(400)
+    }
+};
+
+exports.getCategoriaPorNome = async (req, res) => {
+    const leitura = await db.categoria.findOne({
+        where: {
+            nome: req.params.nome
+        }
+    })
+    if(leitura) {
+        res.json(leitura);
+    } else {
+        res.sendStatus(400)
+    }
+};
+
+exports.excluirCategoria = async (req, res) => {
+    const exclusao = await db.categoria.destroy(
         {
             where: {
                 id: req.body.id
@@ -33,7 +62,7 @@ exports.excluirPublicacao = async (req, res) => {
 };
 
 exports.limparTodos = async (req, res) => {
-    const limpar = await db.administrador.destroy(
+    const limpar = await db.categoria.destroy(
         {
             truncate: true
         }
@@ -46,7 +75,7 @@ exports.limparTodos = async (req, res) => {
 };
 
 exports.inserirTodos = async (req, res) => {
-    const insercao = await db.administrador.bulkCreate(administradores);
+    const insercao = await db.categoria.bulkCreate(categorias);
     if(insercao === null) {
         res.sendStatus(500);
     } else {
@@ -54,44 +83,8 @@ exports.inserirTodos = async (req, res) => {
     }
 };
 
-exports.validarPublicacao = async (req, res) => {
-    const validacao = await db.publicacao.update(
-        {
-            validada: req.body.validar,
-            motivo_rejeicao: req.body.motivo
-        }, {
-            where: {
-                id: req.body.id
-            }
-        }
-    );
-    if(validacao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
-};
-
-exports.suspenderUsuario = async (req, res) => {
-    const suspensao = await db.usuario.update(
-        {
-            suspenso: req.body.suspender,
-            motivo_suspensao: req.body.motivo
-        }, {
-            where: {
-                id: req.body.id
-            }
-        }
-    );
-    if(suspensao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
-};
-
 exports.recriarTabela = async (req, res) => {
-    const recriacao = await db.administrador.sync({ force: true });
+    const recriacao = await db.categoria.sync({ force: true });
     if(recriacao) {
         res.sendStatus(200);
     } else {
@@ -100,7 +93,7 @@ exports.recriarTabela = async (req, res) => {
 };
 
 exports.alterarTabela = async (req, res) => {
-    const alteracao = await db.administrador.sync({ alter: true });
+    const alteracao = await db.categoria.sync({ alter: true });
     if(alteracao) {
         res.sendStatus(200);
     } else {
