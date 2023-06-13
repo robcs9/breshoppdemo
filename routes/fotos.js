@@ -4,7 +4,7 @@ const controller = require('../controllers/fotos');
 const urlencodedParser = require('body-parser').urlencoded({ extended: false });
 
 router.get('/', controller.getTodosFotos);
-router.get('/:id', controller.getFotosById);
+router.get('/id/:id', controller.getFotosById);
 //router.get('/publicacao/:id', controller.getFotosPorIdDePublicacao);
 router.post('/cadastrar-fotos', urlencodedParser, controller.cadastrarFotos);
 router.patch('/atualizar-fotos', urlencodedParser, controller.setFotos)

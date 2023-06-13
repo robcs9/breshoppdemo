@@ -21,7 +21,12 @@ exports.getUsuarioPorId = async (req, res) => {
 };
 
 exports.getUsuarioPorEmail = async (req, res) => {
-    const busca = await db.usuario.findOne(req.params.email);
+    const busca = await db.usuario.findOne({
+        where: {
+            email: req.params.email
+        }
+    });
+    
     if(busca === null) {
         console.log('Usuário não encontrado.');
         res.sendStatus(400);
@@ -142,8 +147,8 @@ let usuarios = [
         "senha": "senha1",
         "telefone": "123456789",
         "foto": null,
-        "vendas": null,
-        "trocas": null,
+        "vendas": 0,
+        "trocas": 0,
         "id_publicacoes": 1,
         "suspenso": 0,
         "motivo_suspensao": null
@@ -157,8 +162,8 @@ let usuarios = [
         "senha": "senha2",
         "telefone": "234567890",
         "foto": null,
-        "vendas": null,
-        "trocas": null,
+        "vendas": 0,
+        "trocas": 0,
         "id_publicacoes": 2,
         "suspenso": 0,
         "motivo_suspensao": null
@@ -172,8 +177,8 @@ let usuarios = [
         "senha": "senha3",
         "telefone": "345678901",
         "foto": null,
-        "vendas": null,
-        "trocas": null,
+        "vendas": 0,
+        "trocas": 0,
         "id_publicacoes": 3,
         "suspenso": 0,
         "motivo_suspensao": null
@@ -187,8 +192,8 @@ let usuarios = [
         "senha": "senha4",
         "telefone": "456789012",
         "foto": null,
-        "vendas": null,
-        "trocas": null,
+        "vendas": 0,
+        "trocas": 0,
         "id_publicacoes": 4,
         "suspenso": 0,
         "motivo_suspensao": null
@@ -202,8 +207,8 @@ let usuarios = [
         "senha": "senha5",
         "telefone": "567890123",
         "foto": null,
-        "vendas": null,
-        "trocas": null,
+        "vendas": 0,
+        "trocas": 0,
         "id_publicacoes": 5,
         "suspenso": 0,
         "motivo_suspensao": null
@@ -217,8 +222,8 @@ let usuarios = [
         "senha": "senha6",
         "telefone": "678901234",
         "foto": null,
-        "vendas": null,
-        "trocas": null,
+        "vendas": 0,
+        "trocas": 0,
         "id_publicacoes": 6,
         "suspenso": 0,
         "motivo_suspensao": null
@@ -232,8 +237,8 @@ let usuarios = [
         "senha": "senha7",
         "telefone": "789012345",
         "foto": null,
-        "vendas": null,
-        "trocas": null,
+        "vendas": 0,
+        "trocas": 0,
         "id_publicacoes": 7,
         "suspenso": 0,
         "motivo_suspensao": null
@@ -247,8 +252,8 @@ let usuarios = [
         "senha": "senha8",
         "telefone": "890123456",
         "foto": null,
-        "vendas": null,
-        "trocas": null,
+        "vendas": 0,
+        "trocas": 0,
         "id_publicacoes": 8,
         "suspenso": 0,
         "motivo_suspensao": null
@@ -262,8 +267,8 @@ let usuarios = [
         "senha": "senha9",
         "telefone": "901234567",
         "foto": null,
-        "vendas": null,
-        "trocas": null,
+        "vendas": 0,
+        "trocas": 0,
         "id_publicacoes": 9,
         "suspenso": 0,
         "motivo_suspensao": null
@@ -277,8 +282,8 @@ let usuarios = [
         "senha": "senha10",
         "telefone": "89542136",
         "foto": null,
-        "vendas": null,
-        "trocas": null,
+        "vendas": 0,
+        "trocas": 0,
         "id_publicacoes": 10,
         "suspenso": 0,
         "motivo_suspensao": null

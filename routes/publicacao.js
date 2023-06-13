@@ -5,8 +5,9 @@ const controller = require('../controllers/publicacao');
 
 router.get('/', controller.getTodosPublicacao);
 router.post('/cadastrar-publicacao', urlencodedParser, controller.cadastrarPublicacao);
-router.get('/:id', controller.getPublicacaoPorId);
-router.get('/:nome', controller.getPublicacaoPorTitulo);
+router.get('/id/:id', controller.getPublicacaoPorId);
+router.get('/titulo/:titulo', controller.getPublicacaoPorTitulo);
+router.patch('/atualizar-publicacao', urlencodedParser, controller.setPublicacao);
 router.delete('/excluir-publicacao', urlencodedParser, controller.excluirPublicacao);
 router.delete('/limpar-publicacao', controller.limparTodos);
 router.post('/popular-publicacao', controller.inserirTodos);

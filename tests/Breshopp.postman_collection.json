@@ -1,0 +1,1122 @@
+{
+	"info": {
+		"_postman_id": "23b902ac-a34c-407c-9b59-0ec02a5ec9a4",
+		"name": "Breshopp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Administrador",
+			"item": [
+				{
+					"name": "Todos Administradores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Admin Por Email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin3@example.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/buscar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"buscar-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "nome",
+									"value": "Admin11",
+									"type": "text"
+								},
+								{
+									"key": "sobrenome",
+									"value": "11Admin",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin11@example.com",
+									"type": "text"
+								},
+								{
+									"key": "senha",
+									"value": "senha11",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/cadastrar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"cadastrar-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Admin",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "nome",
+									"value": "AdminTest",
+									"type": "text"
+								},
+								{
+									"key": "sobrenome",
+									"value": "11AdminTest",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin11test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "senha",
+									"value": "senha11Test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/atualizar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"atualizar-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/excluir-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"excluir-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Limpar tabela administrador",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/limpar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"limpar-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recriar tabela administrador",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin/recriar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"recriar-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar tabela administrador",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin/alterar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"alterar-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular tabela administrador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin/popular-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"popular-admin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuário",
+			"item": [
+				{
+					"name": "Todos Usuários",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/usuario/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "nome",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "sobrenome",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "11@example.com",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "11111111111",
+									"type": "text"
+								},
+								{
+									"key": "senha",
+									"value": "senha11",
+									"type": "text"
+								},
+								{
+									"key": "telefone",
+									"value": "111111111",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"value": "null",
+									"type": "text"
+								},
+								{
+									"key": "vendas",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "trocas",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "suspenso",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "motivo_suspensao",
+									"value": "null",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/usuario/cadastrar-usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuario",
+								"cadastrar-usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Usuario Por Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "5",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/usuario/id/5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuario",
+								"id",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Usuario Por Email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin3@example.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/usuario/email/bryanluna@example.com",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuario",
+								"email",
+								"bryanluna@example.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Usuario",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "nome",
+									"value": "safdasfsd",
+									"type": "text"
+								},
+								{
+									"key": "sobrenome",
+									"value": "11usuario",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "usuario11@example.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "cpf",
+									"value": "11111111111",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "senha",
+									"value": "senha11",
+									"type": "text"
+								},
+								{
+									"key": "telefone",
+									"value": "111111111",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"value": "null",
+									"type": "text"
+								},
+								{
+									"key": "vendas",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "trocas",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "suspenso",
+									"value": "false",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "motivo_suspensao",
+									"value": "null",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/usuario/atualizar-usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuario",
+								"atualizar-usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Limpar tabela usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/api/usuario/limpar-usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuario",
+								"limpar-usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recriar tabela usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/usuario/recriar-usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuario",
+								"recriar-usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar tabela usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/usuario/alterar-usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuario",
+								"alterar-usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular tabela usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/usuario/popular-usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuario",
+								"popular-usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publicação",
+			"item": [
+				{
+					"name": "Todas Publicações",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/publicacao",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Publicacao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "id_usuario",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "id_categoria",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "titulo",
+									"value": "Carro",
+									"type": "text"
+								},
+								{
+									"key": "tipo_negociacao",
+									"value": "venda",
+									"type": "text"
+								},
+								{
+									"key": "preco",
+									"value": "3000",
+									"type": "text"
+								},
+								{
+									"key": "descricao_produto",
+									"value": "produto",
+									"type": "text"
+								},
+								{
+									"key": "descricao_vendedor",
+									"value": "vendedor",
+									"type": "text"
+								},
+								{
+									"key": "id_fotos",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/publicacao/cadastrar-publicacao",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao",
+								"cadastrar-publicacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Publicação Por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/publicacao/id/5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao",
+								"id",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Publicacao Por Titulo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/publicacao/titulo/tituloqualquer",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao",
+								"titulo",
+								"tituloqualquer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir Publicacao",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/publicacao/excluir-publicacao",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao",
+								"excluir-publicacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Publicacao",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "id_categoria",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "titulo",
+									"value": "Novo titulo",
+									"type": "text"
+								},
+								{
+									"key": "tipo_negociacao",
+									"value": "troca",
+									"type": "text"
+								},
+								{
+									"key": "preco",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "descricao_produto",
+									"value": "produtonovo",
+									"type": "text"
+								},
+								{
+									"key": "descricao_vendedor",
+									"value": "vendedornovo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/publicacao/atualizar-publicacao",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao",
+								"atualizar-publicacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Limpar tabela publicacao",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/api/publicacao/limpar-publicacao",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao",
+								"limpar-publicacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recriar tabela publicacao",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/publicacao/recriar-publicacao",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao",
+								"recriar-publicacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar tabela publicacao",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/publicacao/alterar-publicacao",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao",
+								"alterar-publicacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular tabela publicacao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/publicacao/popular-publicacao",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao",
+								"popular-publicacao"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Todos Administradores",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Admin Por Email",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Buscar Admin Por Email",
+							"originalRequest": {
+								"method": "GET",
+								"header": []
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy 6",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy 5",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy 4",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy 3",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy 2",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fotos",
+			"item": [
+				{
+					"name": "Todos Administradores",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Admin Por Email",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Buscar Admin Por Email",
+							"originalRequest": {
+								"method": "GET",
+								"header": []
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy 6",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy 5",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy 4",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy 3",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy 2",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request Copy",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
