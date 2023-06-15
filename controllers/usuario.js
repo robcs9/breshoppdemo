@@ -49,7 +49,7 @@ exports.cadastrarUsuario = async (req, res) => {
             vendas: 0,
             trocas: 0,
             suspenso: 0,
-            //motivo_suspensao: req.body.motivo_suspensao
+            motivo_suspensao: req.body.motivo_suspensao
         }
     );
     if (criar === null) {

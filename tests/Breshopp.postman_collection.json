@@ -1,8 +1,10 @@
 {
 	"info": {
-		"_postman_id": "23b902ac-a34c-407c-9b59-0ec02a5ec9a4",
+		"_postman_id": "6ef3a763-0d36-4f4c-94df-c1043c4b9063",
 		"name": "Breshopp",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27758719",
+		"_collection_link": "https://restless-capsule-774078.postman.co/workspace/Breshopp~065b265d-92e5-46c5-8b7a-f262a111817f/collection/27758719-6ef3a763-0d36-4f4c-94df-c1043c4b9063?action=share&creator=27758719&source=collection_link"
 	},
 	"item": [
 		{
@@ -947,83 +949,265 @@
 					"name": "Todos Administradores",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Buscar Admin Por Email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": []
-					},
-					"response": [
-						{
-							"name": "Buscar Admin Por Email",
-							"originalRequest": {
-								"method": "GET",
-								"header": []
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"body": null
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin3@example.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/buscar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"buscar-admin"
+							]
 						}
-					]
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "GET",
-						"header": []
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy 6",
+					"name": "Cadastrar Admin",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "nome",
+									"value": "Admin11",
+									"type": "text"
+								},
+								{
+									"key": "sobrenome",
+									"value": "11Admin",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin11@example.com",
+									"type": "text"
+								},
+								{
+									"key": "senha",
+									"value": "senha11",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/cadastrar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"cadastrar-admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy 5",
+					"name": "Atualizar Admin",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "nome",
+									"value": "AdminTest",
+									"type": "text"
+								},
+								{
+									"key": "sobrenome",
+									"value": "11AdminTest",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin11test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "senha",
+									"value": "senha11Test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/atualizar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"atualizar-admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy 4",
+					"name": "Excluir Admin",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/excluir-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"excluir-admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy 3",
+					"name": "Limpar tabela administrador",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/limpar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"limpar-admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy 2",
+					"name": "Recriar tabela administrador",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin/recriar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"recriar-admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy",
+					"name": "Alterar tabela administrador",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin/alterar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"alterar-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular tabela administrador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin/popular-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"popular-admin"
+							]
+						}
 					},
 					"response": []
 				}
@@ -1036,83 +1220,265 @@
 					"name": "Todos Administradores",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Buscar Admin Por Email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": []
-					},
-					"response": [
-						{
-							"name": "Buscar Admin Por Email",
-							"originalRequest": {
-								"method": "GET",
-								"header": []
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"body": null
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin3@example.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/buscar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"buscar-admin"
+							]
 						}
-					]
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "GET",
-						"header": []
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy 6",
+					"name": "Cadastrar Admin",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "nome",
+									"value": "Admin11",
+									"type": "text"
+								},
+								{
+									"key": "sobrenome",
+									"value": "11Admin",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin11@example.com",
+									"type": "text"
+								},
+								{
+									"key": "senha",
+									"value": "senha11",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/cadastrar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"cadastrar-admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy 5",
+					"name": "Atualizar Admin",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "nome",
+									"value": "AdminTest",
+									"type": "text"
+								},
+								{
+									"key": "sobrenome",
+									"value": "11AdminTest",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin11test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "senha",
+									"value": "senha11Test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/atualizar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"atualizar-admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy 4",
+					"name": "Excluir Admin",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/excluir-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"excluir-admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy 3",
+					"name": "Limpar tabela administrador",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/api/admin/limpar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"limpar-admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy 2",
+					"name": "Recriar tabela administrador",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin/recriar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"recriar-admin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request Copy",
+					"name": "Alterar tabela administrador",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin/alterar-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"alterar-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular tabela administrador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/admin/popular-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"popular-admin"
+							]
+						}
 					},
 					"response": []
 				}
