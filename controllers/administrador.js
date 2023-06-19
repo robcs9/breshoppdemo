@@ -1,18 +1,37 @@
 const db = require("../models");
 
 exports.getTodosAdmins = async (req, res) => {
-    const busca = await db.administrador.findAll();
-    if(busca === null) {
+    db.administrador.findAll().then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let errMsg = "";
+            err.errors.forEach(
+                (elem) => {
+                    errMsg += elem.message + '\n';
+                }
+            )
+            res.send(errMsg);
+        }
+    ).finally(
+        () => console.log("OK")
+    );
+    /*const busca = await db.administrador.findAll();
+    if (busca === null) {
         console.log('Nenhum administrador encontrado.');
         res.sendStatus(400);
     } else {
         res.json(busca);
-    }
+    }*/
 };
 
 exports.getAdminPorId = async (req, res) => {
     const busca = await db.administrador.findByPk(req.params.id);
-    if(busca === null) {
+    if (busca === null) {
         console.log('Administrador não encontrado.');
         res.sendStatus(400);
     } else {
@@ -21,8 +40,8 @@ exports.getAdminPorId = async (req, res) => {
 };
 
 exports.getAdminIdPorEmail = async (req, res) => {
-    const busca = await db.administrador.findOne({ where: { email: req.params.email} });
-    if(busca === null) {
+    const busca = await db.administrador.findOne({ where: { email: req.params.email } });
+    if (busca === null) {
         console.log('Administrador não encontrado.');
         res.sendStatus(400);
     } else {
@@ -32,28 +51,88 @@ exports.getAdminIdPorEmail = async (req, res) => {
 
 exports.getAdminPorEmailForm = async (req, res) => {
     const busca = await db.administrador.findOne({ where: { email: req.body.email } });
-    if(busca === null) {
+    if (busca === null) {
         res.sendStatus(400);
     } else {
         res.json(busca);
     }
 };
 
-exports.cadastrarAdmin = async (req, res) => {
-    const criar = await db.administrador.create(
+exports.cadastrarAdmin = (req, res) => {
+    db.administrador.create(
         {
-            id: req.body.id,
-	    	nome: req.body.nome,
-	    	sobrenome: req.body.sobrenome,
-	    	email: req.body.email,
-	    	senha: req.body.senha
+            //id: req.body.id,
+            nome: req.body.nome,
+            sobrenome: req.body.sobrenome,
+            email: req.body.email,
+            senha: req.body.senha
         }
+    ).then(
+        (r) => {
+            console.log(r);
+            return res.send("Administrador inserido com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let errMsg = "";
+            err.errors.forEach(
+                (elem) => {
+                    errMsg += elem.message + '\n';
+                }
+            )
+            res.send(errMsg);
+        }
+    ).finally(
+        () => console.log("OK")
     );
-    if(criar === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+
+    // v1
+    //try {
+    //    const criar = await db.administrador.create(
+    //        {
+    //            id: req.body.id,
+    //            nome: req.body.nome,
+    //            sobrenome: req.body.sobrenome,
+    //            email: req.body.email,
+    //            senha: req.body.senha
+    //        }
+    //    )
+    //    console.log(criar);
+    //    return res.send("Administrador inserido com sucesso.");
+    //    //return res.send(criar)
+    //} catch (err) {
+    //    console.log(err);
+    //    let errMsg = "";
+    //    err.errors.forEach(
+    //        (elem) => {
+    //            errMsg += elem.message + '\n';
+    //        }
+    //    )
+    //    res.send(errMsg);
+    //};
+
+    // v2
+    //const criar = await db.administrador.create(
+    //    {
+    //        id: req.body.id,
+    //    	nome: req.body.nome,
+    //    	sobrenome: req.body.sobrenome,
+    //    	email: req.body.email,
+    //    	senha: req.body.senha
+    //    }
+    //).then(
+    //    (r)  => {return res.send(r)}
+    //).catch(
+    //    (r)  => {return res.send(r)}
+    //);
+
+    //return res.send(criar);
+    //if(criar === null) {
+    //    return res.sendStatus(500);
+    //} else {
+    //    return res.sendStatus(200);
+    //}
 };
 
 exports.setAdmin = async (req, res) => {
@@ -64,12 +143,12 @@ exports.setAdmin = async (req, res) => {
             email: req.body.email,
             senha: req.body.senha
         }, {
-            where: {
-                id: req.body.id
-            }
+        where: {
+            id: req.body.id
         }
+    }
     );
-    if(atualizacao === null) {
+    if (atualizacao === null) {
         res.sendStatus(400);
     } else {
         res.sendStatus(200);
@@ -84,7 +163,7 @@ exports.excluirAdmin = async (req, res) => {
             }
         }
     );
-    if(exclusao === null) {
+    if (exclusao === null) {
         res.sendStatus(400);
     } else {
         res.sendStatus(200);
@@ -97,7 +176,7 @@ exports.limparTodos = async (req, res) => {
             truncate: true
         }
     );
-    if(limpar === null) {
+    if (limpar === null) {
         res.sendStatus(500);
     } else {
         res.sendStatus(200);
@@ -106,7 +185,7 @@ exports.limparTodos = async (req, res) => {
 
 exports.inserirTodos = async (req, res) => {
     const insercao = await db.administrador.bulkCreate(administradores);
-    if(insercao === null) {
+    if (insercao === null) {
         res.sendStatus(500);
     } else {
         res.sendStatus(200);
@@ -119,12 +198,12 @@ exports.validarPublicacao = async (req, res) => {
             validada: req.body.validar,
             motivo_rejeicao: req.body.motivo
         }, {
-            where: {
-                id: req.body.id
-            }
+        where: {
+            id: req.body.id
         }
+    }
     );
-    if(validacao === null) {
+    if (validacao === null) {
         res.sendStatus(400);
     } else {
         res.sendStatus(200);
@@ -137,12 +216,12 @@ exports.suspenderUsuario = async (req, res) => {
             suspenso: req.body.suspender,
             motivo_suspensao: req.body.motivo
         }, {
-            where: {
-                id: req.body.id
-            }
+        where: {
+            id: req.body.id
         }
+    }
     );
-    if(suspensao === null) {
+    if (suspensao === null) {
         res.sendStatus(400);
     } else {
         res.sendStatus(200);
@@ -151,7 +230,7 @@ exports.suspenderUsuario = async (req, res) => {
 
 exports.recriarTabela = async (req, res) => {
     const recriacao = await db.administrador.sync({ force: true });
-    if(recriacao) {
+    if (recriacao) {
         res.sendStatus(200);
     } else {
         res.sendStatus(500);
@@ -160,7 +239,7 @@ exports.recriarTabela = async (req, res) => {
 
 exports.alterarTabela = async (req, res) => {
     const alteracao = await db.administrador.sync({ alter: true });
-    if(alteracao) {
+    if (alteracao) {
         res.sendStatus(200);
     } else {
         res.sendStatus(500);

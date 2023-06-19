@@ -547,6 +547,36 @@
 					"response": []
 				},
 				{
+					"name": "Excluir Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "11",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/usuario/excluir-usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuario",
+								"excluir-usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Limpar tabela usuario",
 					"request": {
 						"method": "DELETE",
@@ -946,26 +976,26 @@
 			"name": "Categoria",
 			"item": [
 				{
-					"name": "Todos Administradores",
+					"name": "Todas Categorias",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/admin",
+							"raw": "localhost:3000/api/categoria",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin"
+								"categoria"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Buscar Admin Por Email",
+					"name": "Buscar Categoria Por Id",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -983,22 +1013,23 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/api/admin/buscar-admin",
+							"raw": "localhost:3000/api/categoria/id/5",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"buscar-admin"
+								"categoria",
+								"id",
+								"5"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Cadastrar Admin",
+					"name": "Cadastrar Categoria",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -1033,22 +1064,22 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/api/admin/cadastrar-admin",
+							"raw": "localhost:3000/api/categoria/cadastrar-categoria",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"cadastrar-admin"
+								"categoria",
+								"cadastrar-categoria"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Atualizar Admin",
+					"name": "Atualizar Categoria",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -1083,22 +1114,22 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/api/admin/atualizar-admin",
+							"raw": "localhost:3000/api/categoria/atualizar-categoria",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"atualizar-admin"
+								"categoria",
+								"atualizar-categoria"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Excluir Admin",
+					"name": "Excluir Categoria",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1113,22 +1144,22 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/api/admin/excluir-admin",
+							"raw": "localhost:3000/api/categoria/excluir-categoria",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"excluir-admin"
+								"categoria",
+								"excluir-categoria"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Limpar tabela administrador",
+					"name": "Limpar tabela categoria",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1137,75 +1168,75 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "localhost:3000/api/admin/limpar-admin",
+							"raw": "localhost:3000/api/categoria/limpar-categoria",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"limpar-admin"
+								"categoria",
+								"limpar-categoria"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Recriar tabela administrador",
+					"name": "Recriar tabela categoria",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/admin/recriar-admin",
+							"raw": "localhost:3000/api/categoria/recriar-categoria",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"recriar-admin"
+								"categoria",
+								"recriar-categoria"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Alterar tabela administrador",
+					"name": "Alterar tabela categoria",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/admin/alterar-admin",
+							"raw": "localhost:3000/api/categoria/alterar-categoria",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"alterar-admin"
+								"categoria",
+								"alterar-categoria"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Popular tabela administrador",
+					"name": "Popular tabela categoria",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/admin/popular-admin",
+							"raw": "localhost:3000/api/categoria/popular-categoria",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"popular-admin"
+								"categoria",
+								"popular-categoria"
 							]
 						}
 					},
@@ -1217,26 +1248,26 @@
 			"name": "Fotos",
 			"item": [
 				{
-					"name": "Todos Administradores",
+					"name": "Todas Fotos",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/admin",
+							"raw": "localhost:3000/api/fotos",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin"
+								"fotos"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Buscar Admin Por Email",
+					"name": "Buscar Fotos Por Id",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1254,22 +1285,23 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/api/admin/buscar-admin",
+							"raw": "localhost:3000/api/fotos/id/5",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"buscar-admin"
+								"fotos",
+								"id",
+								"5"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Cadastrar Admin",
+					"name": "Cadastrar Fotos",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -1304,22 +1336,22 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/api/admin/cadastrar-admin",
+							"raw": "localhost:3000/api/fotos/cadastrar-fotos",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"cadastrar-admin"
+								"fotos",
+								"cadastrar-fotos"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Atualizar Admin",
+					"name": "Atualizar Fotos",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -1354,22 +1386,22 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/api/admin/atualizar-admin",
+							"raw": "localhost:3000/api/fotos/atualizar-fotos",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"atualizar-admin"
+								"fotos",
+								"atualizar-fotos"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Excluir Admin",
+					"name": "Excluir Fotos",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1384,22 +1416,22 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/api/admin/excluir-admin",
+							"raw": "localhost:3000/api/fotos/excluir-fotos",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"excluir-admin"
+								"fotos",
+								"excluir-fotos"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Limpar tabela administrador",
+					"name": "Limpar tabela fotos",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1408,75 +1440,75 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "localhost:3000/api/admin/limpar-admin",
+							"raw": "localhost:3000/api/fotos/limpar-fotos",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"limpar-admin"
+								"fotos",
+								"limpar-fotos"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Recriar tabela administrador",
+					"name": "Recriar tabela fotos",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/admin/recriar-admin",
+							"raw": "localhost:3000/api/fotos/recriar-fotos",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"recriar-admin"
+								"fotos",
+								"recriar-fotos"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Alterar tabela administrador",
+					"name": "Alterar tabela fotos",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/admin/alterar-admin",
+							"raw": "localhost:3000/api/fotos/alterar-fotos",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"alterar-admin"
+								"fotos",
+								"alterar-fotos"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Popular tabela administrador",
+					"name": "Popular tabela fotos",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/admin/popular-admin",
+							"raw": "localhost:3000/api/fotos/popular-fotos",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"admin",
-								"popular-admin"
+								"fotos",
+								"popular-fotos"
 							]
 						}
 					},

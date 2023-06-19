@@ -137,6 +137,11 @@ exports.alterarTabela = async (req, res) => {
     }
 };
 
+// incrementar vendas
+// incrementar trocas
+// ou remover estes campos de usuário porque a ação de finalizar pode
+// produzir resultados falsos por usuários desonestos.
+
 let usuarios = [
     {
         "id": 1,

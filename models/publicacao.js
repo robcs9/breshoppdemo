@@ -1,51 +1,50 @@
 module.exports = function (sequelize, DataTypes) {
     const publicacao = sequelize.define('publicacao', {
-        id: {
+        /*id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
-        },
-        id_usuario: {
+        },*/
+        /*id_usuario: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
         id_categoria: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
+        },*/
         titulo: {
-            type: DataTypes.STRING(45),
+            type: DataTypes.STRING(100),
             allowNull: false
         },
         tipo_negociacao: {
-            type: DataTypes.STRING(45),
+            type: DataTypes.ENUM('venda', 'troca'),
             allowNull: false
         },
         preco: {
             type: DataTypes.FLOAT,
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         descricao_produto: {
-            type: DataTypes.STRING(300),
+            type: DataTypes.TEXT,
             allowNull: false
         },
         descricao_vendedor: {
-            type: DataTypes.STRING(300),
+            type: DataTypes.TEXT,
             allowNull: false
         },
-        id_fotos: {
+        /*id_fotos: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
+        },*/
         validada: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            //allowNull: false,
         },
         finalizada: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
+            //allowNull: false,
         },
         motivo_rejeicao: {
             type: DataTypes.STRING(100),
@@ -54,6 +53,18 @@ module.exports = function (sequelize, DataTypes) {
     }, {
         timestamps: false
     });
+
+    publicacao.associate = (models) => {
+        publicacao.belongsTo(models.categoria, {
+            foreignKey: 'id_categoria',
+        });
+        publicacao.belongsTo(models.fotos, {
+            foreignKey: 'id_fotos'
+        });
+        publicacao.belongsTo(models.usuario, {
+            foreignKey: 'id_usuario'
+        });
+    };
 
     //publicacao.associate = (models) => {
     //    // https://sequelize.org/docs/v6/core-concepts/assocs/
