@@ -1,18 +1,28 @@
 const db = require("../models");
 const { Op } = require('sequelize');
 
-exports.getTodosPublicacao = async (req, res) => {
-    const busca = await db.publicacao.findAll();
-    if(busca === null) {
-        console.log('Nenhuma publicação encontrada.');
-        res.sendStatus(400);
-    } else {
-        res.json(busca);
-    }
+exports.getTodosPublicacao = (req, res) => {
+    db.publicacao.findAll().then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.cadastrarPublicacao = async (req, res) => {
-    const criar = await db.publicacao.create(
+exports.cadastrarPublicacao = (req, res) => {
+    db.publicacao.create(
         {
             id: req.body.id,
             id_usuario: req.body.id_usuario,
@@ -26,25 +36,46 @@ exports.cadastrarPublicacao = async (req, res) => {
             validada: 0,
             finalizada: 0,
         }
-    );
-    if (criar === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Publicação cadastrada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.getPublicacaoPorId = async (req, res) => {
-    const busca = await db.publicacao.findByPk(req.params.id);
-    if(busca === null) {
-        console.log('Publicação não encontrada.');
-        res.sendStatus(400);
-    } else {
-        res.json(busca);
-    }
+exports.getPublicacaoPorId = (req, res) => {
+    db.publicacao.findByPk(req.params.id).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.getPublicacaoPorTitulo = async (req, res) => {
+exports.getPublicacaoPorTitulo = (req, res) => {
     // Implementação incompleta de fuzzy search 
     //const str = req.params.titulo;
     //const palavras = str.split(/[\s,]+/);
@@ -56,21 +87,31 @@ exports.getPublicacaoPorTitulo = async (req, res) => {
     //        }
     //    }
     //});
-    const busca = await db.publicacao.findOne({
+    db.publicacao.findOne({
         where: {
             titulo: req.params.titulo
         }
-    })
-    if(busca === null) {
-        console.log('Nenhuma publicação não encontrada.');
-        res.sendStatus(400);
-    } else {
-        res.json(busca);
-    }
+    }).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.setPublicacao = async (req, res) => {
-    const atualizacao = await db.publicacao.update(
+exports.setPublicacao = (req, res) => {
+    db.publicacao.update(
         {
             id_categoria: req.body.id_categoria,
             titulo: req.body.titulo,
@@ -83,89 +124,166 @@ exports.setPublicacao = async (req, res) => {
             //finalizada:req.body.finalizada,
             //motivo_rejeicao:req.body.motivo_rejeicao
         }, {
-        where: {
-            id: req.body.id
+            where: {
+                id: req.body.id
+            }
         }
-    }
-    );
-    if (atualizacao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Publicação atualizada com sucessso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.excluirPublicacao = async (req, res) => {
-    const exclusao = await db.publicacao.destroy(
+exports.excluirPublicacao = (req, res) => {
+    db.publicacao.destroy(
         {
             where: {
                 id: req.body.id
             }
         }
-    );
-    if (exclusao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Publicação excluída com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.limparTodos = async (req, res) => {
-    const limpar = await db.publicacao.destroy(
+exports.limparTodos = (req, res) => {
+    db.publicacao.destroy(
         {
             truncate: true
         }
-    );
-    if (limpar === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Publicações excluídas com sucessso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.inserirTodos = async (req, res) => {
-    const insercao = await db.publicacao.bulkCreate(publicacoes);
-    if (insercao === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+exports.inserirTodos = (req, res) => {
+    db.publicacao.bulkCreate(publicacoes).then(
+        (r) => {
+            console.log(r);
+            res.send("Publicações inseridas com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.validarPublicacao = async (req, res) => {
-    const validacao = await db.publicacao.update(
+exports.validarPublicacao = (req, res) => {
+    db.publicacao.update(
         {
             validada: req.body.validar,
             motivo_rejeicao: req.body.motivo
         }, {
-        where: {
-            id: req.body.id
+            where: {
+                id: req.body.id
+            }
         }
-    }
-    );
-    if (validacao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Publicação validada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.recriarTabela = async (req, res) => {
-    const recriacao = await db.publicacao.sync({ force: true });
-    if (recriacao) {
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(500);
-    }
+exports.recriarTabela = (req, res) => {
+    db.publicacao.sync({ force: true }).then(
+        (r) => {
+            console.log(r);
+            res.send("Tabela publicacao recriada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.alterarTabela = async (req, res) => {
-    const alteracao = await db.publicacao.sync({ alter: true });
-    if (alteracao) {
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(500);
-    }
+exports.alterarTabela = (req, res) => {
+    db.publicacao.sync({ alter: true }).then(
+        (r) => {
+            console.log(r);
+            res.send("Tabela publicacao alterada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
 let publicacoes = [

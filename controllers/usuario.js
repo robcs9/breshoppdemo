@@ -1,42 +1,71 @@
 const db = require("../models");
 
-exports.getTodosUsuario = async (req, res) => {
-    const busca = await db.usuario.findAll();
-    if(busca === null) {
-        console.log('Nenhum usuário encontrado.');
-        res.sendStatus(400);
-    } else {
-        res.json(busca);
-    }
+exports.getTodosUsuario = (req, res) => {
+    db.usuario.findAll().then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.getUsuarioPorId = async (req, res) => {
-    const busca = await db.usuario.findByPk(req.params.id);
-    if(busca === null) {
-        console.log('Usuário não encontrado.');
-        res.sendStatus(400);
-    } else {
-        res.json(busca);
-    }
+exports.getUsuarioPorId = (req, res) => {
+    db.usuario.findByPk(req.params.id).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.getUsuarioPorEmail = async (req, res) => {
-    const busca = await db.usuario.findOne({
+exports.getUsuarioPorEmail = (req, res) => {
+    db.usuario.findOne({
         where: {
             email: req.params.email
         }
-    });
-    
-    if(busca === null) {
-        console.log('Usuário não encontrado.');
-        res.sendStatus(400);
-    } else {
-        res.json(busca);
-    }
+    }).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.cadastrarUsuario = async (req, res) => {
-    const criar = await db.usuario.create(
+exports.cadastrarUsuario = (req, res) => {
+    db.usuario.create(
         {
             id: req.body.id,
             nome: req.body.nome,
@@ -51,16 +80,27 @@ exports.cadastrarUsuario = async (req, res) => {
             suspenso: 0,
             motivo_suspensao: req.body.motivo_suspensao
         }
-    );
-    if (criar === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Usuário cadastrado com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.setUsuario = async (req, res) => {
-    const atualizacao = await db.usuario.update(
+exports.setUsuario = (req, res) => {
+    db.usuario.update(
         {
             nome: req.body.nome,
             sobrenome: req.body.sobrenome,
@@ -78,63 +118,134 @@ exports.setUsuario = async (req, res) => {
                 id: req.body.id
             }
         }
-    );
-    if(atualizacao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Usuário atualizado com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.finalizarPublicacao = async (req, res) => {
-    const finalizacao = await db.publicacao.update({
+exports.finalizarPublicacao = (req, res) => {
+    db.publicacao.update({
         finalizada: 1
     }, {
         where: {
             id: req.body.id
         }
-    });
+    }).then(
+        (r) => {
+            console.log(r);
+            res.send("Publicação finalizada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.limparTodos = async (req, res) => {
-    const limpar = await db.usuario.destroy(
+exports.limparTodos = (req, res) => {
+    db.usuario.destroy(
         {
             truncate: true
         }
-    );
-    if (limpar === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Usuários excluídos com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.inserirTodos = async (req, res) => {
-    const insercao = await db.usuario.bulkCreate(usuarios);
-    if (insercao === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+exports.inserirTodos = (req, res) => {
+    db.usuario.bulkCreate(usuarios).then(
+        (r) => {
+            console.log(r);
+            res.send("Usuários inseridos com sucessso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
 
-exports.recriarTabela = async (req, res) => {
-    const recriacao = await db.usuario.sync({ force: true });
-    if (recriacao) {
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(500);
-    }
+exports.recriarTabela = (req, res) => {
+    db.usuario.sync({ force: true }).then(
+        (r) => {
+            console.log(r);
+            res.send("Tabela usuario recriada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.alterarTabela = async (req, res) => {
-    const alteracao = await db.usuario.sync({ alter: true });
-    if (alteracao) {
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(500);
-    }
+exports.alterarTabela = (req, res) => {
+    db.usuario.sync({ alter: true }).then(
+        (r) => {
+            console.log(r);
+            res.send("Tabela usuário alterada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
 // incrementar vendas

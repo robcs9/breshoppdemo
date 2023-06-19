@@ -1,28 +1,50 @@
 const db = require('../models');
 
 
-exports.getFotosById = async (req, res) => {
-    const leitura = await db.fotos.findByPk(req.params.id);
-    if(leitura) {
-        res.json(leitura);
-    } else {
-        res.sendStatus(400);
-    }
+exports.getFotosById = (req, res) => {
+    db.fotos.findByPk(req.params.id).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
 //exports.getFotosPorIdDePublicacao = {};
 
-exports.getTodosFotos = async (req, res) => {
-    const leitura = await db.fotos.findAll();
-    if(leitura) {
-        res.json(leitura);
-    } else {
-        res.sendStatus(400);
-    }
+exports.getTodosFotos = (req, res) => {
+    db.fotos.findAll().then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.cadastrarFotos = async (req, res) => {
-    const criar = await db.fotos.create(
+exports.cadastrarFotos = (req, res) => {
+    db.fotos.create(
         {
             id: req.body.id,
 	    	foto1: req.body.foto1,
@@ -32,16 +54,27 @@ exports.cadastrarFotos = async (req, res) => {
             foto5: req.body.foto5,
             foto6: req.body.foto6,
         }
-    );
-    if(criar === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Foto(s) cadastradas com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.setFotos = async (req, res) => {
-    const atualizacao = await db.fotos.update(
+exports.setFotos = (req, res) => {
+    db.fotos.update(
         {
             foto1: req.body.foto1,
             foto2: req.body.foto2,
@@ -54,67 +87,133 @@ exports.setFotos = async (req, res) => {
                 id: req.body.id
             }
         }
-    );
-    if(atualizacao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Foto(s) atualizadas com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.excluirFotos = async (req, res) => {
-    const exclusao = await db.fotos.destroy(
+exports.excluirFotos = (req, res) => {
+    db.fotos.destroy(
         {
             where: {
                 id: req.body.id
             }
         }
-    );
-    if(exclusao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Foto(s) excluídas com sucessso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.limparTodos = async (req, res) => {
-    const limpar = await db.fotos.destroy(
+exports.limparTodos = (req, res) => {
+    db.fotos.destroy(
         {
             truncate: true
         }
-    );
-    if(limpar === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Todas as fotos excluídas com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.inserirTodos = async (req, res) => {
-    const insercao = await db.fotos.bulkCreate(fotos);
-    if(insercao === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+exports.inserirTodos = (req, res) => {
+    db.fotos.bulkCreate(fotos).then(
+        (r) => {
+            console.log(r);
+            res.send("Fotos inseridas com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.recriarTabela = async (req, res) => {
-    const recriacao = await db.fotos.sync({ force: true });
-    if(recriacao) {
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(500);
-    }
+exports.recriarTabela = (req, res) => {
+    db.fotos.sync({ force: true }).then(
+        (r) => {
+            console.log(r);
+            res.send("Tabela fotos recriada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.alterarTabela = async (req, res) => {
-    const alteracao = await db.fotos.sync({ alter: true });
-    if(alteracao) {
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(500);
-    }
+exports.alterarTabela = (req, res) => {
+    db.fotos.sync({ alter: true }).then(
+        (r) => {
+            console.log(r);
+            res.send("Tabela fotos alterada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
 const fotos = [

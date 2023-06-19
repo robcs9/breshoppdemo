@@ -1,6 +1,6 @@
 const db = require("../models");
 
-exports.getTodosAdmins = async (req, res) => {
+exports.getTodosAdmins = (req, res) => {
     db.administrador.findAll().then(
         (r) => {
             console.log(r);
@@ -9,53 +9,75 @@ exports.getTodosAdmins = async (req, res) => {
     ).catch(
         (err) => {
             console.log(err);
-            let errMsg = "";
+            let msg = "";
             err.errors.forEach(
                 (elem) => {
-                    errMsg += elem.message + '\n';
+                    msg += elem.message + '\n';
                 }
             )
-            res.send(errMsg);
+            res.send(msg);
         }
-    ).finally(
-        () => console.log("OK")
-    );
-    /*const busca = await db.administrador.findAll();
-    if (busca === null) {
-        console.log('Nenhum administrador encontrado.');
-        res.sendStatus(400);
-    } else {
-        res.json(busca);
-    }*/
+    )
 };
 
-exports.getAdminPorId = async (req, res) => {
-    const busca = await db.administrador.findByPk(req.params.id);
-    if (busca === null) {
-        console.log('Administrador não encontrado.');
-        res.sendStatus(400);
-    } else {
-        res.json(busca);
-    }
+exports.getAdminPorId = (req, res) => {
+    db.administrador.findByPk(req.params.id).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.getAdminIdPorEmail = async (req, res) => {
-    const busca = await db.administrador.findOne({ where: { email: req.params.email } });
-    if (busca === null) {
-        console.log('Administrador não encontrado.');
-        res.sendStatus(400);
-    } else {
-        res.json(busca.id);
-    }
+exports.getAdminIdPorEmail = (req, res) => {
+    db.administrador.findOne({ where: { email: req.params.email } }).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.getAdminPorEmailForm = async (req, res) => {
-    const busca = await db.administrador.findOne({ where: { email: req.body.email } });
-    if (busca === null) {
-        res.sendStatus(400);
-    } else {
-        res.json(busca);
-    }
+exports.getAdminPorEmailForm = (req, res) => {
+    db.administrador.findOne({ where: { email: req.body.email } }).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
 exports.cadastrarAdmin = (req, res) => {
@@ -70,22 +92,23 @@ exports.cadastrarAdmin = (req, res) => {
     ).then(
         (r) => {
             console.log(r);
-            return res.send("Administrador inserido com sucesso.");
+            res.send("Administrador inserido com sucesso.");
         }
     ).catch(
         (err) => {
             console.log(err);
-            let errMsg = "";
+            let msg = "";
             err.errors.forEach(
                 (elem) => {
-                    errMsg += elem.message + '\n';
+                    msg += elem.message + '\n';
                 }
             )
-            res.send(errMsg);
+            res.send(msg);
         }
-    ).finally(
-        () => console.log("OK")
-    );
+    )
+    //.finally(
+    //    () => console.log("OK")
+    //);
 
     // v1
     //try {
@@ -135,8 +158,8 @@ exports.cadastrarAdmin = (req, res) => {
     //}
 };
 
-exports.setAdmin = async (req, res) => {
-    const atualizacao = await db.administrador.update(
+exports.setAdmin = (req, res) => {
+    db.administrador.update(
         {
             nome: req.body.nome,
             sobrenome: req.body.sobrenome,
@@ -146,54 +169,97 @@ exports.setAdmin = async (req, res) => {
         where: {
             id: req.body.id
         }
-    }
-    );
-    if (atualizacao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    }).then(
+        (r) => {
+            console.log(r);
+            res.send("Adminstrador atualizado com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.excluirAdmin = async (req, res) => {
-    const exclusao = await db.administrador.destroy(
+exports.excluirAdmin = (req, res) => {
+    db.administrador.destroy(
         {
             where: {
                 id: req.body.id
             }
         }
-    );
-    if (exclusao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Adminstrador excluído com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.limparTodos = async (req, res) => {
-    const limpar = await db.administrador.destroy(
+exports.limparTodos = (req, res) => {
+    db.administrador.destroy(
         {
             truncate: true
         }
-    );
-    if (limpar === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Todos administradores excluídos com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.inserirTodos = async (req, res) => {
-    const insercao = await db.administrador.bulkCreate(administradores);
-    if (insercao === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+exports.inserirTodos = (req, res) => {
+    db.administrador.bulkCreate(administradores).then(
+        (r) => {
+            console.log(r);
+            res.send("Adminstradores inseridos com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.validarPublicacao = async (req, res) => {
-    const validacao = await db.publicacao.update(
+exports.validarPublicacao = (req, res) => {
+    db.publicacao.update(
         {
             validada: req.body.validar,
             motivo_rejeicao: req.body.motivo
@@ -201,17 +267,27 @@ exports.validarPublicacao = async (req, res) => {
         where: {
             id: req.body.id
         }
-    }
-    );
-    if (validacao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    }).then(
+        (r) => {
+            console.log(r);
+            res.send("Publicação validada com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.suspenderUsuario = async (req, res) => {
-    const suspensao = await db.usuario.update(
+exports.suspenderUsuario = (req, res) => {
+    db.usuario.update(
         {
             suspenso: req.body.suspender,
             motivo_suspensao: req.body.motivo
@@ -219,31 +295,63 @@ exports.suspenderUsuario = async (req, res) => {
         where: {
             id: req.body.id
         }
-    }
-    );
-    if (suspensao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    }).then(
+        (r) => {
+            console.log(r);
+            res.send("Usuário suspendido com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.recriarTabela = async (req, res) => {
-    const recriacao = await db.administrador.sync({ force: true });
-    if (recriacao) {
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(500);
-    }
+exports.recriarTabela = (req, res) => {
+    db.administrador.sync({ force: true }).then(
+        (r) => {
+            console.log(r);
+            res.send("Tabela adminstrador recriada com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.alterarTabela = async (req, res) => {
-    const alteracao = await db.administrador.sync({ alter: true });
-    if (alteracao) {
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(500);
-    }
+exports.alterarTabela = (req, res) => {
+    db.administrador.sync({ alter: true }).then(
+        (r) => {
+            console.log(r);
+            res.send("Tabela adminstrador alterada com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
 let administradores = [

@@ -1,104 +1,202 @@
 const db = require("../models");
 
-exports.getTodosCategoria = async (req, res) => {
-    const busca = await db.categoria.findAll();
-    if(busca === null) {
-        console.log('Nenhuma categoria encontrada.');
-        res.sendStatus(400);
-    } else {
-        res.json(busca);
-    }
+exports.getTodosCategoria = (req, res) => {
+    db.categoria.findAll().then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.cadastrarCategoria = async (req, res) => {
-    const criar = await db.categoria.create(
+exports.cadastrarCategoria = (req, res) => {
+    db.categoria.create(
         {
             id: req.body.id,
 	    	nome: req.body.nome,
         }
-    );
-    if(criar === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Categoria cadastrada com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.getCategoriaPorId = async (req, res) => {
-    const leitura = await db.categoria.findByPk(req.params.id)
-    if(leitura) {
-        res.json(leitura);
-    } else {
-        res.sendStatus(400)
-    }
+exports.getCategoriaPorId = (req, res) => {
+    db.categoria.findByPk(req.params.id).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.getCategoriaPorNome = async (req, res) => {
-    const leitura = await db.categoria.findOne({
+exports.getCategoriaPorNome = (req, res) => {
+    db.categoria.findOne({
         where: {
             nome: req.params.nome
         }
-    })
-    if(leitura) {
-        res.json(leitura);
-    } else {
-        res.sendStatus(400)
-    }
+    }).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.excluirCategoria = async (req, res) => {
-    const exclusao = await db.categoria.destroy(
+exports.excluirCategoria = (req, res) => {
+    db.categoria.destroy(
         {
             where: {
                 id: req.body.id
             }
         }
-    );
-    if(exclusao === null) {
-        res.sendStatus(400);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Categoria excluída com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.limparTodos = async (req, res) => {
-    const limpar = await db.categoria.destroy(
+exports.limparTodos = (req, res) => {
+    db.categoria.destroy(
         {
             truncate: true
         }
-    );
-    if(limpar === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+    ).then(
+        (r) => {
+            console.log(r);
+            res.send("Categorias excluídas com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.inserirTodos = async (req, res) => {
-    const insercao = await db.categoria.bulkCreate(categorias);
-    if(insercao === null) {
-        res.sendStatus(500);
-    } else {
-        res.sendStatus(200);
-    }
+exports.inserirTodos = (req, res) => {
+    db.categoria.bulkCreate(categorias).then(
+        (r) => {
+            console.log(r);
+            res.send("Categorias inseridas com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.recriarTabela = async (req, res) => {
-    const recriacao = await db.categoria.sync({ force: true });
-    if(recriacao) {
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(500);
-    }
+exports.recriarTabela = (req, res) => {
+    db.categoria.sync({ force: true }).then(
+        (r) => {
+            console.log(r);
+            res.send("Tabela categoria recriada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
-exports.alterarTabela = async (req, res) => {
-    const alteracao = await db.categoria.sync({ alter: true });
-    if(alteracao) {
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(500);
-    }
+exports.alterarTabela = (req, res) => {
+    db.categoria.sync({ alter: true }).then(
+        (r) => {
+            console.log(r);
+            res.send("Tabela categoria alterada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            console.log(err);
+            let msg = "";
+            err.errors.forEach(
+                (elem) => {
+                    msg += elem.message + '\n';
+                }
+            )
+            res.send(msg);
+        }
+    )
 };
 
 let categorias = [
