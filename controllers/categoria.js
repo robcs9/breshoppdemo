@@ -1,4 +1,5 @@
 const db = require("../models");
+const { erroCallback } = require("../lib/erroCallback");
 
 exports.getTodosCategoria = (req, res) => {
     db.categoria.findAll().then(
@@ -8,14 +9,7 @@ exports.getTodosCategoria = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -23,7 +17,7 @@ exports.getTodosCategoria = (req, res) => {
 exports.cadastrarCategoria = (req, res) => {
     db.categoria.create(
         {
-            id: req.body.id,
+            //id: req.body.id,
 	    	nome: req.body.nome,
         }
     ).then(
@@ -33,14 +27,7 @@ exports.cadastrarCategoria = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -53,14 +40,7 @@ exports.getCategoriaPorId = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -77,14 +57,7 @@ exports.getCategoriaPorNome = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -103,14 +76,27 @@ exports.excluirCategoria = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
+        }
+    )
+};
+
+exports.setCategoria = (req, res) => {
+    db.categoria.update(
+        {
+            nome: req.body.nome,
+        }, {
+        where: {
+            id: req.body.id
+        }
+    }).then(
+        (r) => {
+            console.log(r);
+            res.send("Categoria atualizada com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
         }
     )
 };
@@ -127,14 +113,7 @@ exports.limparTodos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -147,14 +126,7 @@ exports.inserirTodos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -167,14 +139,7 @@ exports.recriarTabela = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -187,57 +152,50 @@ exports.alterarTabela = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
 
 let categorias = [
     {
-        "id": 1,
+        //"id": 1,
         "nome": "Eletrônicos"
     },
     {
-        "id": 2,
+        //"id": 2,
         "nome": "Roupas"
     },
     {
-        "id": 3,
+        //"id": 3,
         "nome": "Acessórios"
     },
     {
-        "id": 4,
+        //"id": 4,
         "nome": "Livros"
     },
     {
-        "id": 5,
+        //"id": 5,
         "nome": "Móveis"
     },
     {
-        "id": 6,
+        //"id": 6,
         "nome": "Esportes"
     },
     {
-        "id": 7,
+        //"id": 7,
         "nome": "Joias"
     },
     {
-        "id": 8,
+        //"id": 8,
         "nome": "Beleza"
     },
     {
-        "id": 9,
+        //"id": 9,
         "nome": "Brinquedos"
     },
     {
-        "id": 10,
+        //"id": 10,
         "nome": "Instrumentos Musicais"
     }
 ];

@@ -48,7 +48,6 @@ module.exports = function (sequelize, DataTypes) {
         },
         motivo_rejeicao: {
             type: DataTypes.STRING(100),
-            allowNull: true
         }
     }, {
         timestamps: false

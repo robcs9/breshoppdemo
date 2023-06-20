@@ -1,4 +1,5 @@
 const db = require("../models");
+const { erroCallback } = require("../lib/erroCallback");
 
 exports.getTodosAdmins = (req, res) => {
     db.administrador.findAll().then(
@@ -8,14 +9,7 @@ exports.getTodosAdmins = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -28,14 +22,7 @@ exports.getAdminPorId = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -48,14 +35,7 @@ exports.getAdminIdPorEmail = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -68,14 +48,7 @@ exports.getAdminPorEmailForm = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -96,14 +69,7 @@ exports.cadastrarAdmin = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
     //.finally(
@@ -172,18 +138,11 @@ exports.setAdmin = (req, res) => {
     }).then(
         (r) => {
             console.log(r);
-            res.send("Adminstrador atualizado com sucesso.");
+            res.send("Administrador atualizado com sucesso.");
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -198,18 +157,11 @@ exports.excluirAdmin = (req, res) => {
     ).then(
         (r) => {
             console.log(r);
-            res.send("Adminstrador excluído com sucesso.");
+            res.send("Administrador excluído com sucesso.");
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -226,14 +178,7 @@ exports.limparTodos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -242,18 +187,11 @@ exports.inserirTodos = (req, res) => {
     db.administrador.bulkCreate(administradores).then(
         (r) => {
             console.log(r);
-            res.send("Adminstradores inseridos com sucesso.");
+            res.send("Administradores inseridos com sucesso.");
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -274,14 +212,7 @@ exports.validarPublicacao = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -302,14 +233,7 @@ exports.suspenderUsuario = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -318,18 +242,11 @@ exports.recriarTabela = (req, res) => {
     db.administrador.sync({ force: true }).then(
         (r) => {
             console.log(r);
-            res.send("Tabela adminstrador recriada com sucesso.");
+            res.send("Tabela administrador recriada com sucesso.");
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -338,18 +255,11 @@ exports.alterarTabela = (req, res) => {
     db.administrador.sync({ alter: true }).then(
         (r) => {
             console.log(r);
-            res.send("Tabela adminstrador alterada com sucesso.");
+            res.send("Tabela administrador alterada com sucesso.");
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };

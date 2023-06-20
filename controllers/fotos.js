@@ -1,5 +1,5 @@
 const db = require('../models');
-
+const { erroCallback } = require('../lib/erroCallback')
 
 exports.getFotosById = (req, res) => {
     db.fotos.findByPk(req.params.id).then(
@@ -9,14 +9,7 @@ exports.getFotosById = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -31,14 +24,7 @@ exports.getTodosFotos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -46,7 +32,7 @@ exports.getTodosFotos = (req, res) => {
 exports.cadastrarFotos = (req, res) => {
     db.fotos.create(
         {
-            id: req.body.id,
+            //id: req.body.id,
 	    	foto1: req.body.foto1,
             foto2: req.body.foto2,
             foto3: req.body.foto3,
@@ -61,14 +47,7 @@ exports.cadastrarFotos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -94,14 +73,7 @@ exports.setFotos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -119,16 +91,7 @@ exports.excluirFotos = (req, res) => {
             res.send("Foto(s) excluídas com sucessso");
         }
     ).catch(
-        (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
-        }
+        res.send(erroCallback(err))
     )
 };
 
@@ -144,14 +107,7 @@ exports.limparTodos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -164,14 +120,7 @@ exports.inserirTodos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -184,14 +133,7 @@ exports.recriarTabela = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -204,21 +146,14 @@ exports.alterarTabela = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
 
 const fotos = [
     {
-        "id": 1,
+        //"id": 1,
         "foto1": "f1.jpg",
         "foto2": "f2.jpg",
         "foto3": "f3.jpg",
@@ -227,7 +162,7 @@ const fotos = [
         "foto6": "f6.jpg"
     },
     {
-        "id": 2,
+        //"id": 2,
         "foto1": "f7.jpg",
         "foto2": "f8.jpg",
         "foto3": "f9.jpg",
@@ -236,7 +171,7 @@ const fotos = [
         "foto6": "f12.jpg"
     },
     {
-        "id": 3,
+        //"id": 3,
         "foto1": "f13.jpg",
         "foto2": "f14.jpg",
         "foto3": "f15.jpg",
@@ -245,7 +180,7 @@ const fotos = [
         "foto6": "f18.jpg"
     },
     {
-        "id": 4,
+        //"id": 4,
         "foto1": "f19.jpg",
         "foto2": "f20.jpg",
         "foto3": "f21.jpg",
@@ -254,7 +189,7 @@ const fotos = [
         "foto6": "f24.jpg"
     },
     {
-        "id": 5,
+        //"id": 5,
         "foto1": "f25.jpg",
         "foto2": "f26.jpg",
         "foto3": "f27.jpg",
@@ -263,7 +198,7 @@ const fotos = [
         "foto6": "f30.jpg"
     },
     {
-        "id": 6,
+        //"id": 6,
         "foto1": "f31.jpg",
         "foto2": "f32.jpg",
         "foto3": "f33.jpg",
@@ -281,7 +216,7 @@ const fotos = [
         "foto6": "f42.jpg"
     },
     {
-        "id": 8,
+        //"id": 8,
         "foto1": "f43.jpg",
         "foto2": "f44.jpg",
         "foto3": "f45.jpg",
@@ -290,7 +225,7 @@ const fotos = [
         "foto6": "f48.jpg"
     },
     {
-        "id": 9,
+        //"id": 9,
         "foto1": "f49.jpg",
         "foto2": "f50.jpg",
         "foto3": "f51.jpg",
@@ -299,7 +234,7 @@ const fotos = [
         "foto6": "f54.jpg"
     },
     {
-        "id": 10,
+        //"id": 10,
         "foto1": "f55.jpg",
         "foto2": "f56.jpg",
         "foto3": "f57.jpg",

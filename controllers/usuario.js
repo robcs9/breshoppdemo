@@ -1,4 +1,5 @@
 const db = require("../models");
+const { erroCallback } = require('../lib/erroCallback')
 
 exports.getTodosUsuario = (req, res) => {
     db.usuario.findAll().then(
@@ -8,14 +9,7 @@ exports.getTodosUsuario = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -28,14 +22,7 @@ exports.getUsuarioPorId = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -52,14 +39,7 @@ exports.getUsuarioPorEmail = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -67,7 +47,7 @@ exports.getUsuarioPorEmail = (req, res) => {
 exports.cadastrarUsuario = (req, res) => {
     db.usuario.create(
         {
-            id: req.body.id,
+            //id: req.body.id,
             nome: req.body.nome,
             sobrenome: req.body.sobrenome,
             email: req.body.email,
@@ -75,10 +55,10 @@ exports.cadastrarUsuario = (req, res) => {
             senha: req.body.senha,
             telefone: req.body.telefone,
             foto: req.body.foto,
-            vendas: 0,
-            trocas: 0,
-            suspenso: 0,
-            motivo_suspensao: req.body.motivo_suspensao
+            //vendas: 0,
+            //trocas: 0,
+            //suspenso: 0,
+            //motivo_suspensao: req.body.motivo_suspensao
         }
     ).then(
         (r) => {
@@ -87,14 +67,7 @@ exports.cadastrarUsuario = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -109,10 +82,10 @@ exports.setUsuario = (req, res) => {
             senha: req.body.senha,
             telefone: req.body.telefone,
             foto: req.body.foto,
-            //vendas: 0,
-            //trocas: 0,
-            //suspenso: 0,
-            //motivo_suspensao: req.body.motivo_suspensao
+            vendas: req.body.vendas,
+            trocas: req.body.trocas,
+            suspenso: req.body.suspenso,
+            motivo_suspensao: req.body.motivo_suspensao
         }, {
             where: {
                 id: req.body.id
@@ -125,14 +98,7 @@ exports.setUsuario = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -151,38 +117,55 @@ exports.finalizarPublicacao = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
 
 exports.limparTodos = (req, res) => {
+    db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
+        () => {
+            db.usuario.destroy(
+                {
+                    truncate: true
+                }
+            ).then(
+                (r) => {
+                    console.log(r);
+                    res.send("Usuários excluídos com sucesso");
+                }
+            ).catch(
+                (err) => {
+                    res.send(erroCallback(err));
+                }
+            )
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    ).finally(
+        () => {
+            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
+        }
+    )
+};
+
+exports.excluirUsuario = (req, res) => {
     db.usuario.destroy(
         {
-            truncate: true
+            where: {
+                id: req.body.id
+            }
         }
     ).then(
         (r) => {
             console.log(r);
-            res.send("Usuários excluídos com sucesso");
+            res.send("Usuário excluído com sucesso");
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -195,35 +178,33 @@ exports.inserirTodos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
 
 
 exports.recriarTabela = (req, res) => {
-    db.usuario.sync({ force: true }).then(
-        (r) => {
-            console.log(r);
-            res.send("Tabela usuario recriada com sucesso");
+    db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
+        () => {
+            db.usuario.sync({ force: true }).then(
+                (r) => {
+                    console.log(r);
+                    res.send("Tabela usuario recriada com sucesso");
+                }
+            ).catch(
+                (err) => {
+                    res.send(erroCallback(err));
+                }
+            )
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
+        }
+    ).finally(
+        () => {
+            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
         }
     )
 };
@@ -236,14 +217,7 @@ exports.alterarTabela = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -255,7 +229,7 @@ exports.alterarTabela = (req, res) => {
 
 let usuarios = [
     {
-        "id": 1,
+        //"id": 1,
         "nome": "João",
         "sobrenome": "Soares",
         "email": "joaosoares@example.com",
@@ -263,14 +237,13 @@ let usuarios = [
         "senha": "senha1",
         "telefone": "123456789",
         "foto": null,
-        "vendas": 0,
-        "trocas": 0,
-        "id_publicacoes": 1,
-        "suspenso": 0,
-        "motivo_suspensao": null
+        //"vendas": 0,
+        //"trocas": 0,
+        //"suspenso": 0,
+        //"motivo_suspensao": null
     },
     {
-        "id": 2,
+        //"id": 2,
         "nome": "Ursula",
         "sobrenome": "Silva",
         "email": "Ursulasilva@example.com",
@@ -278,14 +251,13 @@ let usuarios = [
         "senha": "senha2",
         "telefone": "234567890",
         "foto": null,
-        "vendas": 0,
-        "trocas": 0,
-        "id_publicacoes": 2,
-        "suspenso": 0,
-        "motivo_suspensao": null
+        //"vendas": 0,
+        //"trocas": 0,
+        //"suspenso": 0,
+        //"motivo_suspensao": null
     },
     {
-        "id": 3,
+        //"id": 3,
         "nome": "Paulo",
         "sobrenome": "Gomes",
         "email": "paulogomex@example.com",
@@ -293,14 +265,13 @@ let usuarios = [
         "senha": "senha3",
         "telefone": "345678901",
         "foto": null,
-        "vendas": 0,
-        "trocas": 0,
-        "id_publicacoes": 3,
-        "suspenso": 0,
-        "motivo_suspensao": null
+        //"vendas": 0,
+        //"trocas": 0,
+        //"suspenso": 0,
+        //"motivo_suspensao": null
     },
     {
-        "id": 4,
+        //"id": 4,
         "nome": "Matias",
         "sobrenome": "Saadhak",
         "email": "matiassaadhak@example.com",
@@ -308,14 +279,13 @@ let usuarios = [
         "senha": "senha4",
         "telefone": "456789012",
         "foto": null,
-        "vendas": 0,
-        "trocas": 0,
-        "id_publicacoes": 4,
-        "suspenso": 0,
-        "motivo_suspensao": null
+        //"vendas": 0,
+        //"trocas": 0,
+        //"suspenso": 0,
+        //"motivo_suspensao": null
     },
     {
-        "id": 5,
+        //"id": 5,
         "nome": "Erick",
         "sobrenome": "Santos",
         "email": "ericksantos@example.com",
@@ -323,14 +293,13 @@ let usuarios = [
         "senha": "senha5",
         "telefone": "567890123",
         "foto": null,
-        "vendas": 0,
-        "trocas": 0,
-        "id_publicacoes": 5,
-        "suspenso": 0,
-        "motivo_suspensao": null
+        //"vendas": 0,
+        //"trocas": 0,
+        //"suspenso": 0,
+        //"motivo_suspensao": null
     },
     {
-        "id": 6,
+        //"id": 6,
         "nome": "cauan",
         "sobrenome": "Pereira",
         "email": "cauanpereira@example.com",
@@ -338,14 +307,13 @@ let usuarios = [
         "senha": "senha6",
         "telefone": "678901234",
         "foto": null,
-        "vendas": 0,
-        "trocas": 0,
-        "id_publicacoes": 6,
-        "suspenso": 0,
-        "motivo_suspensao": null
+        //"vendas": 0,
+        //"trocas": 0,
+        //"suspenso": 0,
+        //"motivo_suspensao": null
     },
     {
-        "id": 7,
+        //"id": 7,
         "nome": "Felipe",
         "sobrenome": "Basso",
         "email": "felipebasso@example.com",
@@ -353,14 +321,13 @@ let usuarios = [
         "senha": "senha7",
         "telefone": "789012345",
         "foto": null,
-        "vendas": 0,
-        "trocas": 0,
-        "id_publicacoes": 7,
-        "suspenso": 0,
-        "motivo_suspensao": null
+        //"vendas": 0,
+        //"trocas": 0,
+        //"suspenso": 0,
+        //"motivo_suspensao": null
     },
     {
-        "id": 8,
+        //"id": 8,
         "nome": "Arthur",
         "sobrenome": "Vieira",
         "email": "arthurvieira@example.com",
@@ -368,14 +335,13 @@ let usuarios = [
         "senha": "senha8",
         "telefone": "890123456",
         "foto": null,
-        "vendas": 0,
-        "trocas": 0,
-        "id_publicacoes": 8,
-        "suspenso": 0,
-        "motivo_suspensao": null
+        //"vendas": 0,
+        //"trocas": 0,
+        //"suspenso": 0,
+        //"motivo_suspensao": null
     },
     {
-        "id": 9,
+        //"id": 9,
         "nome": "Bryan",
         "sobrenome": "Luna",
         "email": "bryanluna@example.com",
@@ -383,14 +349,13 @@ let usuarios = [
         "senha": "senha9",
         "telefone": "901234567",
         "foto": null,
-        "vendas": 0,
-        "trocas": 0,
-        "id_publicacoes": 9,
-        "suspenso": 0,
-        "motivo_suspensao": null
+        //"vendas": 0,
+        //"trocas": 0,
+        //"suspenso": 0,
+        //"motivo_suspensao": null
     },
     {
-        "id": 10,
+        //"id": 10,
         "nome": "Gustavo",
         "sobrenome": "Rossi",
         "email": "gustavorossi@example.com",
@@ -398,10 +363,9 @@ let usuarios = [
         "senha": "senha10",
         "telefone": "89542136",
         "foto": null,
-        "vendas": 0,
-        "trocas": 0,
-        "id_publicacoes": 10,
-        "suspenso": 0,
-        "motivo_suspensao": null
+        //"vendas": 0,
+        //"trocas": 0,
+        //"suspenso": 0,
+        //"motivo_suspensao": null
     }
 ];

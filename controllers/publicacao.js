@@ -1,5 +1,6 @@
 const db = require("../models");
 const { Op } = require('sequelize');
+const { erroCallback } = require('../lib/erroCallback');
 
 exports.getTodosPublicacao = (req, res) => {
     db.publicacao.findAll().then(
@@ -9,14 +10,7 @@ exports.getTodosPublicacao = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -24,7 +18,7 @@ exports.getTodosPublicacao = (req, res) => {
 exports.cadastrarPublicacao = (req, res) => {
     db.publicacao.create(
         {
-            id: req.body.id,
+            //id: req.body.id,
             id_usuario: req.body.id_usuario,
             id_categoria: req.body.id_categoria,
             titulo: req.body.titulo,
@@ -33,8 +27,8 @@ exports.cadastrarPublicacao = (req, res) => {
             descricao_produto: req.body.descricao_produto,
             descricao_vendedor: req.body.descricao_vendedor,
             id_fotos: req.body.id_fotos,
-            validada: 0,
-            finalizada: 0,
+            //validada: 0,
+            //finalizada: 0,
         }
     ).then(
         (r) => {
@@ -43,14 +37,7 @@ exports.cadastrarPublicacao = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -63,14 +50,7 @@ exports.getPublicacaoPorId = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -98,14 +78,7 @@ exports.getPublicacaoPorTitulo = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -124,10 +97,10 @@ exports.setPublicacao = (req, res) => {
             //finalizada:req.body.finalizada,
             //motivo_rejeicao:req.body.motivo_rejeicao
         }, {
-            where: {
-                id: req.body.id
-            }
+        where: {
+            id: req.body.id
         }
+    }
     ).then(
         (r) => {
             console.log(r);
@@ -135,14 +108,7 @@ exports.setPublicacao = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -161,14 +127,7 @@ exports.excluirPublicacao = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -185,14 +144,7 @@ exports.limparTodos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -205,16 +157,31 @@ exports.inserirTodos = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
+    /*db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
+        () => {
+            db.publicacao.bulkCreate(publicacoes).then(
+                (r) => {
+                    console.log(r);
+                    res.send("Publicações inseridas com sucesso");
+                }
+            ).catch(
+                (err) => {
+                    res.send(erroCallback(err));
+                }
+            )
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    ).finally(
+        () => {
+            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
+        }
+    )*/
 };
 
 exports.validarPublicacao = (req, res) => {
@@ -223,10 +190,10 @@ exports.validarPublicacao = (req, res) => {
             validada: req.body.validar,
             motivo_rejeicao: req.body.motivo
         }, {
-            where: {
-                id: req.body.id
-            }
+        where: {
+            id: req.body.id
         }
+    }
     ).then(
         (r) => {
             console.log(r);
@@ -234,19 +201,13 @@ exports.validarPublicacao = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
 
 exports.recriarTabela = (req, res) => {
+    
     db.publicacao.sync({ force: true }).then(
         (r) => {
             console.log(r);
@@ -254,14 +215,7 @@ exports.recriarTabela = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
@@ -274,21 +228,14 @@ exports.alterarTabela = (req, res) => {
         }
     ).catch(
         (err) => {
-            console.log(err);
-            let msg = "";
-            err.errors.forEach(
-                (elem) => {
-                    msg += elem.message + '\n';
-                }
-            )
-            res.send(msg);
+            res.send(erroCallback(err));
         }
     )
 };
 
 let publicacoes = [
     {
-        "id": 1,
+        //"id": 1,
         "id_usuario": 1,
         "id_categoria": 1,
         "id_fotos": 1,
@@ -298,12 +245,12 @@ let publicacoes = [
         "descricao_produto": "Descrição do produto 1",
         "descricao_vendedor": "Descrição do vendedor 1",
         "id_fotos": 1,
-        "validada": 1,
-        "finalizada": 0,
-        "motivo_rejeicao": null
+        //"validada": 1,
+        //"finalizada": 0,
+        //"motivo_rejeicao": null
     },
     {
-        "id": 2,
+        //"id": 2,
         "id_usuario": 2,
         "id_categoria": 1,
         "titulo": "saia junina P",
@@ -312,12 +259,12 @@ let publicacoes = [
         "descricao_produto": "Descrição do produto 2",
         "descricao_vendedor": "Descrição do vendedor 2",
         "id_fotos": 2,
-        "validada": 1,
-        "finalizada": 0,
-        "motivo_rejeicao": null
+        //"validada": 1,
+        //"finalizada": 0,
+        //"motivo_rejeicao": null
     },
     {
-        "id": 3,
+        //"id": 3,
         "id_usuario": 3,
         "id_categoria": 2,
         "titulo": "compressor de pintura",
@@ -326,12 +273,12 @@ let publicacoes = [
         "descricao_produto": "Descrição do produto 3",
         "descricao_vendedor": "Descrição do vendedor 3",
         "id_fotos": 3,
-        "validada": 1,
-        "finalizada": 0,
-        "motivo_rejeicao": null
+        //"validada": 1,
+        //"finalizada": 0,
+        //"motivo_rejeicao": null
     },
     {
-        "id": 4,
+        //"id": 4,
         "id_usuario": 4,
         "id_categoria": 2,
         "titulo": "celta 2000",
@@ -340,12 +287,12 @@ let publicacoes = [
         "descricao_produto": "Descrição do produto 4",
         "descricao_vendedor": "Descrição do vendedor 4",
         "id_fotos": 4,
-        "validada": 0,
-        "finalizada": 0,
-        "motivo_rejeicao": null
+        //"validada": 0,
+        //"finalizada": 0,
+        //"motivo_rejeicao": null
     },
     {
-        "id": 5,
+        //"id": 5,
         "id_usuario": 5,
         "id_categoria": 3,
         "titulo": "violao",
@@ -354,12 +301,12 @@ let publicacoes = [
         "descricao_produto": "Descrição do produto 5",
         "descricao_vendedor": "Descrição do vendedor 5",
         "id_fotos": 5,
-        "validada": 1,
-        "finalizada": 1,
-        "motivo_rejeicao": null
+        //"validada": 1,
+        //"finalizada": 1,
+        //"motivo_rejeicao": null
     },
     {
-        "id": 6,
+        //"id": 6,
         "id_usuario": 6,
         "id_categoria": 3,
         "titulo": "colecao moedas olimpicas",
@@ -368,13 +315,13 @@ let publicacoes = [
         "descricao_produto": "Descrição do produto 6",
         "descricao_vendedor": "Descrição do vendedor 6",
         "id_fotos": 6,
-        "validada": 1,
-        "finalizada": 1,
-        "motivo_rejeicao": null
+        //"validada": 1,
+        //"finalizada": 1,
+        //"motivo_rejeicao": null
     },
 
     {
-        "id": 7,
+        //"id": 7,
         "id_usuario": 7,
         "id_categoria": 4,
         "titulo": "mesa rustica 4 cadeiras",
@@ -383,12 +330,12 @@ let publicacoes = [
         "descricao_produto": "Descrição do produto 7",
         "descricao_vendedor": "Descrição do vendedor 7",
         "id_fotos": 7,
-        "validada": 1,
-        "finalizada": 1,
-        "motivo_rejeicao": null
+        //"validada": 1,
+        //"finalizada": 1,
+        //"motivo_rejeicao": null
     },
     {
-        "id": 8,
+        //"id": 8,
         "id_usuario": 8,
         "id_categoria": 4,
         "titulo": "guarda sol",
@@ -397,12 +344,12 @@ let publicacoes = [
         "descricao_produto": "Descrição do produto 8",
         "descricao_vendedor": "Descrição do vendedor 8",
         "id_fotos": 8,
-        "validada": 1,
-        "finalizada": 0,
-        "motivo_rejeicao": null
+        //"validada": 1,
+        //"finalizada": 0,
+        //"motivo_rejeicao": null
     },
     {
-        "id": 9,
+        //"id": 9,
         "id_usuario": 9,
         "id_categoria": 5,
         "titulo": "biquine pp",
@@ -411,12 +358,12 @@ let publicacoes = [
         "descricao_produto": "Descrição do produto 9",
         "descricao_vendedor": "Descrição do vendedor 9",
         "id_fotos": 9,
-        "validada": 1,
-        "finalizada": 0,
-        "motivo_rejeicao": null
+        //"validada": 1,
+        //"finalizada": 0,
+        //"motivo_rejeicao": null
     },
     {
-        "id": 10,
+        //"id": 10,
         "id_usuario": 10,
         "id_categoria": 5,
         "titulo": "notebook i5",
@@ -425,9 +372,9 @@ let publicacoes = [
         "descricao_produto": "Descrição do produto 10",
         "descricao_vendedor": "Descrição do vendedor 10",
         "id_fotos": 10,
-        "validada": 1,
-        "finalizada": 0,
-        "motivo_rejeicao": null
+        //"validada": 1,
+        //"finalizada": 0,
+        //"motivo_rejeicao": null
     }
 
 ];
