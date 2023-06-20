@@ -4,7 +4,7 @@
 		"name": "Breshopp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "27758719",
-		"_collection_link": "https://restless-capsule-774078.postman.co/workspace/Breshopp~065b265d-92e5-46c5-8b7a-f262a111817f/collection/27758719-6ef3a763-0d36-4f4c-94df-c1043c4b9063?action=share&creator=27758719&source=collection_link"
+		"_collection_link": "https://restless-capsule-774078.postman.co/workspace/065b265d-92e5-46c5-8b7a-f262a111817f/collection/27758719-6ef3a763-0d36-4f4c-94df-c1043c4b9063?action=share&creator=27758719&source=collection_link"
 	},
 	"item": [
 		{
@@ -73,7 +73,8 @@
 								{
 									"key": "id",
 									"value": "11",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "nome",
@@ -312,7 +313,8 @@
 								{
 									"key": "id",
 									"value": "11",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "nome",
@@ -352,17 +354,20 @@
 								{
 									"key": "vendas",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "trocas",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "suspenso",
 									"value": "false",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "motivo_suspensao",
@@ -695,7 +700,8 @@
 								{
 									"key": "id",
 									"value": "11",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "id_usuario",
@@ -1038,27 +1044,13 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "11",
-									"type": "text"
+									"value": "1",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "nome",
 									"value": "Admin11",
-									"type": "text"
-								},
-								{
-									"key": "sobrenome",
-									"value": "11Admin",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "admin11@example.com",
-									"type": "text"
-								},
-								{
-									"key": "senha",
-									"value": "senha11",
 									"type": "text"
 								}
 							]
@@ -1094,21 +1086,6 @@
 								{
 									"key": "nome",
 									"value": "AdminTest",
-									"type": "text"
-								},
-								{
-									"key": "sobrenome",
-									"value": "11AdminTest",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "admin11test@example.com",
-									"type": "text"
-								},
-								{
-									"key": "senha",
-									"value": "senha11Test",
 									"type": "text"
 								}
 							]
@@ -1309,28 +1286,33 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "id",
-									"value": "11",
+									"key": "foto1",
+									"value": "foto1.jpg",
 									"type": "text"
 								},
 								{
-									"key": "nome",
-									"value": "Admin11",
+									"key": "foto2",
+									"value": "null",
 									"type": "text"
 								},
 								{
-									"key": "sobrenome",
-									"value": "11Admin",
+									"key": "foto3",
+									"value": "null",
 									"type": "text"
 								},
 								{
-									"key": "email",
-									"value": "admin11@example.com",
+									"key": "foto4",
+									"value": "null",
 									"type": "text"
 								},
 								{
-									"key": "senha",
-									"value": "senha11",
+									"key": "foto5",
+									"value": "null",
+									"type": "text"
+								},
+								{
+									"key": "foto6",
+									"value": "null",
 									"type": "text"
 								}
 							]
@@ -1359,28 +1341,33 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "id",
-									"value": "11",
+									"key": "foto1",
+									"value": "foto1.jpg",
 									"type": "text"
 								},
 								{
-									"key": "nome",
-									"value": "AdminTest",
+									"key": "foto2",
+									"value": "null",
 									"type": "text"
 								},
 								{
-									"key": "sobrenome",
-									"value": "11AdminTest",
+									"key": "foto3",
+									"value": "null",
 									"type": "text"
 								},
 								{
-									"key": "email",
-									"value": "admin11test@example.com",
+									"key": "foto4",
+									"value": "null",
 									"type": "text"
 								},
 								{
-									"key": "senha",
-									"value": "senha11Test",
+									"key": "foto5",
+									"value": "null",
+									"type": "text"
+								},
+								{
+									"key": "foto6",
+									"value": "null",
 									"type": "text"
 								}
 							]

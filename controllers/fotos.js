@@ -91,7 +91,9 @@ exports.excluirFotos = (req, res) => {
             res.send("Foto(s) excluídas com sucessso");
         }
     ).catch(
-        res.send(erroCallback(err))
+        (err) => {
+            res.send(erroCallback(err))
+        }
     )
 };
 
