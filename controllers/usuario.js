@@ -122,35 +122,6 @@ exports.finalizarPublicacao = (req, res) => {
     )
 };
 
-exports.limparTodos = (req, res) => {
-    db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
-        () => {
-            db.usuario.destroy(
-                {
-                    truncate: true
-                }
-            ).then(
-                (r) => {
-                    console.log(r);
-                    res.send("Usuários excluídos com sucesso");
-                }
-            ).catch(
-                (err) => {
-                    res.send(erroCallback(err));
-                }
-            )
-        }
-    ).catch(
-        (err) => {
-            res.send(erroCallback(err));
-        }
-    ).finally(
-        () => {
-            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
-        }
-    )
-};
-
 exports.excluirUsuario = (req, res) => {
     db.usuario.destroy(
         {
@@ -183,6 +154,34 @@ exports.inserirTodos = (req, res) => {
     )
 };
 
+exports.limparTodos = (req, res) => {
+    db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
+        () => {
+            db.usuario.destroy(
+                {
+                    truncate: true
+                }
+            ).then(
+                (r) => {
+                    console.log(r);
+                    res.send("Usuários excluídos com sucesso");
+                }
+            ).catch(
+                (err) => {
+                    res.send(erroCallback(err));
+                }
+            )
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    ).finally(
+        () => {
+            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
+        }
+    )
+};
 
 exports.recriarTabela = (req, res) => {
     db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(

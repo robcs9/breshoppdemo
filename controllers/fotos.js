@@ -96,20 +96,33 @@ exports.excluirFotos = (req, res) => {
 };
 
 exports.limparTodos = (req, res) => {
-    db.fotos.destroy(
-        {
-            truncate: true
-        }
-    ).then(
-        (r) => {
-            console.log(r);
-            res.send("Todas as fotos excluídas com sucesso");
+    db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
+        () => {
+            db.fotos.destroy(
+                {
+                    truncate: true
+                }
+            ).then(
+                (r) => {
+                    console.log(r);
+                    res.send("Todas as fotos excluídas com sucesso");
+                }
+            ).catch(
+                (err) => {
+                    res.send(erroCallback(err));
+                }
+            )
         }
     ).catch(
         (err) => {
             res.send(erroCallback(err));
         }
+    ).finally(
+        () => {
+            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
+        }
     )
+    
 };
 
 exports.inserirTodos = (req, res) => {
@@ -126,16 +139,29 @@ exports.inserirTodos = (req, res) => {
 };
 
 exports.recriarTabela = (req, res) => {
-    db.fotos.sync({ force: true }).then(
-        (r) => {
-            console.log(r);
-            res.send("Tabela fotos recriada com sucesso");
+    db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
+        () => {
+            db.fotos.sync({ force: true }).then(
+                (r) => {
+                    console.log(r);
+                    res.send("Tabela fotos recriada com sucesso");
+                }
+            ).catch(
+                (err) => {
+                    res.send(erroCallback(err));
+                }
+            )
         }
     ).catch(
         (err) => {
             res.send(erroCallback(err));
         }
+    ).finally(
+        () => {
+            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
+        }
     )
+    
 };
 
 exports.alterarTabela = (req, res) => {

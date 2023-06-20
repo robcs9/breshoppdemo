@@ -133,18 +133,30 @@ exports.excluirPublicacao = (req, res) => {
 };
 
 exports.limparTodos = (req, res) => {
-    db.publicacao.destroy(
-        {
-            truncate: true
-        }
-    ).then(
-        (r) => {
-            console.log(r);
-            res.send("Publicações excluídas com sucessso");
+    db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
+        () => {
+            db.publicacao.destroy(
+                {
+                    truncate: true
+                }
+            ).then(
+                (r) => {
+                    console.log(r);
+                    res.send("Publicações excluídas com sucessso");
+                }
+            ).catch(
+                (err) => {
+                    res.send(erroCallback(err));
+                }
+            )
         }
     ).catch(
         (err) => {
             res.send(erroCallback(err));
+        }
+    ).finally(
+        () => {
+            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
         }
     )
 };
@@ -207,15 +219,24 @@ exports.validarPublicacao = (req, res) => {
 };
 
 exports.recriarTabela = (req, res) => {
-    
-    db.publicacao.sync({ force: true }).then(
-        (r) => {
-            console.log(r);
-            res.send("Tabela publicacao recriada com sucesso");
-        }
+    db.publicacao.query("SET FOREIGN_KEYS_CHECK = 0").then(
+        db.publicacao.sync({ force: true }).then(
+            (r) => {
+                console.log(r);
+                res.send("Tabela publicacao recriada com sucesso");
+            }
+        ).catch(
+            (err) => {
+                res.send(erroCallback(err));
+            }
+        )
     ).catch(
         (err) => {
             res.send(erroCallback(err));
+        }
+    ).finally(
+        () => {
+            db.publicacao.query("SET FOREIGN_KEY_CHECKS = 1");
         }
     )
 };

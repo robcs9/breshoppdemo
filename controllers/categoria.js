@@ -102,18 +102,30 @@ exports.setCategoria = (req, res) => {
 };
 
 exports.limparTodos = (req, res) => {
-    db.categoria.destroy(
-        {
-            truncate: true
-        }
-    ).then(
-        (r) => {
-            console.log(r);
-            res.send("Categorias excluídas com sucesso");
+    db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
+        () => {
+            db.categoria.destroy(
+                {
+                    truncate: true
+                }
+            ).then(
+                (r) => {
+                    console.log(r);
+                    res.send("Categorias excluídas com sucesso");
+                }
+            ).catch(
+                (err) => {
+                    res.send(erroCallback(err));
+                }
+            )
         }
     ).catch(
         (err) => {
             res.send(erroCallback(err));
+        }
+    ).finally(
+        () => {
+            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
         }
     )
 };
@@ -132,14 +144,26 @@ exports.inserirTodos = (req, res) => {
 };
 
 exports.recriarTabela = (req, res) => {
-    db.categoria.sync({ force: true }).then(
-        (r) => {
-            console.log(r);
-            res.send("Tabela categoria recriada com sucesso");
+    db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
+        () => {
+            db.categoria.sync({ force: true }).then(
+                (r) => {
+                    console.log(r);
+                    res.send("Tabela categoria recriada com sucesso");
+                }
+            ).catch(
+                (err) => {
+                    res.send(erroCallback(err));
+                }
+            )
         }
     ).catch(
         (err) => {
             res.send(erroCallback(err));
+        }
+    ).finally(
+        () => {
+            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
         }
     )
 };
