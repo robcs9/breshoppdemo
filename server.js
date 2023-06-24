@@ -6,8 +6,8 @@
 //const lib = require("./lib/");
 
 const express = require("express");
-const bodyParser = require("body-parser");
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+//const bodyParser = require("body-parser");
+//const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const port = 3000;
 const app = express();
 const db = require("./models");
@@ -18,7 +18,11 @@ app.use('/api/usuario', require('./routes/usuario'));
 app.use('/api/categoria', require('./routes/categoria'));
 app.use('/api/publicacao', require('./routes/publicacao'));
 app.use('/api/fotos', require('./routes/fotos'));
-app.use('/autenticar', require('./routes/autenticacao'));
+app.use('/autenticacao', require('./routes/autenticacao'));
+
+// View engine
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
 // Sincronização inicial seguida pela inicialização do servidor
 // Se for realizar rebuild (force) da base, lembrar de fazer DROP FOREIGN KEY previamente para evitar erros.
