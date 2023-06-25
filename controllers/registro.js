@@ -1,5 +1,9 @@
-const db = require("../models");
+db = require('../models');
 const { erroCallback } = require("../lib/erroCallback");
+
+exports.registro = (req, res) => {
+    res.render('registro');
+}
 
 exports.fazerLogin = async (req, res) => {
     const admin = await db.administrador.findOne({
@@ -23,10 +27,9 @@ exports.fazerLogin = async (req, res) => {
         res.redirect('/')
     } else {
         console.log("Usuário/Administrador não encontrado");
-        
         const msg = "Usuário/Administrador não encontrado";
         res.render('login', {msg});
-        //res.sendStatus(400);
+        //res.sendStatus(400).render('login', { msg });
         
     }
 };

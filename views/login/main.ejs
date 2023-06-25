@@ -1,0 +1,54 @@
+<div class="login-box">
+    <div class="login-logo">
+        <a href="/"><img src="/img/logo.png" alt="Breshopp" style="margin-bottom: -30px;"></a>
+    </div>
+    <div class="card">
+        <div class="card-body login-card-body">
+            
+            <% if(typeof msg !='undefined' ) { %>
+                <p style="color: red; text-align: center">
+                    <%= msg %>
+                </p>
+            <% } %>
+
+            <p class="login-box-msg">Faça seu login</p>
+            <form action="/login" method="post">
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" placeholder="Email" name="email">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Senha" name="senha">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="lembre-me">
+                            <label for="lembre-me">
+                                Lembre-me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                    </div>
+                </div>
+            </form>
+            <p class="mt-2 mb-1 text-center">
+                <a href="/forgot-password">Esqueci minha senha</a>
+            </p>
+            <p class="mb-0 text-center">
+                <a href="/registro">Fazer novo cadastro</a>
+            </p>
+        </div>
+    </div>
+</div>

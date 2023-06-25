@@ -12,13 +12,17 @@ const port = 3000;
 const app = express();
 const db = require("./models");
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
+app.use(express.static(__dirname + '/public')); // usar /public/ ?
 app.use('/api/admin', require('./routes/administrador'));
 app.use('/api/usuario', require('./routes/usuario'));
 app.use('/api/categoria', require('./routes/categoria'));
 app.use('/api/publicacao', require('./routes/publicacao'));
 app.use('/api/fotos', require('./routes/fotos'));
-app.use('/autenticacao', require('./routes/autenticacao'));
+//app.use('/autenticacao', require('./routes/autenticacao'));
+app.use('/login', require('./routes/login'));
+app.use('/registro', require('./routes/registro'));
+//app.use('/', require('./routes/home'));
 
 // View engine
 app.set('views', './views');
