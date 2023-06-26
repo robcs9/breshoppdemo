@@ -1,5 +1,5 @@
 const db = require("../models");
-const { erroCallback } = require("../lib/erroCallback");
+const { erroCallback } = require("../utils/erroCallback");
 
 exports.fazerLogin = async (req, res) => {
     const admin = await db.administrador.findOne({

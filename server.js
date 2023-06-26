@@ -19,7 +19,7 @@ app.use('/api/usuario', require('./routes/usuario'));
 app.use('/api/categoria', require('./routes/categoria'));
 app.use('/api/publicacao', require('./routes/publicacao'));
 app.use('/api/fotos', require('./routes/fotos'));
-//app.use('/autenticacao', require('./routes/autenticacao'));
+//app.use('/autenticacao', require('./routes/autenticacao')); // deprecated
 app.use('/login', require('./routes/login'));
 app.use('/registro', require('./routes/registro'));
 //app.use('/', require('./routes/home'));

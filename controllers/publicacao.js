@@ -1,6 +1,6 @@
 const db = require("../models");
 const { Op } = require('sequelize');
-const { erroCallback } = require('../lib/erroCallback');
+const { erroCallback } = require('../utils/erroCallback');
 
 exports.getTodosPublicacao = (req, res) => {
     db.publicacao.findAll().then(

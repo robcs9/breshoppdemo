@@ -1,5 +1,4 @@
 db = require('../models');
-const { erroCallback } = require("../lib/erroCallback");
 
 exports.login = (req, res) => {
     res.render('login');
@@ -26,10 +25,9 @@ exports.fazerLogin = async (req, res) => {
         console.log(`Seja bem vindo, ${usuario.nome}`)
         res.redirect('/')
     } else {
-        console.log("Usuário/Administrador não encontrado");
         const msg = "Usuário/Administrador não encontrado";
+        console.log(msg);
         res.render('login', {msg});
         //res.sendStatus(400).render('login', { msg });
-        
     }
 };

@@ -1,11 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    
+    <title>Logar</title>
     <%- include('head')%>
+
 </head>
 <body class="hold-transition login-page">
     <%- include('main') %>
-    <%- include('footer') %>
+    <% // checagem alternativa: locals.msg %>
+    <% if(typeof msg != 'undefined') { %>
+        <p style="color: red; text-align: center">
+            <%= msg %>
+        </p>
+    <% } %>
 </body>
 </html>

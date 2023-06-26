@@ -1,5 +1,5 @@
 const db = require("../models");
-const { erroCallback } = require("../lib/erroCallback");
+const { erroCallback } = require("../utils/erroCallback");
 
 exports.getTodosAdmins = (req, res) => {
     db.administrador.findAll().then(

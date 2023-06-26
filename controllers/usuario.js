@@ -1,5 +1,5 @@
 const db = require("../models");
-const { erroCallback } = require('../lib/erroCallback')
+const { erroCallback } = require('../utils/erroCallback')
 
 exports.getTodosUsuario = (req, res) => {
     db.usuario.findAll().then(
@@ -54,7 +54,7 @@ exports.cadastrarUsuario = (req, res) => {
             cpf: req.body.cpf,
             senha: req.body.senha,
             telefone: req.body.telefone,
-            foto: req.body.foto,
+            //foto: req.body.foto,
             //vendas: 0,
             //trocas: 0,
             //suspenso: 0,

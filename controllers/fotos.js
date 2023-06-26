@@ -1,5 +1,5 @@
 const db = require('../models');
-const { erroCallback } = require('../lib/erroCallback')
+const { erroCallback } = require('../utils/erroCallback')
 
 exports.getFotosById = (req, res) => {
     db.fotos.findByPk(req.params.id).then(

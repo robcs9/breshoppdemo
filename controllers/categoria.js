@@ -1,5 +1,5 @@
 const db = require("../models");
-const { erroCallback } = require("../lib/erroCallback");
+const { erroCallback } = require("../utils/erroCallback");
 
 exports.getTodosCategoria = (req, res) => {
     db.categoria.findAll().then(

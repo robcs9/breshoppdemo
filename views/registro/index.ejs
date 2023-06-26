@@ -1,1 +1,13 @@
-register html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Cadastrar</title>
+    <%- include('../login/head') %>
+</head>
+<body class="hold-transition register-page">
+    <%- include('main') %>
+    <% if(locals.msg) { %>
+        <%= msg %>
+    <% } %>
+</body>
+</html>
