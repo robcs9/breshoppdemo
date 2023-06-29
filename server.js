@@ -22,7 +22,7 @@ app.use('/api/fotos', require('./routes/fotos'));
 //app.use('/autenticacao', require('./routes/autenticacao')); // deprecated
 app.use('/login', require('./routes/login'));
 app.use('/registro', require('./routes/registro'));
-//app.use('/', require('./routes/home'));
+app.use('/', require('./routes/home'));
 
 // View engine
 app.set('views', './views');
