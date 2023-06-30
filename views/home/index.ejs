@@ -20,6 +20,25 @@
     <script src="js/main.js"></script>
     <script>
         // fazer fetch dos ids para construir e preencher a lista de categorias com os links apropriados  
+        fetch('http://localhost:3000/api/categoria').then(
+            (data) => {
+                let listaCategorias = document.querySelector('#listaCategorias');
+                console.log(lista);
+            }
+        );
+        
+        // fuzzy search
+
+        // latest featured publications
+        fetch('http://localhost:3000/api/publicacao').then(
+            (data) => {
+                let destaquesPub = document.querySelector('#destaquesPub');
+                //console.log(destaquesPub);
+                for(let i = 0; i < 4; i++) {
+                    console.log(destaquesPub[i])
+                }
+            }
+        );
     </script>
 
 </body>
