@@ -1,13 +1,22 @@
 <section class="featured spad">
     <div class="container">
-
-        <div class="row featured__filter publicacoesFeatured" id="featured">
+        
+        <%= busca[0].titulo %>
+        
+        <div class="row featured__filter publicacoesFeatured" id="MixItUp2FB95C">
             <% if(locals.publicacoes) { %>
-                <% for(let i = publicacoes.length - 1; i >= 0 && publicacoes[i]; i--){ %>
+                
+                <% for(let i = publicacoes.length - 1; i > publicacoes.length - 5 && publicacoes[i]; i--){ %>
+                    
+                    <%//= (publicacoes.length - 1) - i %>
                     <div class="col-lg-3 col-md-4 col-sm-6 publicacaoRecente">
                         <div class="featured__item">
                             <a href="/publicacao/<%= publicacoes[i].id %>/<%= publicacoes[i].titulo %>">
-                                <div class="featured__item__pic set-bg" data-setbg="/img/<%= fotos[i] %>" style='background-image: url("/img/<%= fotos[i] %>");'></div>
+                                
+                                <!--<div class="featured__item__pic set-bg" data-setbg="<%//= covers[(publicacoes.length - 1) - i] %>" style='background-image: url("<%//= covers[(publicacoes.length - 1) - i] %>");'></div>-->
+
+                                <div class="featured__item__pic set-bg" data-setbg="/img/<%= fotos[publicacoes[i-1].id_fotos].foto1 %>" style='background-image: url("/img/<%= fotos[publicacoes[i-1].id_fotos].foto1 %>");'></div>
+                            
                             </a>
                             <div class="featured__item__text">
                                 <a href="/publicacao/<%= publicacoes[i].id %>/<%= publicacoes[i].titulo %>">
@@ -21,7 +30,6 @@
                             </div>
                         </div>
                     </div>
-                    <%// if(i == publicacoes.length - 4) i = -1; %>
                 <% } %>
             <% } %>
         </div>
