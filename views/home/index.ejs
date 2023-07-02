@@ -19,25 +19,11 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // fazer fetch dos ids para construir e preencher a lista de categorias com os links apropriados  
-        fetch('http://localhost:3000/api/categoria').then(
-            (data) => data.json()
-        ).then(
-            (data) => {
-                let ul = document.querySelector('#listaCategorias');
-                for(let i = 0; i < 11; i++) {
-                    let li = document.createElement('li');
-                    li.innerHTML = `<a href="/categoria/id/${data[i].id}">${data[i].nome}</a>`; // alterar para /publicacao?categoria-id=x ou outro link
-                    li.id = `categoria${i+1}`;
-                    ul.appendChild(li);
-                }
-            }
-        );
         
         // fuzzy search
 
         // latest featured publications
-        fetch('http://localhost:3000/api/publicacao').then(
+        /*fetch('http://localhost:3000/api/publicacao').then(
             (data) => data.json()
         ).then(
             (data) => {
@@ -47,7 +33,8 @@
                     console.log(destaquesPub[i])
                 }
             }
-        )
+        )*/
+
     </script>
 
 </body>

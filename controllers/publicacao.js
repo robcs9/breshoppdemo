@@ -254,6 +254,8 @@ exports.alterarTabela = (req, res) => {
     )
 };
 
+
+
 let publicacoes = [
     {
         //"id": 1,
@@ -290,7 +292,7 @@ let publicacoes = [
         "id_categoria": 2,
         "titulo": "compressor de pintura",
         "tipo_negociacao": "Troca",
-        "preco": 159.90,
+        "preco": 0,
         "descricao_produto": "Descrição do produto 3",
         "descricao_vendedor": "Descrição do vendedor 3",
         "id_fotos": 3,
@@ -388,8 +390,8 @@ let publicacoes = [
         "id_usuario": 10,
         "id_categoria": 5,
         "titulo": "notebook i5",
-        "tipo_negociacao": "Venda",
-        "preco": 800.00,
+        "tipo_negociacao": "Troca",
+        "preco": 0,
         "descricao_produto": "Descrição do produto 10",
         "descricao_vendedor": "Descrição do vendedor 10",
         "id_fotos": 10,

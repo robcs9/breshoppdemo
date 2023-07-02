@@ -14,4 +14,5 @@ router.post('/popular-publicacao', controller.inserirTodos);
 router.put('/recriar-publicacao', controller.recriarTabela);
 router.put('/alterar-publicacao', controller.alterarTabela);
 
+
 module.exports = router;

@@ -1,54 +1,36 @@
 <section class="featured spad">
     <div class="container">
-        
-         <!-- /details/id=? -->
-        <div class="row featured__filter" id="MixItUp2FB95C">
-            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                <a href="/details"></a><div class="featured__item"><a href="/details">
-                    <div class="featured__item__pic set-bg" data-setbg="img/product/details/flamethrower1.webp" style="background-image: url(&quot;img/product/details/flamethrower1.webp&quot;);">
+
+        <div class="row featured__filter publicacoesFeatured" id="MixItUp2FB95C">
+            <% if(locals.publicacoes) { %>
+                
+                <% for(let i = publicacoes.length - 1; i > publicacoes.length - 5 && publicacoes[i]; i--){ %>
+                    
+                    <%//= (publicacoes.length - 1) - i %>
+                    <div class="col-lg-3 col-md-4 col-sm-6 publicacaoRecente">
+                        <div class="featured__item">
+                            <a href="/publicacao/<%= publicacoes[i].id %>/<%= publicacoes[i].titulo %>">
+                                
+                                <!--<div class="featured__item__pic set-bg" data-setbg="<%//= covers[(publicacoes.length - 1) - i] %>" style='background-image: url("<%//= covers[(publicacoes.length - 1) - i] %>");'></div>-->
+
+                                <div class="featured__item__pic set-bg" data-setbg="/img/<%= fotos[publicacoes[i-1].id_fotos].foto1 %>" style='background-image: url("/img/<%= fotos[publicacoes[i-1].id_fotos].foto1 %>");'></div>
+                            
+                            </a>
+                            <div class="featured__item__text">
+                                <a href="/publicacao/<%= publicacoes[i].id %>/<%= publicacoes[i].titulo %>">
+                                    <h6><%= publicacoes[i].titulo %></h6>
+                                </a>
+                                <% if(publicacoes[i].tipo_negociacao.toUpperCase() == "VENDA") { %>
+                                    <h5>R$ <%= publicacoes[i].preco %></h5>
+                                <% } else { %>
+                                    <h5>TROCA</h5>
+                                <% } %>
+                            </div>
+                        </div>
                     </div>
-                    </a><div class="featured__item__text"><a href="/details"> 
-                        <h6>Lança-chamas "Not A Flamethrower"
-                        </h6></a>
-                        <h6>Colecionáveis</h6>
-                        <h5>R$ 8350,00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                <a href="#"></a><div class="featured__item"><a href="#"> <!-- /details/id=? -->
-                    <div class="featured__item__pic set-bg" data-setbg="img/product/details/ps4-product-thumbnail-01-en-14sep21.webp" style="background-image: url(&quot;img/product/details/ps4-product-thumbnail-01-en-14sep21.webp&quot;);">
-                    </div>
-                    </a><div class="featured__item__text"><a href="/details1">
-                        <h6>Ps4 usado
-                        </h6></a>
-                        <h6>Eletrônicos</h6>
-                        <h5>TROCA</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-                <div class="featured__item">
-                    <a href="#"><div class="featured__item__pic set-bg" data-setbg="img/featured/pcGamer.jpg" style="background-image: url(&quot;img/featured/pcGamer.jpg&quot;);">
-                    </div>
-                    </a><div class="featured__item__text"><a href="#">
-                        <h6>Pc Gamer</h6></a>
-                        <h6>Eletrônicos</h6>
-                        <h5>R$3.000</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
-                <div class="featured__item">
-                    <a href="#"><div class="featured__item__pic set-bg" data-setbg="./img/featured/Peugeot207Hatch.jpg" style="background-image: url(&quot;./img/featured/Peugeot207Hatch.jpg&quot;);">
-                    </div>
-                    </a><div class="featured__item__text"><a href="#">
-                        <h6>Peugeot 207 2010/2011</h6></a>
-                        <h6>Veículos</h6>
-                        <h5>R$60.000</h5>
-                    </div>
-                </div>
-            </div>
+                <% } %>
+            <% } %>
         </div>
+    
     </div>
 </section>

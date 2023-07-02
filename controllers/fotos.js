@@ -235,8 +235,8 @@ const fotos = [
         "foto6": "f36.jpg"
     },
     {
-        "id": 7,
-        "foto1": "f37.jpg",
+        //"id": 7,
+        "foto1": "publicacao-7-1.png",
         "foto2": "f38.jpg",
         "foto3": "f39.jpg",
         "foto4": "f40.jpg",
@@ -245,7 +245,7 @@ const fotos = [
     },
     {
         //"id": 8,
-        "foto1": "f43.jpg",
+        "foto1": "publicacao-8-1.jpg",
         "foto2": "f44.jpg",
         "foto3": "f45.jpg",
         "foto4": "f46.jpg",
@@ -254,7 +254,7 @@ const fotos = [
     },
     {
         //"id": 9,
-        "foto1": "f49.jpg",
+        "foto1": "publicacao-9-1.jpg",
         "foto2": "f50.jpg",
         "foto3": "f51.jpg",
         "foto4": "f52.jpg",
@@ -263,7 +263,7 @@ const fotos = [
     },
     {
         //"id": 10,
-        "foto1": "f55.jpg",
+        "foto1": "publicacao-10-1.jpeg",
         "foto2": "f56.jpg",
         "foto3": "f57.jpg",
         "foto4": "f58.jpg",

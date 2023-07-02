@@ -62,6 +62,24 @@ exports.getCategoriaPorNome = (req, res) => {
     )
 };
 
+exports.getPublicacoesDaCategoria = (req, res) => {
+    db.categoria.findAll({
+        include: db.publicacao,
+        where: {
+            id: req.params.id
+        }
+    }).then(
+        (r) => {
+            console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    )
+};
+
 exports.excluirCategoria = (req, res) => {
     db.categoria.destroy(
         {

@@ -6,6 +6,7 @@
 //const lib = require("./lib/");
 
 const express = require("express");
+const path = require('path');
 //const bodyParser = require("body-parser");
 //const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const port = 3000;
@@ -14,6 +15,8 @@ const db = require("./models");
 
 //app.use(express.static('public'));
 app.use(express.static(__dirname + '/public')); // usar /public/ ?
+//app.use(express.static(path.join(__dirname, '/public')));
+//app.use('/', express.static(path.join(__dirname, '/public')))
 app.use('/api/admin', require('./routes/administrador'));
 app.use('/api/usuario', require('./routes/usuario'));
 app.use('/api/categoria', require('./routes/categoria'));

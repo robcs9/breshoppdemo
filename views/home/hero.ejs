@@ -9,25 +9,40 @@
                     </div>
                     
                     <ul id="listaCategorias">
-                        
+                        <% if(locals.categorias) { %>
+                            <% categorias.forEach((elem) => { %>
+                                <li id="categoria-<%= elem.id %>">
+                                    <a href="/categoria/<%= elem.id %>/<%= elem.nome %>">
+                                        <%= elem.nome %>
+                                    </a>
+                                </li>
+                            <% }); %>
+                        <% } %>
                     </ul>
+                
                 </div>
             </div>
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form" style="background-color: rgb(255, 255, 255); --darkreader-inline-bgcolor: #181a1b;" data-darkreader-inline-bgcolor="">
-                        <form action="#">
+                        
+                        <form action="#" method="post">
                             <input type="text" placeholder="Do que você precisa?">
                             <button type="submit" class="btn site-btn">PROCURAR</button>
                         </form>
+
                     </div>
                     
                 </div>
                 <div class="overlay">
-                    <div class="hero__item set-bg" data-setbg="img/banner/banner.png" style="background-image: url(&quot;img/banner/banner.png&quot;);">
-                        <div class="hero__text">
+                    <div class="hero__item set-bg" data-setbg="/img/banner/banner.png" style="background-image: url(&quot;/img/banner/banner.png&quot;);">
+                        
+                        <!-- Substituir abaixo por iframe/dialog com resultados de busca? -->
+                        <!-- Reposicionar barra de busca no centro da página (acima da seção featured)? -->
+                        <div  class="hero__text">
                             <h2>BRESHOPP: <br>Tem de tudo <br> e mais um pouco</h2>
                         </div>
+
                     </div>
                 </div>
             </div>

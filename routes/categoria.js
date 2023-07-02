@@ -14,4 +14,6 @@ router.post('/popular-categoria', controller.inserirTodos);
 router.put('/recriar-categoria', controller.recriarTabela);
 router.put('/alterar-categoria', controller.alterarTabela);
 
+router.get('/:id', controller.getPublicacoesDaCategoria);
+
 module.exports = router;
