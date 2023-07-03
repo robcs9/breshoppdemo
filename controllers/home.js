@@ -87,7 +87,7 @@ exports.renderHome = (req, res) => {
 
 
 
-exports.exibirResultadoBusca = (req, res, next) => {
+exports.exibirResultadoBusca = async (req, res, next) => {
     // realizar query usando sequelize e %q%
     const arr = req.query.q.split(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/\W]/g);
     fetch("http://localhost:3000/api/publicacao").then(
