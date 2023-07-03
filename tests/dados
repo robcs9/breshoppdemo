@@ -1,0 +1,253 @@
+Victória:
+
+Ex de criação de Dados para teste:
+instância administrador
+---
+nome: "Maria Lindoso"
+sobrenome: "Mota"
+email: "Marialmota12@gmail.com"
+senha: "758943"
+
+---
+instância usuario
+nome: "Lionel Andrés"
+sobrenome: "Messi"
+email: "Lionelmessi@hotmail.com"
+cpf: "87509345821"
+senha: 87432
+telefone: "81987643021"
+foto: "https://www.lequipe.fr/_medias/img-photo-jpg/meme-s-il-a-decide-d-y-aller-lionel-messi-ne-jouera-pas-avec-l-inter-miami-de-sitot-benoit-tessier-r/1500000001796286/0:0,1551:1034-828-552-75/b22f2.jpg"
+
+---
+instância categoria
+nome: "colecionáveis"
+
+---
+instância publicacao
+titulo: "Bola da copa do mundo de 2014"
+tipo_negociacao: "venda"  
+preco: 200
+descricao_produto: "Bola usada na final da copa do mundo,bem conservada e no plástico ainda."
+descricao_vendedor: "Amante do futebol,e apaixonado por colecionar momentos do futebol,seja através de bolas de futebol até camisa autografadas.Para obter algum produto que eu esteja vendendo é só me ligar,meu número é (81)987643021."
+
+---
+instância foto
+foto1: " https://media.gazetadopovo.com.br/2013/12/47faac9a5b7e452e859a539286f8d5a9-gpLarge.jpg"
+foto2: " https://cdn.espn.com.br/image/wide/622_5094158c-8a80-3df8-ad03-f1c166abad32.jpg"
+foto3: " https://photos.enjoei.com.br/mini-bola-brazuca-copa-do-mundo-2014-no-brasil-size-3-40258521/800x800/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xMjM5NjE0My84OTZmOTlmODFmMjAwMWY2OGZmOWFjZWZkMmE1MjFkMC5qcGc"
+foto4: " https://cdn2.solojavirtual.com/loja/arquivos_loja/56702/Fotos/thumbs3/produto_Foto4_12183968.jpg?cache="
+
+---
+
+instância administrador
+---
+nome: "Steve Jobs"
+sobrenome: "Santos"
+email: "stevetrabalho21@gmail.com"
+senha: "iphone13promax"
+
+---
+instância usuario
+nome: "Elon Reeve"
+sobrenome: “Musk"
+email: "elonteslamusk@outlook.com"
+cpf: "13290748561"
+senha: elonmuskumavezdisse
+telefone: "8876342981"
+foto: "https://classic.exame.com/wp-content/uploads/2022/07/elon-musk.jpg?quality=70&strip=info&w=1200"
+
+---
+instância categoria
+nome: "eletrônicos"
+
+---
+instância publicacao
+titulo: "Iphone 8 plus 64gb"
+tipo_negociacao: "Troca" 
+preco: 0
+descricao_produto: "Produto com um ano de uso,sem avarias,mas com um pequeno problema na tela,gostaria de trocar pelo samsung S21."
+descricao_vendedor: "A vida é uma troca com troco,saiba fazer as contas"
+
+---
+instância foto
+foto1: " https://cf.shopee.com.br/file/176ffbf03f724b5646445d5e243e0d9d.jpeg"
+foto2: " https://down-br.img.susercontent.com/file/9b148de3e36b4cac32691af406a4fc38.jpeg"
+foto3: " https://cdn.desapega.net/thumbs/633x487/19/00802d6abcb79926b0e6307d50f09ca4eff3e5c766f1cb688c57d02d421cc2.jpg"
+foto4: " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSXVtKpA8bJOEt3URPR95mUUF6kuOCROgRXQ&usqp=CAU"
+
+_______
+
+Aluska:
+Dados para teste:
+
+instância administrador
+---
+nome: "Claudia"
+sobrenome: "Pereira"
+email: "claudiapereira@gmail.com"
+senha: "claudia123"
+
+---
+instância usuario
+nome: "Ana Lucia"
+sobrenome: "Ramos"
+email: "anaramos@gmail.com"
+cpf: "12345678910"
+senha: 1234
+telefone: "77988889664"
+foto: "ana.https://images.pexels.com/photos/16680988/pexels-photo-16680988/free-photo-of-cabelo-castanho-oculos-face-rosto.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+---
+instância categoria
+nome: "roupas"
+
+---
+instância publicacao
+titulo: "Vestido feminino"
+tipo_negociacao: "venda"
+preco: 60
+descricao_produto: "Vestido feminino casual de verão, gola V, cor lisa, estampa de bolinhas, manga curta, amarrado, vestido de verão"
+descricao_vendedor: "Sou vendedora e atuo a mais de 15 anos em moda feminina, sempre de olho nas tendências a fim de proporcionar uma ótima experiência de compra no site. Faço envios para todo o país e meu contato é (77) 98888-6666"
+
+---
+instância foto
+foto1: “vestidofeminino.https://m.media-amazon.com/images/I/61VXEMj7JRL._AC_SX522_.jpg”
+foto2: "vestidofeminino.https://m.media-amazon.com/images/I/710pkxr3JiL._AC_SX522_.jpg"
+foto3: "vestidofeminino.https://m.media-amazon.com/images/I/714RY0idZ6L._AC_SX522_.jpg"
+foto4: "vestidofeminino.https://m.media-amazon.com/images/I/6111ImRpVaL._AC_SX522_.jpg"
+
+obs.:
+- os exemplos devem estar conectados uns com os outros e fazer sentido
+como se fossem dados reais.
+- anexar as imagens usadas nos exemplos
+
+Dados para teste:
+
+instância administrador
+---
+nome: "Claudia"
+sobrenome: "Pereira"
+email: "claudiapereira@gmail.com"
+senha: "claudia123"
+
+---
+instância usuario
+nome: "Davi"
+sobrenome: "Ferreira"
+email: "daviferreira@gmail.com"
+cpf: "12345678910"
+senha: 4567
+telefone: "77988889664"
+foto: "davi.https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600"
+
+---
+instância categoria
+nome: "dvd"
+
+---
+instância publicacao
+titulo: "Star Wars A Nova Trilogia”
+"
+tipo_negociacao: "venda"  
+preco: 40
+descricao_produto: "Star wars a nova trilogia inclui os filmes “a ameaça fantasma”, “ataque dos clones” e “a vingança dos sith"
+descricao_vendedor: "Sou Davi Ferreira, atuo com vendas de Dvds de filmes clássicos. Faço envios para todo Brasil, meu contato é (77) 98888-5555"
+
+---
+instância foto
+foto1: “dvdStarwars.https://m.media-amazon.com/images/I/61k1irEbsdL._AC_SL1000_.jpg”
+foto2: "dvdStarwars.https://m.media-amazon.com/images/I/91rpwMrMAvL._AC_SL1500_.jpg"
+
+obs.:
+- os exemplos devem estar conectados uns com os outros e fazer sentido
+como se fossem dados reais.
+- anexar as imagens usadas nos exemplos
+
+
+____
+
+Joselinda:
+Ex de criação de Dados para teste:
+instância administrador
+---
+nome: "Joselinda"
+sobrenome: "Andrade"
+email: "jba25@gmail.com"
+senha: "limonada"
+
+---
+instância usuario
+nome: "Felipe"
+sobrenome: "Aragão"
+email: "FeliAragao@outlook.com"
+cpf: "32165478911"
+senha: 6662
+telefone: "99654875"
+foto: "https://img.freepik.com/fotos-gratis/retrato-de-homem-feliz-e-sorridente_23-2149022620.jpg?size=626&ext=jpg&ga=GA1.2.75227555.1688423361&semt=sph”
+
+---
+instância categoria
+nome: "Roupas"
+
+---
+instância publicacao
+titulo: "Jaqueta couro preta"
+tipo_negociacao: "venda"  (se for "troca", colocar preco como 0)
+preco: 80
+descricao_produto: "A jaqueta veste G , muito confortável, usada umas 3 vezes seminova.."
+descricao_vendedor: "Entrego apenas nas estações, fone (84)99551745"
+
+---
+instância foto
+foto01:”https://img.freepik.com/fotos-premium/jaqueta-de-motociclista-de-couro-preto-com-ziperes-e-fivelas-de-metal_913287-480.jpg”
+ foto02: "https://img.freepik.com/fotos-premium/jaqueta-de-couro-feminino_93675-18186.jpg?w=1060"
+foto03: "https://img.freepik.com/fotos-premium/jaqueta-de-couro-preta-isolada-no-fundo-branco_457211-8206.jpg?w=1060"
+
+
+
+
+
+
+
+instância administrador
+---
+nome: "Joselinda"
+sobrenome: "Andrade"
+email: "jba25@gmail.com"
+senha: "limonada"
+
+---
+instância usuario
+nome: "Pietra"
+sobrenome: "Lima"
+email: "Pietralima25@outlook.com"
+cpf: "023145698744"
+senha: 1234
+telefone: "81988066964"
+foto: "https://img.freepik.com/fotos-gratis/pessoa-de-origem-indiana-se-divertindo_23-2150285283.jpg?size=626&ext=jpg&ga=GA1.1.75227555.1688423361&semt=sph"
+
+---
+instância categoria
+nome: "artigos infantil"
+
+---
+instância publicacao
+titulo: "Bebê conforto"
+tipo_negociacao: "venda"  (se for "troca", colocar preco como 0)
+preco: 200
+descricao_produto: "Comprei mas tinha ganho outra está nova nunca foi usada ainda está na caixa."
+descricao_vendedor: "Retirada em minha residência(moro  em rua 12 ,36 areias ,Recife ,Pe - meu fone (81) 999557519”
+ 
+---
+instância foto
+
+
+foto 01 = “https://m.media-amazon.com/images/I/61qP3LJx53S._AC_SL1100_.jpg”
+foto 02= “https://m.media-amazon.com/images/I/517zNDTB6hS._AC_SL1100_.jpg”
+foto 03 =”https://m.media-amazon.com/images/I/616lwoOJXGS._AC_SL1100_.jpg”
+foto 04 = “https://m.media-amazon.com/images/I/413XkfuSfMS._AC_SL1100_.jpg”
+
+
+_________
+
+Everton:
