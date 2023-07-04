@@ -17,19 +17,27 @@ const db = require("./models");
 app.use(express.static(__dirname + '/public')); // usar /public/ ?
 //app.use(express.static(path.join(__dirname, '/public')));
 //app.use('/', express.static(path.join(__dirname, '/public')))
+
+// APIs
 app.use('/api/admin', require('./routes/administrador'));
 app.use('/api/usuario', require('./routes/usuario'));
 app.use('/api/categoria', require('./routes/categoria'));
 app.use('/api/publicacao', require('./routes/publicacao'));
 app.use('/api/fotos', require('./routes/fotos'));
+
+// View Engine
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
+// Views
 //app.use('/autenticacao', require('./routes/autenticacao')); // deprecated
 app.use('/login', require('./routes/login'));
 app.use('/registro', require('./routes/registro'));
 app.use('/', require('./routes/home'));
+app.use('/publicacao/:id/:titulo', require('./routes/tela-publicacao'));
+// criar route para o view do painel admin
+// criar route para o view do painel usuario
 
-// View engine
-app.set('views', './views');
-app.set('view engine', 'ejs');
 
 // Sincronização inicial seguida pela inicialização do servidor
 // Se for realizar rebuild (force) da base, lembrar de fazer DROP FOREIGN KEY previamente para evitar erros.
