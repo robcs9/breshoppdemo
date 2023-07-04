@@ -35,8 +35,8 @@ app.use('/login', require('./routes/login'));
 app.use('/registro', require('./routes/registro'));
 app.use('/', require('./routes/home'));
 app.use('/publicacao/:id/:titulo', require('./routes/tela-publicacao'));
+app.use('/painel-usuario', require('./routes/painel-usuario'))
 // criar route para o view do painel admin
-// criar route para o view do painel usuario
 
 
 // Sincronização inicial seguida pela inicialização do servidor

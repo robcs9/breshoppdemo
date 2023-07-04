@@ -3,6 +3,7 @@ const urlencodedParser = require('body-parser').urlencoded({ extended: false });
 const router = express.Router();
 const controller = require('../controllers/publicacao');
 
+// API
 router.get('/', controller.getTodosPublicacao);
 router.post('/cadastrar-publicacao', urlencodedParser, controller.cadastrarPublicacao);
 router.get('/id/:id', controller.getPublicacaoPorId);
