@@ -251,3 +251,48 @@ foto 04 = “https://m.media-amazon.com/images/I/413XkfuSfMS._AC_SL1100_.jpg”
 _________
 
 Everton:
+
+instância administrador
+nome: "Leonardo"
+sobrenome: "Alves"
+email: "leoalves1@gmail.com"
+senha: "anhes!2#"
+
+
+---
+instância usuario
+nome: "Clara"
+sobrenome: "Silveira"
+email: "larasilveira@gmail.com"
+cpf: "567.765.657-65"
+senha: server0@4
+telefone: "77988886666"
+foto: "clara.extensao"
+
+
+---
+instância categoria
+nome: "livros"
+
+
+---
+instância publicacao
+titulo: "A arte da guerra"
+tipo_negociacao: "venda"  (se for "troca", colocar preco como 0)
+preco: 50,90
+descricao_produto: "Coleção de livros da saga Sun tzu em bom estado de conservação. Acompanha marcadores de livro da franquia também."
+descricao_vendedor: "Sou colecionadora de várias franquias literárias e gosto de fazer bons negócios com os livros mais antigos que tenho ou compro de outros colecionadores. Faço envios para todo o país e meu contato é (77) 98888-6666"
+
+
+---
+instância foto
+foto1: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2Kb2ZM3G0IDSdSOCyKlwazvnO9ONMqpSVXDgCoalewa2wK9fat1zQCFhNJ95y3Bg1q-0&usqp=CAU"
+foto2: "https://cdn.record.com.br/wp-content/uploads/2020/08/25160527/14764-600x922.jpeg"
+foto3: "https://cdn.record.com.br/wp-content/uploads/2020/08/25160527/14764-600x922.jpeg"
+foto4: "https://cdn.record.com.br/wp-content/uploads/2020/08/25160527/14764-600x922.jpeg"
+
+
+obs.:
+- Os exemplos devem estar associados uns com os outros e fazer sentido
+como se fossem dados reais.
+- Anexar as imagens usadas nos exemplos
