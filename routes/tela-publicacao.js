@@ -1,9 +1,9 @@
 const express = require('express');
-const urlencodedParser = require('body-parser').urlencoded({extended: false});
+//const urlencodedParser = require('body-parser').urlencoded({extended: false});
 const router = express.Router();
 const controller = require('../controllers/tela-publicacao');
 
-router.get('/', controller.exibirPublicacao, controller.fotosPublicacao, controller.renderPublicacao);
+router.get('/:id/:titulo', controller.getPublicacao, controller.getUsuario, controller.getFotos, controller.renderPublicacao);
 /*router.get('/', controller.listarCategorias, controller.listarUltimasPublicacoes,
 controller.exibirCapaPublicacoes, controller.renderHome);
 router.get('/categoria/:id/:nome', controller.listarCategorias, controller.exibirPublicacoesPorCategoria, 
