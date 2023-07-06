@@ -1,3 +1,16 @@
+exports.getCategoria = (req, res, next) => {
+    fetch(`http://localhost:3000/api/categoria/id/${res.locals.publicacao.id_categoria}`).then(
+        data => data.json()
+    ).then(
+        (categoria) => {
+            res.locals.categoria = categoria;
+            next();
+        }
+    ).catch(
+        err => console.log(err)
+    );
+}
+
 exports.getPublicacao = (req, res, next) => {
     fetch(`http://localhost:3000/api/publicacao/id/${req.params.id}`).then(
         data => data.json()
@@ -6,6 +19,8 @@ exports.getPublicacao = (req, res, next) => {
             res.locals.publicacao = publicacao;
             next();
         }
+    ).catch(
+        err => console.log(err)
     );
 }
 
@@ -14,17 +29,16 @@ exports.getUsuario = (req, res, next) => {
         data => data.json()
     ).then(
         (usuario) => {
-            if(usuario == null) {
+            if(usuario != null) {
                 res.locals.usuario = usuario.nome + " " + usuario.sobrenome;
+                
             } else {
                 res.locals.usuario = "";
             }
             next();
         }
     ).catch(
-        (err) => {
-            console.log(err);
-        }
+        err => console.log(err)
     );
 }
 
@@ -33,22 +47,20 @@ exports.getFotos = (req, res, next) => {
         data => data.json()
     ).then(
         (fotos) => {
-            if(fotos == null) {
+            if(fotos != null) {
+                res.locals.fotos = fotos;
+            } else {
                 res.locals.fotos = {
                     "foto1": "",
                     "foto2": "",
                     "foto3": "",
                     "foto4": ""
                 }
-            } else {
-                res.locals.fotos = fotos;
             }
             next();
         }
     ).catch(
-        (err) => {
-            console.log(err);
-        }
+        err => console.log(err)
     );
 }
 

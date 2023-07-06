@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/tela-publicacao');
 
-router.get('/:id/:titulo', controller.getPublicacao, controller.getUsuario, controller.getFotos, controller.renderPublicacao);
+router.get('/:id/:titulo', controller.getPublicacao, controller.getCategoria, controller.getUsuario, controller.getFotos, controller.renderPublicacao);
 /*router.get('/', controller.listarCategorias, controller.listarUltimasPublicacoes,
 controller.exibirCapaPublicacoes, controller.renderHome);
 router.get('/categoria/:id/:nome', controller.listarCategorias, controller.exibirPublicacoesPorCategoria, 

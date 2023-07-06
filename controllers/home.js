@@ -85,8 +85,6 @@ exports.renderHome = (req, res) => {
 }
 
 
-
-
 exports.exibirResultadoBusca = async (req, res, next) => {
     // realizar query usando sequelize e %q%
     const arr = req.query.q.split(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/\W]/g);

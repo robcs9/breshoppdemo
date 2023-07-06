@@ -1,55 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <%- include('head') %>
 </head>
-
 <body class="hold-transition sidebar-mini sidebar-collapse">
   <div class="wrapper">
     <%- include('navbar') %>
-      <%- include('sidebar') %>
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-          <!-- Content Header (Page header) -->
-          <div class="content-header">
-            <div class="container-fluid">
-              <div class="row mb-2">
-                <div class="col-sm-6">
-                  <h1 class="m-0">Painel do Usuário</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                  <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    
-                    <% breadcrumb.forEach((crumbs) => { %>
-                      <li class="breadcrumb-item"><a href="/painel-usuario"><%= crumbs %></a></li>
-                    <% });%>
-                    <%// document.querySelectorAll('breadcrumb-item').at(-1).className = "breadcrumb-item active"; %>
-                    <%// document.querySelectorAll('breadcrumb-item')[breadcrumb.length-1].className = "breadcrumb-item active"; %>
-                  </ol>
-                </div><!-- /.col -->
-              </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-          </div><!-- /.content-header -->
-
-          <%- include('main') %>
-
-        </div><!-- /.wrapper -->
-
-        <%- include('controlsidebar') %>
-
-          <footer class="main-footer">
-            <%- include('footer') %>
-          </footer>
-
+    <%- include('sidebar') %>
+    <div class="content-wrapper">
+      <%- include('header') %> <!-- conteúdo anterior está atualmente em head.ejs -->
+      <%- include('main') %>
+    </div>
+    <%- include('controlsidebar') %>
+    <footer class="main-footer">
+      <%- include('footer') %>
+    </footer>
   </div>
-
   <%- include('scripts') %>
-  <script>
-    document.querySelectorAll('breadcrumb-item').at(-1).className = "breadcrumb-item active";
-    // capturar o elemento a para remover o href dele
-  </script>
 </body>
-
 </html>
