@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "aluno",
-    "password": "ifpe2023",
+    "username": "breshopp",
+    "password": "breshopp",
     "database": "breshopp",
     "host": "localhost",
     "dialect": "mysql",
