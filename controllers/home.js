@@ -86,9 +86,12 @@ exports.renderHome = (req, res) => {
 
 
 exports.exibirResultadoBusca = async (req, res, next) => {
+    const publicacoes = await fetch(`http://localhost:3000/api/publicacao?q=${req.query.q}`);
+    res.locals.publicacoes = await publicacoes.json();
+    next();
     // realizar query usando sequelize e %q%
-    const arr = req.query.q.split(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/\W]/g);
-    fetch("http://localhost:3000/api/publicacao").then(
+    //const arr = req.query.q.split(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/\W]/g);
+    /*fetch("http://localhost:3000/api/publicacao?q=").then(
         data => data.json()
     ).then(
         (publicacoes) => {
@@ -107,7 +110,7 @@ exports.exibirResultadoBusca = async (req, res, next) => {
             res.locals.busca = publics;
             next()
         }
-    )
+    )*/
 }
 
 // http://localhost:3000/?q=ti+tu+lo query para fuzzy search

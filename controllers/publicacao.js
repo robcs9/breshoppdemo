@@ -3,16 +3,20 @@ const { Op } = require('sequelize');
 const { erroCallback } = require('../utils/erroCallback');
 
 exports.getTodosPublicacao = (req, res) => {
-    db.publicacao.findAll().then(
-        (r) => {
-            console.log(r);
-            res.json(r);
-        }
-    ).catch(
-        (err) => {
-            res.send(erroCallback(err));
-        }
-    )
+    if(req.query.q != null) {
+        this.buscarPublicacao(req, res);
+    } else {
+        db.publicacao.findAll().then(
+            (r) => {
+                //console.log(r);
+                res.json(r);
+            }
+        ).catch(
+            (err) => {
+                res.send(erroCallback(err));
+            }
+        )
+    }
 };
 
 exports.cadastrarPublicacao = (req, res) => {
@@ -73,7 +77,6 @@ exports.getPublicacaoPorTitulo = (req, res) => {
         }
     }).then(
         (r) => {
-            console.log(r);
             res.json(r);
         }
     ).catch(
@@ -82,6 +85,25 @@ exports.getPublicacaoPorTitulo = (req, res) => {
         }
     )
 };
+
+exports.buscarPublicacao = (req, res) => {
+    db.publicacao.findAll({
+        where: {
+            titulo: {
+                [Op.like]: "%" + req.query.q + "%"
+            }
+        }
+    }).then(
+        (r) => {
+            res.json(r);
+            //res.send(req.params.q)
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err))
+        }
+    )
+}
 
 exports.setPublicacao = (req, res) => {
     db.publicacao.update(

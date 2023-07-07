@@ -28,7 +28,7 @@ exports.crumbsPerfil = (req, res, next) => {
     res.locals.breadcrumb = [
         {titulo: "Home", rota: "/"},
         {titulo: "Painel", rota: "/painel-usuario"},
-        {titulo: "Perfil", rota: "/perfil"}
+        {titulo: "Perfil", rota: "/painel-usuario/perfil"}
     ];
     next();
 }
@@ -38,7 +38,7 @@ exports.crumbsPublicacoes = (req, res, next) => {
     res.locals.breadcrumb = [
         {titulo: "Home", rota: "/"},
         {titulo: "Painel", rota: "/painel-usuario"},
-        {titulo: "Publicações", rota: "/publicacoes"},
+        {titulo: "Publicações", rota: "/painel-usuario/publicacoes"},
     ];
     next();
 }
@@ -48,9 +48,9 @@ exports.crumbsNovaPublicacao = (req, res, next) => {
     res.locals.breadcrumb = [
         {titulo: "Home", rota: "/"},
         {titulo: "Painel", rota: "/painel-usuario"},
-        {titulo: "Perfil", rota: "/perfil"},
-        {titulo: "Publicações", rota: "/publicacoes"},
-        {titulo: "Criar Publicação", rota: "/nova-publicacao"},
+        {titulo: "Perfil", rota: "/painel-usuario/perfil"},
+        {titulo: "Publicações", rota: "/painel-usuario/publicacoes"},
+        {titulo: "Criar Publicação", rota: "/painel-usuario/nova-publicacao"},
     ];
     next();
 }
@@ -60,9 +60,9 @@ exports.crumbsEditarPublicacao = (req, res, next) => {
     res.locals.breadcrumb = [
         {titulo: "Home", rota: "/"},
         {titulo: "Painel", rota: "/painel-usuario"},
-        {titulo: "Perfil", rota: "/perfil"},
-        {titulo: "Publicações", rota: "/publicacoes"},
-        {titulo: "Editar Publicação", rota: "/editar-publicacao"},
+        {titulo: "Perfil", rota: "//painel-usuarioperfil"},
+        {titulo: "Publicações", rota: "/painel-usuario/publicacoes"},
+        {titulo: "Editar Publicação", rota: "/painel-usuario/editar-publicacao"},
     ];
     next();
 }
