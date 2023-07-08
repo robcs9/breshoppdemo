@@ -4,7 +4,7 @@ const { erroCallback } = require("../utils/erroCallback");
 exports.getTodosAdmins = (req, res) => {
     db.administrador.findAll().then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -43,7 +43,7 @@ exports.getAdminIdPorEmail = (req, res) => {
 exports.getAdminPorEmailForm = (req, res) => {
     db.administrador.findOne({ where: { email: req.body.email } }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -64,7 +64,7 @@ exports.cadastrarAdmin = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Administrador inserido com sucesso.");
         }
     ).catch(
@@ -137,7 +137,7 @@ exports.setAdmin = (req, res) => {
         }
     }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Administrador atualizado com sucesso.");
         }
     ).catch(
@@ -156,7 +156,7 @@ exports.excluirAdmin = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Administrador excluído com sucesso.");
         }
     ).catch(
@@ -173,7 +173,7 @@ exports.limparTodos = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Todos administradores excluídos com sucesso.");
         }
     ).catch(
@@ -183,10 +183,23 @@ exports.limparTodos = (req, res) => {
     )
 };
 
-exports.inserirTodos = (req, res) => {
+/*exports.inserirTodos = (req, res) => {
     db.administrador.bulkCreate(administradores).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
+            res.send("Administradores inseridos com sucesso.");
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    )
+};*/
+
+exports.inserirTodos = (req, res) => {
+    db.administrador.bulkCreate(data.administrador).then(
+        (r) => {
+            //console.log(r);
             res.send("Administradores inseridos com sucesso.");
         }
     ).catch(
@@ -195,6 +208,9 @@ exports.inserirTodos = (req, res) => {
         }
     )
 };
+
+// Criar nova função para popular todas as tabelas que use o bulkCreate + include
+
 
 exports.validarPublicacao = (req, res) => {
     db.publicacao.update(
@@ -207,7 +223,7 @@ exports.validarPublicacao = (req, res) => {
         }
     }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Publicação validada com sucesso.");
         }
     ).catch(
@@ -228,7 +244,7 @@ exports.suspenderUsuario = (req, res) => {
         }
     }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Usuário suspendido com sucesso.");
         }
     ).catch(
@@ -241,7 +257,7 @@ exports.suspenderUsuario = (req, res) => {
 exports.recriarTabela = (req, res) => {
     db.administrador.sync({ force: true }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Tabela administrador recriada com sucesso.");
         }
     ).catch(
@@ -254,7 +270,7 @@ exports.recriarTabela = (req, res) => {
 exports.alterarTabela = (req, res) => {
     db.administrador.sync({ alter: true }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Tabela administrador alterada com sucesso.");
         }
     ).catch(
@@ -264,7 +280,10 @@ exports.alterarTabela = (req, res) => {
     )
 };
 
-let administradores = [
+const data = require('../tests/data');
+
+// Dados antigos
+/*let administradores = [
     {
         "nome": "Administrador 1",
         "sobrenome": "Sobrenome 1",
@@ -325,4 +344,4 @@ let administradores = [
         "email": "admin10@example.com",
         "senha": "senha10"
     }
-];
+];*/
