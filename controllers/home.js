@@ -16,16 +16,12 @@ exports.listarCategorias = (req, res, next) => {
     );
 }
 
-// refatorar com o uso da api de fotos aqui para
-// dispensar o uso da função checagem de extensão de fotos
 exports.listarUltimasPublicacoes = (req, res, next) => {
     fetch('http://localhost:3000/api/publicacao').then(
         data => data.json()
     ).then(
         (publicacoes) => {
             res.locals.publicacoes = publicacoes;
-            //res.locals.covers = [];
-            //return publicacoes;
             next();
         }
     ).catch(
@@ -34,7 +30,16 @@ exports.listarUltimasPublicacoes = (req, res, next) => {
 }
 
 exports.exibirCapaPublicacoes = (req, res, next) => {
-    fetch('http://localhost:3000/api/fotos/').then(
+    // fotos relacionadas
+    let f = [];
+    if (res.locals.publicacoes != null) {
+        for (elem of res.locals.publicacoes) {
+            f.push(elem.foto.foto1)
+        }
+    }
+    res.locals.fotos = f;
+    next();
+    /*fetch('http://localhost:3000/api/fotos/').then(
         data => data.json()
     ).then(
         (fotos) => {
@@ -60,21 +65,27 @@ exports.exibirCapaPublicacoes = (req, res, next) => {
         }
     ).catch(
         err => console.log(err)
-    )
+    )*/
 }
 
 exports.exibirPublicacoesPorCategoria = (req, res, next) => {
     //(req, res) => res.render('home'/, { categoria : req.params.categoria })
-    let id = req.params.id;
-    let titulo = req.params.titulo;
-    
+    /*let id = req.params.id;
     fetch(`http://localhost:3000/api/categoria/${id}`).then(
+        data => data.json()
+    )*/
+    let nome = req.params.nome;
+    fetch(`http://localhost:3000/api/categoria/nome/${nome}`).then(
         data => data.json()
     ).then(
         (categoria) => {
-            //console.log(categoria[0].publicacaos);
-            res.locals.publicacoes = categoria[0].publicacaos;
-            //res.locals.busca = categoria[0].publicacaos;
+            if (categoria == null) {
+                console.log("Categoria não existe");
+            } else if (categoria.publicacaos.length == 0) {
+                console.log("Categoria sem nenhuma publicação")
+            } else {
+                res.locals.publicacoes = categoria.publicacaos;
+            }
             next();
         }
     );
@@ -86,8 +97,15 @@ exports.renderHome = (req, res) => {
 
 
 exports.exibirResultadoBusca = async (req, res, next) => {
-    const publicacoes = await fetch(`http://localhost:3000/api/publicacao?q=${req.query.q}`);
-    res.locals.publicacoes = await publicacoes.json();
+    const data = await fetch(`http://localhost:3000/api/publicacao?q=${req.query.q}`);
+    const publicacoes = await data.json();
+    if (publicacoes == null) {
+        console.log("Categoria não existe");
+    } else if (publicacoes.length == 0) {
+        console.log("Categoria sem nenhuma publicação")
+    } else {
+        res.locals.publicacoes = publicacoes;
+    }
     next();
     // realizar query usando sequelize e %q%
     //const arr = req.query.q.split(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/\W]/g);

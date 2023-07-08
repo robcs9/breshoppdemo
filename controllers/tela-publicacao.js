@@ -24,6 +24,16 @@ exports.getPublicacao = (req, res, next) => {
     );
 }
 
+/*exports.getPublicacaoPorTitulo = async (req, res, next) => {
+    try {
+        const publicacao = await fetch(`http://localhost:3000/api/publicacao/id/${req.params.id}`);
+        res.locals.publicacao = await publicacao.json();
+        next();
+    } catch (err) {
+        err => console.log(err)
+    }
+}*/
+
 exports.getUsuario = (req, res, next) => {
     fetch(`http://localhost:3000/api/usuario/id/${res.locals.publicacao.id_usuario}`).then(
         data => data.json()

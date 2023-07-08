@@ -6,11 +6,11 @@
                 <% for(let i = publicacoes.length - 1; i >= 0 && publicacoes[i]; i--){ %>
                     <div class="col-lg-3 col-md-4 col-sm-6 publicacaoRecente">
                         <div class="featured__item">
-                            <a href="/publicacao/<%= publicacoes[i].id %>/<%= publicacoes[i].titulo %>">
+                            <a href="/publicacao/<%= publicacoes[i].titulo %>-<%= publicacoes[i].id %>">
                                 <div class="featured__item__pic set-bg" data-setbg="/img/<%= fotos[i] %>" style='background-image: url("/img/<%= fotos[i] %>");'></div>
                             </a>
                             <div class="featured__item__text">
-                                <a href="/publicacao/<%= publicacoes[i].id %>/<%= publicacoes[i].titulo %>">
+                                <a href="/publicacao/<%= publicacoes[i].titulo %>-<%= publicacoes[i].id %>">
                                     <h6><%= publicacoes[i].titulo %></h6>
                                 </a>
                                 <% if(publicacoes[i].tipo_negociacao.toUpperCase() == "VENDA") { %>

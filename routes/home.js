@@ -5,8 +5,8 @@ const controller = require('../controllers/home');
 
 router.get('/', controller.listarCategorias, controller.listarUltimasPublicacoes,
 controller.exibirCapaPublicacoes, controller.renderHome);
-router.get('/categoria/:id/:nome', controller.listarCategorias, controller.exibirPublicacoesPorCategoria, 
-controller.exibirCapaPublicacoes, controller.renderHome);
+//router.get('/categoria/:id/:nome', controller.listarCategorias, controller.exibirPublicacoesPorCategoria, controller.exibirCapaPublicacoes, controller.renderHome);
+router.get('/categoria/:nome', controller.listarCategorias, controller.exibirPublicacoesPorCategoria, controller.exibirCapaPublicacoes, controller.renderHome);
 
 //testando
 router.get('/buscar', controller.listarCategorias, controller.exibirResultadoBusca,

@@ -6,7 +6,9 @@ exports.getTodosPublicacao = (req, res) => {
     if(req.query.q != null) {
         this.buscarPublicacao(req, res);
     } else {
-        db.publicacao.findAll().then(
+        db.publicacao.findAll(
+            {include: db.fotos}
+        ).then(
             (r) => {
                 //console.log(r);
                 res.json(r);
@@ -71,7 +73,7 @@ exports.getPublicacaoPorTitulo = (req, res) => {
     //        }
     //    }
     //});
-    db.publicacao.findOne({
+    db.publicacao.findAll({
         where: {
             titulo: req.params.titulo
         }
@@ -88,6 +90,9 @@ exports.getPublicacaoPorTitulo = (req, res) => {
 
 exports.buscarPublicacao = (req, res) => {
     db.publicacao.findAll({
+        include: {
+            model: db.fotos
+        },
         where: {
             titulo: {
                 [Op.like]: "%" + req.query.q + "%"

@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
         nome: {
             type: DataTypes.STRING(45),
             allowNull: false,
-            //unique: true
+            unique: true
         }
     }, {
         timestamps: false,

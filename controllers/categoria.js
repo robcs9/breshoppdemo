@@ -18,7 +18,7 @@ exports.cadastrarCategoria = (req, res) => {
     db.categoria.create(
         {
             //id: req.body.id,
-	    	nome: req.body.nome,
+	    	nome: req.body.nome
         }
     ).then(
         (r) => {
@@ -78,6 +78,43 @@ exports.getPublicacoesDaCategoria = (req, res) => {
             res.send(erroCallback(err));
         }
     )
+};
+
+exports.getPublicacoesDaCategoriaPorNome = (req, res) => {
+    db.categoria.findOne({
+        //include: {all: true, nested: true}
+        include: {
+            model: db.publicacao,
+            include: {
+                model: db.fotos
+            }
+        },
+        where: {
+            nome: req.params.nome
+        }
+    }).then(
+        (r) => {
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    )
+    /*db.categoria.findOne({
+        include: db.publicacao,
+        where: {
+            nome: req.params.nome
+        }
+    }).then(
+        (r) => {
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    )*/
 };
 
 exports.excluirCategoria = (req, res) => {
