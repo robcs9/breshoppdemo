@@ -40,7 +40,12 @@ exports.getUsuario = (req, res, next) => {
     ).then(
         (usuario) => {
             if(usuario != null) {
-                res.locals.usuario = usuario.nome + " " + usuario.sobrenome;
+                //res.locals.usuario = usuario.nome + " " + usuario.sobrenome;
+                let telFormatado = usuario.telefone;
+                telFormatado = '(' + telFormatado.slice(0,2) + ') ' + telFormatado.slice(2,7) +
+                '-' + telFormatado.slice(7,11);
+                usuario.telefone = telFormatado;
+                res.locals.usuario = usuario;
                 
             } else {
                 res.locals.usuario = "";

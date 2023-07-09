@@ -36,21 +36,17 @@
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
                     <h3><%= publicacao.titulo %></h3>
-                    <a href="profile.html">
-                        <h5><%= usuario %></h5>
-                    </a>
-                    <div class="product__details__rating">
+                    <!--<div class="product__details__rating">
                         <i class="fa fa-star text-primary"></i>
                         <i class="fa fa-star text-primary"></i>
                         <i class="fa fa-star text-primary"></i>
                         <i class="fa fa-star text-primary"></i>
                         <i class="fa fa-star-half-o text-primary"></i>
                         <span>(18 avaliações)</span>
-                    </div>
+                    </div>-->
                     <% if(publicacao.tipo_negociacao.toUpperCase() == "VENDA") { %>
-                        <h5>R$ <%= publicacoes[i].preco %></h5>
                         <div class="product__details__price">R$ <%= publicacao.preco %></div>
-                    <% } else { %>
+                    <% } else if(publicacao.tipo_negociacao.toUpperCase() == "TROCA") { %>
                         <div class="product__details__price">Troca</div>
                     <% } %>
                     
@@ -69,6 +65,7 @@
                         </svg>
                         <strong>NEGOCIAR: <%= usuario.telefone %></strong>
                     </button>
+                    <div class="col align-center">Anunciado por: <a href="#"><h5><%= usuario.nome + " " + usuario.sobrenome %></h5></a></div>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -90,7 +87,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <h6>Dados do Produto</h6>
+                                <!--<h6>Descrição</h6>-->
                                 <p><%= publicacao.descricao_produto %></p>
                             </div>
                         </div>
@@ -112,7 +109,7 @@
                     <!-- Primeiro item sempre será uma das categorias do site preferencialmente. Administradores terão que
                         se certificarem disso ou talvez possamos implementar uma selector para os anunciantes (lembrar de adicionar opção "Nenhum")-->
                     <li class="nav-item">
-                        <a class="nav-link" href="/categoria/<%= publicacao.id_categoria %>/<%= categoria.nome %>#featured"><%= categoria.nome %></a>
+                        <a class="nav-link" href="/categoria/<%= categoria.nome %>#featured"><%= categoria.nome %></a>
                     </li>
                 </ul>
             </div>

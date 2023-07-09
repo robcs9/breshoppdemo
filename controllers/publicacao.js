@@ -55,9 +55,14 @@ exports.cadastrarPublicacao = (req, res) => {
             id_usuario: req.body.id_usuario,
             id_categoria: req.body.id_categoria,
             //id_fotos: req.body.id_fotos,
-            foto: [{
-                foto1: "test"
-            }],
+            foto: {
+                foto1: req.body.foto1,
+                foto2: req.body.foto2,
+                foto3: req.body.foto3,
+                foto4: req.body.foto4,
+                foto5: req.body.foto5,
+                foto6: req.body.foto6,
+            },
             titulo: req.body.titulo,
             tipo_negociacao: req.body.tipo_negociacao,
             preco: req.body.preco,
@@ -65,6 +70,9 @@ exports.cadastrarPublicacao = (req, res) => {
             descricao_vendedor: req.body.descricao_vendedor,
             //validada: 0,
             //finalizada: 0,
+        },
+        {
+            include: db.fotos
         }
     ).then(
         (r) => {
