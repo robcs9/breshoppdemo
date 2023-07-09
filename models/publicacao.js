@@ -6,14 +6,18 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
             allowNull: false
         },*/
-        /*id_usuario: {
+        id_usuario: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
         id_categoria: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },*/
+        },
+        id_fotos: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         titulo: {
             type: DataTypes.STRING(100),
             allowNull: false
@@ -34,10 +38,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false
         },
-        /*id_fotos: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },*/
         validada: {
             type: DataTypes.BOOLEAN,
             //allowNull: false,

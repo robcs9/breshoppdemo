@@ -127,10 +127,23 @@ exports.limparTodos = (req, res) => {
     
 };
 
-exports.inserirTodos = (req, res) => {
+/*exports.inserirTodos = (req, res) => {
     db.fotos.bulkCreate(fotos).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
+            res.send("Fotos inseridas com sucesso");
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    )
+};*/
+
+exports.inserirTodos = (req, res) => {
+    db.fotos.bulkCreate(data.fotos).then(
+        (r) => {
+            //console.log(r);
             res.send("Fotos inseridas com sucesso");
         }
     ).catch(
@@ -179,7 +192,8 @@ exports.alterarTabela = (req, res) => {
     )
 };
 
-const fotos = [
+const data = require('../tests/data');
+/*const fotos = [
     {
         //"id": 1,
         "foto1": "f1.jpg",
@@ -270,4 +284,4 @@ const fotos = [
         "foto5": "f59.jpg",
         "foto6": "f60.jpg"
     }
-];
+];*/

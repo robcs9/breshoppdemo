@@ -7,7 +7,6 @@
                         <i class="fa fa-bars"></i>
                         <span>Categorias</span>
                     </div>
-                    
                     <ul id="listaCategorias">
                         <% if(locals.categorias) { %>
                             <% categorias.forEach((elem) => { %>
@@ -26,11 +25,11 @@
                 <div class="hero__search">
                     <div class="hero__search__form" style="background-color: rgb(255, 255, 255); --darkreader-inline-bgcolor: #181a1b;" data-darkreader-inline-bgcolor="">
                         
-                        <form action="/buscar#featured" method="get">
+                        <!--<form action="/buscar#featured" method="get">
                             <input type="text" placeholder="Do que você precisa?" name="q" id="q">
                             <button type="submit" class="btn site-btn">PROCURAR</button>
-                        </form>
-
+                        </form>-->
+                        <%- include('formBusca') %>
                     </div>
                     
                 </div>

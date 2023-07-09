@@ -142,7 +142,7 @@ exports.excluirUsuario = (req, res) => {
 };
 
 exports.inserirTodos = (req, res) => {
-    db.usuario.bulkCreate(usuarios).then(
+    db.usuario.bulkCreate(data.usuario).then(
         (r) => {
             console.log(r);
             res.send("Usuários inseridos com sucessso");
@@ -221,12 +221,14 @@ exports.alterarTabela = (req, res) => {
     )
 };
 
+const data = require('../tests/data');
+
 // incrementar vendas
 // incrementar trocas
 // ou remover estes campos de usuário porque a ação de finalizar pode
 // produzir resultados falsos por usuários desonestos.
 
-let usuarios = [
+/*let usuarios = [
     {
         //"id": 1,
         "nome": "João",
@@ -367,4 +369,4 @@ let usuarios = [
         //"suspenso": 0,
         //"motivo_suspensao": null
     }
-];
+];*/

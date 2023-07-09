@@ -47,7 +47,13 @@
                         <i class="fa fa-star-half-o text-primary"></i>
                         <span>(18 avaliações)</span>
                     </div>
-                    <div class="product__details__price">R$ <%= publicacao.preco %></div>
+                    <% if(publicacao.tipo_negociacao.toUpperCase() == "VENDA") { %>
+                        <h5>R$ <%= publicacoes[i].preco %></h5>
+                        <div class="product__details__price">R$ <%= publicacao.preco %></div>
+                    <% } else { %>
+                        <div class="product__details__price">Troca</div>
+                    <% } %>
+                    
                     <!-- <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
                         vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
                         quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>-->

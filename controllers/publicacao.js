@@ -21,24 +21,54 @@ exports.getTodosPublicacao = (req, res) => {
     }
 };
 
+/*exports.cadastrarPublicacao = (req, res) => {
+    db.publicacao.create(
+        {
+            //id: req.body.id,
+            id_usuario: req.body.id_usuario,
+            id_categoria: req.body.id_categoria,
+            id_fotos: req.body.id_fotos,
+            titulo: req.body.titulo,
+            tipo_negociacao: req.body.tipo_negociacao,
+            preco: req.body.preco,
+            descricao_produto: req.body.descricao_produto,
+            descricao_vendedor: req.body.descricao_vendedor,
+            //validada: 0,
+            //finalizada: 0,
+        }
+    ).then(
+        (r) => {
+            //console.log(r);
+            res.send("Publicação cadastrada com sucesso");
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    )
+};*/
+
 exports.cadastrarPublicacao = (req, res) => {
     db.publicacao.create(
         {
             //id: req.body.id,
             id_usuario: req.body.id_usuario,
             id_categoria: req.body.id_categoria,
+            //id_fotos: req.body.id_fotos,
+            foto: [{
+                foto1: "test"
+            }],
             titulo: req.body.titulo,
             tipo_negociacao: req.body.tipo_negociacao,
             preco: req.body.preco,
             descricao_produto: req.body.descricao_produto,
             descricao_vendedor: req.body.descricao_vendedor,
-            id_fotos: req.body.id_fotos,
             //validada: 0,
             //finalizada: 0,
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Publicação cadastrada com sucesso");
         }
     ).catch(
@@ -51,7 +81,7 @@ exports.cadastrarPublicacao = (req, res) => {
 exports.getPublicacaoPorId = (req, res) => {
     db.publicacao.findByPk(req.params.id).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -130,7 +160,7 @@ exports.setPublicacao = (req, res) => {
     }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Publicação atualizada com sucessso");
         }
     ).catch(
@@ -149,7 +179,7 @@ exports.excluirPublicacao = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Publicação excluída com sucesso");
         }
     ).catch(
@@ -168,7 +198,7 @@ exports.limparTodos = (req, res) => {
                 }
             ).then(
                 (r) => {
-                    console.log(r);
+                    //console.log(r);
                     res.send("Publicações excluídas com sucessso");
                 }
             ).catch(
@@ -188,7 +218,7 @@ exports.limparTodos = (req, res) => {
     )
 };
 
-exports.inserirTodos = (req, res) => {
+/*exports.inserirTodos = (req, res) => {
     db.publicacao.bulkCreate(publicacoes).then(
         (r) => {
             console.log(r);
@@ -199,28 +229,42 @@ exports.inserirTodos = (req, res) => {
             res.send(erroCallback(err));
         }
     )
-    /*db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
-        () => {
-            db.publicacao.bulkCreate(publicacoes).then(
-                (r) => {
-                    console.log(r);
-                    res.send("Publicações inseridas com sucesso");
-                }
-            ).catch(
-                (err) => {
-                    res.send(erroCallback(err));
-                }
-            )
+    //db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0").then(
+    //    () => {
+    //        db.publicacao.bulkCreate(publicacoes).then(
+    //            (r) => {
+    //                console.log(r);
+    //                res.send("Publicações inseridas com sucesso");
+    //            }
+    //        ).catch(
+    //            (err) => {
+    //                res.send(erroCallback(err));
+    //            }
+    //        )
+    //    }
+    //).catch(
+    //    (err) => {
+    //        res.send(erroCallback(err));
+    //    }
+    //).finally(
+    //    () => {
+    //        db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
+    //    }
+    //)
+};*/
+
+exports.inserirTodos = (req, res) => {
+    db.publicacao.bulkCreate(data.publicacao).then(
+        (r) => {
+            //console.log(r);
+            //res.send("Publicações inseridas com sucesso");
+            res.json({msg:"Publicações inseridas com sucesso"});
         }
     ).catch(
         (err) => {
             res.send(erroCallback(err));
         }
-    ).finally(
-        () => {
-            db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1").then().catch();
-        }
-    )*/
+    )
 };
 
 exports.validarPublicacao = (req, res) => {
@@ -235,7 +279,7 @@ exports.validarPublicacao = (req, res) => {
     }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Publicação validada com sucesso");
         }
     ).catch(
@@ -249,19 +293,15 @@ exports.recriarTabela = (req, res) => {
     db.publicacao.query("SET FOREIGN_KEYS_CHECK = 0").then(
         db.publicacao.sync({ force: true }).then(
             (r) => {
-                console.log(r);
-                res.send("Tabela publicacao recriada com sucesso");
-            }
-        ).catch(
-            (err) => {
-                res.send(erroCallback(err));
+                //console.log(r);
+                return res.send("Tabela publicacao recriada com sucesso");
             }
         )
-    ).catch(
+    )/*.catch(
         (err) => {
             res.send(erroCallback(err));
         }
-    ).finally(
+    )*/.finally(
         () => {
             db.publicacao.query("SET FOREIGN_KEY_CHECKS = 1");
         }
@@ -271,7 +311,7 @@ exports.recriarTabela = (req, res) => {
 exports.alterarTabela = (req, res) => {
     db.publicacao.sync({ alter: true }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Tabela publicacao alterada com sucesso");
         }
     ).catch(
@@ -281,9 +321,9 @@ exports.alterarTabela = (req, res) => {
     )
 };
 
+const data = require('../tests/data');
 
-
-let publicacoes = [
+/*let publicacoes = [
     {
         //"id": 1,
         "id_usuario": 1,
@@ -427,4 +467,4 @@ let publicacoes = [
         //"motivo_rejeicao": null
     }
 
-];
+];*/

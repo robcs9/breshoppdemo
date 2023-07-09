@@ -31,10 +31,13 @@ exports.listarUltimasPublicacoes = (req, res, next) => {
 
 exports.exibirCapaPublicacoes = (req, res, next) => {
     // fotos relacionadas
+    //return res.json(res.locals.publicacoes)
     let f = [];
     if (res.locals.publicacoes != null) {
         for (elem of res.locals.publicacoes) {
-            f.push(elem.foto.foto1)
+            if(elem.foto != null) {
+                f.push(elem.foto.foto1)
+            }
         }
     }
     res.locals.fotos = f;

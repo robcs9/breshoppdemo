@@ -185,8 +185,21 @@ exports.limparTodos = (req, res) => {
     )
 };
 
-exports.inserirTodos = (req, res) => {
+/*exports.inserirTodos = (req, res) => {
     db.categoria.bulkCreate(categorias).then(
+        (r) => {
+            console.log(r);
+            res.send("Categorias inseridas com sucesso");
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    )
+};*/
+
+exports.inserirTodos = (req, res) => {
+    db.categoria.bulkCreate(data.categoria).then(
         (r) => {
             console.log(r);
             res.send("Categorias inseridas com sucesso");
@@ -236,6 +249,8 @@ exports.alterarTabela = (req, res) => {
     )
 };
 
+const data = require('../tests/data');
+/*
 let categorias = [
     {
         //"id": 1,
@@ -277,4 +292,4 @@ let categorias = [
         //"id": 10,
         "nome": "Instrumentos Musicais"
     }
-];
+];*/
