@@ -3,9 +3,11 @@ const urlencodedParser = require('body-parser').urlencoded({extended: false});
 const router = express.Router();
 const controller = require('../controllers/login');
 
-router.get('/', controller.login);
+router.get('/', controller.renderLogin);
 //router.post('/entrar', urlencodedParser, controller.fazerLogin);
-router.post('/', urlencodedParser, controller.fazerLogin);
+//router.post('/', urlencodedParser, controller.fazerLogin);
 // nova rota para deslogar /logout
+
+router.post('/', urlencodedParser, controller.renderLogin);
 
 module.exports = router;
