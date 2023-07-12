@@ -25,6 +25,14 @@ app.use('/api/categoria', require('./routes/categoria'));
 app.use('/api/publicacao', require('./routes/publicacao'));
 app.use('/api/fotos', require('./routes/fotos'));
 
+// Session
+const session = require('express-session');
+app.use(session({
+    secret: 'sua_chave_secreta_aqui',
+    resave: false,
+    saveUninitialized: false
+}));
+
 // View Engine
 app.set('views', './views');
 app.set('view engine', 'ejs');

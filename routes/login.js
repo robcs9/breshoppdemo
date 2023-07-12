@@ -8,6 +8,6 @@ router.get('/', controller.renderLogin);
 //router.post('/', urlencodedParser, controller.fazerLogin);
 // nova rota para deslogar /logout
 
-router.post('/', urlencodedParser, controller.renderLogin);
+router.post('/', urlencodedParser, controller.fazerLogin1, controller.renderLogin);
 
 module.exports = router;

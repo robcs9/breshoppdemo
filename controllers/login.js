@@ -1,11 +1,13 @@
 db = require('../models');
 const jwt = require('jsonwebtoken');
+const session = require('express-session');
 
 exports.renderLogin = (req, res) => {
     res.render('login');
 }
 
 exports.fazerLogin = async (req, res) => {
+    // refatorar abaixo para utilizar o fetch com a API criada
     const admin = await db.administrador.findOne({
         where: {
             email: req.body.email,
@@ -19,21 +21,24 @@ exports.fazerLogin = async (req, res) => {
         }
     });
 
-    if(admin) {
-        console.log(`Seja bem vindo, ${admin.nome}`)
-        res.redirect('/')
-    } else if(usuario) {
+    if (admin) {
+        console.log(`Seja bem vindo, ${admin.nome}`);
+        res.redirect('/');
+    } else if (usuario) {
         console.log(`Seja bem vindo, ${usuario.nome}`)
+        //req.session.expires = 30;
+        req.session.usuario = usuario;
+        console.log(req.session);
         res.redirect('/')
     } else {
         const msg = "Usuário/Administrador não encontrado";
         console.log(msg);
-        res.render('login', {msg});
+        res.render('login', { msg });
         //res.sendStatus(400).render('login', { msg });
     }
 };
 
-exports.login = (req, res, next) => {
+/*exports.login = (req, res, next) => {
     const email = req.body.email;
     const senha = req.body.senha;
     const usuario = { email: email, senha: senha };
@@ -73,5 +78,67 @@ exports.procurarUsuario = async (req, res) => {
         console.log(msg);
         res.render('login', {msg});
         //res.sendStatus(400).render('login', { msg });
+    }
+}*/
+
+// autenticação via localStorage
+/*
+// Função para iniciar a sessão
+function iniciarSessao (usuario) {
+    localStorage.setItem('sessao', JSON.stringify(usuario));
+}
+
+// Função para encerrar a sessão
+function encerrarSessao() {
+    localStorage.removeItem('sessao');
+}
+
+// Função para verificar se o usuário está logado
+function verificarSessao() {
+    var sessao = localStorage.getItem('sessao');
+    if (sessao) {
+        // O usuário está logado
+        var usuario = JSON.parse(sessao);
+        console.log('Usuário logado:', usuario);
+    } else {
+        // O usuário não está logado
+        console.log('Usuário não está logado.');
+    }
+}
+
+// Exemplo de uso
+var usuarioLogado = {
+    nome: 'John Doe',
+    email: 'johndoe@example.com'
+};
+
+iniciarSessao(usuarioLogado); // Iniciar a sessão
+verificarSessao(); // Verificar se o usuário está logado
+encerrarSessao(); // Encerrar a sessão
+verificarSessao(); // Verificar se o usuário está logado novamente*/
+
+exports.fazerLogin1 = async (req, res, next) => {
+    try {
+        const usuario = await fetch(`http://localhost:3000/api/usuario/buscar-usuario/${req.body.email}`);
+        const admin = await fetch(`http://localhost:3000/api/admin/buscar-admin/${req.body.email}`);
+        if (usuario != null) {
+            req.session.usuario = usuario;
+            return res.redirect('painel-usuario');
+        }
+        if (admin != null) {
+            req.session.admin = admin;
+            return res.redirect('painel-admin');
+        }
+        if (!usuario && !admin) {
+            const msg = "Usuário/Administrador não encontrado";
+            res.locals.msg = msg;
+            //console.log(msg);
+            next();
+        }
+
+    }
+    catch (err) {
+        console.log(err);
+
     }
 }

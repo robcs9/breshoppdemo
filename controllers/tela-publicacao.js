@@ -44,7 +44,8 @@ exports.getUsuario = (req, res, next) => {
                 let telFormatado = usuario.telefone;
                 telFormatado = '(' + telFormatado.slice(0,2) + ') ' + telFormatado.slice(2,7) +
                 '-' + telFormatado.slice(7,11);
-                usuario.telefone = telFormatado;
+                //usuario.telefone = telFormatado;
+                res.locals.tel = telFormatado;
                 res.locals.usuario = usuario;
                 
             } else {

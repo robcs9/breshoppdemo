@@ -44,6 +44,19 @@ exports.getUsuarioPorEmail = (req, res) => {
     )
 };
 
+exports.getUsuarioPorEmailForm = (req, res) => {
+    db.usuario.findOne({ where: { email: req.body.email } }).then(
+        (r) => {
+            //console.log(r);
+            res.json(r);
+        }
+    ).catch(
+        (err) => {
+            res.send(erroCallback(err));
+        }
+    )
+};
+
 exports.cadastrarUsuario = (req, res) => {
     db.usuario.create(
         {

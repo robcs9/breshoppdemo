@@ -6,9 +6,10 @@ const controller = require('../controllers/usuario');
 router.get('/', controller.getTodosUsuario);
 router.post('/cadastrar-usuario', urlencodedParser, controller.cadastrarUsuario);
 router.patch('/atualizar-usuario', urlencodedParser, controller.setUsuario);
+router.get('/buscar-usuario', urlencodedParser, controller.getUsuarioPorEmailForm);
 //router.patch('/finalizar-publicacao', urlencodedParser, controller.finalizarPublicacao);
-router.get('/id/:id', controller.getUsuarioPorId);
-router.get('/email/:email', controller.getUsuarioPorEmail); // modificar para fazer requisição pelo body
+//router.get('/id/:id', controller.getUsuarioPorId);
+//router.get('/email/:email', controller.getUsuarioPorEmail); // modificar para fazer requisição pelo body
 router.delete('/excluir-usuario', urlencodedParser, controller.excluirUsuario);
 router.delete('/limpar-usuario', controller.limparTodos);
 router.post('/popular-usuario', controller.inserirTodos);

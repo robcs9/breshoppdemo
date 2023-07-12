@@ -3,7 +3,7 @@ const urlencodedParser = require('body-parser').urlencoded({extended: false});
 const router = express.Router();
 const controller = require('../controllers/painel-usuario');
 
-router.get('/', controller.crumbsInicio, controller.renderPainelUsuario);
+router.get('/', controller.autenticarUsuario, controller.crumbsInicio, controller.renderPainelUsuario);
 router.get('/perfil', controller.getUsuario, controller.crumbsPerfil, controller.renderPainelUsuario);
 router.get('/publicacoes', controller.crumbsPublicacoes, controller.renderPainelUsuario);
 router.get('/nova-publicacao', controller.crumbsNovaPublicacao, controller.renderPainelUsuario);

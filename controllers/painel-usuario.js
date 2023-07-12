@@ -70,3 +70,13 @@ exports.crumbsEditarPublicacao = (req, res, next) => {
 exports.renderPainelUsuario = (req, res) => {
     res.render('painel-usuario');
 }
+
+exports.autenticarUsuario = (req, res, next) => {
+    if(req.session.usuario) {
+        console.log("Bem vindo " + req.session.usuario);
+        next();
+    } else {
+        console.log("Faça login para acessar o painel de usuário");
+        res.redirect('login');
+    }
+}
