@@ -140,7 +140,8 @@ exports.fazerLogin1 = async (req, res, next) => {
             //return res.send(JSON.stringify(usuario));
             if (req.body.senha == u.senha) {
                 req.session.usuario = u;
-                res.locals.sess = JSON.stringify(req.session);
+                res.locals.sess = req.session//JSON.stringify(req.session);
+                //return res.json(res.locals.sess);
                 return res.redirect('painel-usuario');
             } else {
                 const msg = "Senha do usuário incorreta.";
