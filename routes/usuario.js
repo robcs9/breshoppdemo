@@ -6,7 +6,7 @@ const controller = require('../controllers/usuario');
 router.get('/', controller.getTodosUsuario);
 router.post('/cadastrar-usuario', urlencodedParser, controller.cadastrarUsuario);
 router.patch('/atualizar-usuario', urlencodedParser, controller.setUsuario);
-router.get('/buscar-usuario', urlencodedParser, controller.getUsuarioPorEmailForm);
+router.post('/buscar-usuario', urlencodedParser, controller.getUsuarioPorEmailForm);
 //router.patch('/finalizar-publicacao', urlencodedParser, controller.finalizarPublicacao);
 //router.get('/id/:id', controller.getUsuarioPorId);
 //router.get('/email/:email', controller.getUsuarioPorEmail); // modificar para fazer requisição pelo body

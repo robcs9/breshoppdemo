@@ -1,6 +1,7 @@
 db = require('../models');
 const jwt = require('jsonwebtoken');
 const session = require('express-session');
+const axios = require('axios');
 
 exports.renderLogin = (req, res) => {
     res.render('login');
@@ -119,26 +120,57 @@ verificarSessao(); // Verificar se o usuário está logado novamente*/
 
 exports.fazerLogin1 = async (req, res, next) => {
     try {
-        const usuario = await fetch(`http://localhost:3000/api/usuario/buscar-usuario/${req.body.email}`);
-        const admin = await fetch(`http://localhost:3000/api/admin/buscar-admin/${req.body.email}`);
-        if (usuario != null) {
-            req.session.usuario = usuario;
-            return res.redirect('painel-usuario');
-        }
-        if (admin != null) {
-            req.session.admin = admin;
-            return res.redirect('painel-admin');
-        }
-        if (!usuario && !admin) {
+        const usuario = await axios.post('http://localhost:3000/api/usuario/buscar-usuario', {
+            email: req.body.email
+        }, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+        const admin = await axios.post('http://localhost:3000/api/admin/buscar-admin', {
+            email: req.body.email
+        }, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+        const u = usuario.data;
+        const a = admin.data;
+        if (u != null) {
+            //return res.send(JSON.stringify(usuario));
+            if (req.body.senha == u.senha) {
+                req.session.usuario = u;
+                res.locals.sess = JSON.stringify(req.session);
+                return res.redirect('painel-usuario');
+            } else {
+                const msg = "Senha do usuário incorreta.";
+                res.locals.msg = msg;
+                //console.log(msg);
+                next();
+            }
+        } else if (a != null) {
+            if (req.body.senha == a.senha) {
+                req.session.admin = a;
+                return res.redirect('painel-admin');
+            } else {
+                const msg = "Senha do administrador incorreta.";
+                res.locals.msg = msg;
+                //console.log(msg);
+                next();
+            }
+        } else if (!u && !a) {
             const msg = "Usuário/Administrador não encontrado";
             res.locals.msg = msg;
             //console.log(msg);
             next();
         }
-
     }
     catch (err) {
         console.log(err);
-
+        res.json({ msg: "Erro: " + err });
     }
+}
+
+exports.fazerLogout = async (req, res, next) => {
+
 }

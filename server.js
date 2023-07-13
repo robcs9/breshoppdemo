@@ -30,7 +30,11 @@ const session = require('express-session');
 app.use(session({
     secret: 'sua_chave_secreta_aqui',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    //store: store,
+    cookie: {
+        maxAge: 3600000
+    }
 }));
 
 // View Engine

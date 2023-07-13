@@ -60,7 +60,7 @@ exports.crumbsEditarPublicacao = (req, res, next) => {
     res.locals.breadcrumb = [
         {titulo: "Home", rota: "/"},
         {titulo: "Painel", rota: "/painel-usuario"},
-        {titulo: "Perfil", rota: "//painel-usuarioperfil"},
+        {titulo: "Perfil", rota: "/painel-usuario/perfil"},
         {titulo: "Publicações", rota: "/painel-usuario/publicacoes"},
         {titulo: "Editar Publicação", rota: "/painel-usuario/editar-publicacao"},
     ];
