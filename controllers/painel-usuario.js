@@ -1,17 +1,9 @@
 // Perfil
 exports.getUsuario = (req, res, next) => {
     // consultar a id do usuário através da sessão ativa
-    let id = 5;
-    fetch(`http://localhost:3000/api/usuario/id/${id}`).then(
-        data => data.json()
-    ).then(
-        (usuario) => {
-            res.locals.usuario = usuario;
-            next();
-        }
-    ).catch(
-        err => console.log(err)
-    )
+    //return res.send(req.session.usuario)
+    res.locals.usuario = req.session.usuario;
+    next();
 }
 // Breadcrumbs + Título da Tela
 exports.crumbsInicio = (req, res, next) => {
@@ -73,10 +65,14 @@ exports.renderPainelUsuario = (req, res) => {
 
 exports.autenticarUsuario = (req, res, next) => {
     if(req.session.usuario) {
-        console.log("Bem vindo " + req.session.usuario);
+        console.log("Bem vindo " + req.session.usuario.nome);
         next();
     } else {
         console.log("Faça login para acessar o painel de usuário");
-        res.redirect('login');
+        res.redirect('/login');
     }
+}
+
+exports.renderPerfil = (req, res) => {
+    res.render('perfil');
 }

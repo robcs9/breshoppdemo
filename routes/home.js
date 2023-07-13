@@ -2,8 +2,9 @@ const express = require('express');
 const urlencodedParser = require('body-parser').urlencoded({extended: false});
 const router = express.Router();
 const controller = require('../controllers/home');
+//const auth = require('../controllers/login');
 
-router.get('/', controller.listarCategorias, controller.listarUltimasPublicacoes,
+router.get('/', controller.checarAutenticacao, controller.listarCategorias, controller.listarUltimasPublicacoes,
 controller.exibirCapaPublicacoes, controller.renderHome);
 //router.get('/categoria/:id/:nome', controller.listarCategorias, controller.exibirPublicacoesPorCategoria, controller.exibirCapaPublicacoes, controller.renderHome);
 router.get('/categoria/:nome', controller.listarCategorias, controller.exibirPublicacoesPorCategoria, controller.exibirCapaPublicacoes, controller.renderHome);

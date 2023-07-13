@@ -134,4 +134,8 @@ exports.exibirResultadoBusca = async (req, res, next) => {
     )*/
 }
 
-// http://localhost:3000/?q=ti+tu+lo query para fuzzy search
+exports.checarAutenticacao = (req, res, next) => {
+    //return res.json(req.session)
+    res.locals.sess = req.session;
+    next();
+}
