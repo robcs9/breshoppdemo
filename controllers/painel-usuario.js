@@ -1,3 +1,4 @@
+const axios = require('axios');
 // Perfil
 exports.getUsuario = (req, res, next) => {
     // consultar a id do usuário através da sessão ativa
@@ -59,10 +60,6 @@ exports.crumbsEditarPublicacao = (req, res, next) => {
     next();
 }
 
-exports.renderPainelUsuario = (req, res) => {
-    res.render('painel-usuario');
-}
-
 exports.autenticarUsuario = (req, res, next) => {
     if(req.session.usuario) {
         console.log("Bem vindo " + req.session.usuario.nome);
@@ -73,6 +70,29 @@ exports.autenticarUsuario = (req, res, next) => {
     }
 }
 
+exports.renderPainelUsuario = (req, res) => {
+    res.render('painel-usuario');
+}
+
 exports.renderPerfil = (req, res) => {
     res.render('perfil');
+}
+
+exports.renderPublicacoes = (req, res) => {
+    res.render('publicacoes');
+}
+
+exports.renderNovaPublicacao = (req, res) => {
+    res.render('nova-publicacao');
+}
+
+exports.renderEditarPublicacao = (req, res) => {
+    res.render('editar-publicacao');
+}
+
+exports.getPublicacoesDeUsuario = async (req, res, next) => {
+    const url = `http://localhost:3000/api/usuario/id/${res.locals.usuario.id}`;
+    const usuario = await axios.get(url);
+    res.locals.usuario = usuario.data;
+    next();
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <%- include('../painel-usuario/head') %>
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse">
+  <div class="wrapper">
+    <%- include('../painel-usuario/navbar') %>
+    <%- include('../painel-usuario/sidebar') %>
+  <div class="content-wrapper">
+    <%- include('../painel-usuario/header') %>
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <%- include('main') %>
+      </div><!-- /.container-fluid -->
+    </div><!-- /.content-wrapper -->
+  </div><!-- /.wrapper -->
+  <%- include('../painel-usuario/controlsidebar') %>
+
+  <footer class="main-footer">
+    <%- include('../painel-usuario/footer') %>
+  </footer>
+</div>
+<!-- ./wrapper -->
+<%- include('../painel-usuario/scripts') %>
+</body>
+</html>

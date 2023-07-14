@@ -19,3 +19,13 @@ exports.fazerLogin3 = (req, res, next) => {
 
 }
 
+exports.fazerLogout = async (req, res, next) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.log('Erro ao destruir a sessão:', err);
+            res.redirect('/painel-usuario');
+        } else {
+            res.redirect('/');
+        }
+    });
+}

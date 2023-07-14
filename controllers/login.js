@@ -119,6 +119,9 @@ encerrarSessao(); // Encerrar a sessão
 verificarSessao(); // Verificar se o usuário está logado novamente*/
 
 exports.fazerLogin1 = async (req, res, next) => {
+    /*if(req.session.usuario) {
+        return res.redirect('http://localhost:3000');
+    }*/
     try {
         const usuario = await axios.post('http://localhost:3000/api/usuario/buscar-usuario', {
             email: req.body.email
@@ -139,11 +142,12 @@ exports.fazerLogin1 = async (req, res, next) => {
         if (u != null) {
             //return res.send(JSON.stringify(usuario));
             if (req.body.senha == u.senha) {
-                if(u.foto == null) u.foto = "avatar.jpg";
-                if(u.suspenso == null) u.suspenso = false;
-                if(u.motivo_suspensao == null) u.motivo_suspensao = "";
+                if (u.foto == null) u.foto = "avatar.jpg";
+                if (u.suspenso == null) u.suspenso = false;
+                if (u.motivo_suspensao == null) u.motivo_suspensao = "";
                 req.session.usuario = u;
-                return res.redirect('painel-usuario');
+                res.locals.session = req.session;
+                return res.redirect('/painel-usuario');
             } else {
                 const msg = "Senha do usuário incorreta.";
                 res.locals.msg = msg;
@@ -171,8 +175,4 @@ exports.fazerLogin1 = async (req, res, next) => {
         console.log(err);
         res.json({ msg: "Erro: " + err });
     }
-}
-
-exports.fazerLogout = async (req, res, next) => {
-
 }

@@ -15,7 +15,7 @@ exports.getTodosUsuario = (req, res) => {
 };
 
 exports.getUsuarioPorId = (req, res) => {
-    db.usuario.findByPk(req.params.id).then(
+    db.usuario.findByPk(req.params.id, { include: { all: true, nested: true } }).then(
         (r) => {
             console.log(r);
             res.json(r);
@@ -45,7 +45,7 @@ exports.getUsuarioPorEmail = (req, res) => {
 };
 
 exports.getUsuarioPorEmailForm = (req, res) => {
-    db.usuario.findOne({ where: { email: req.body.email } }).then(
+    db.usuario.findOne({ where: { email: req.body.email }, include: db.publicacao }).then(
         (r) => {
             //console.log(r);
             res.json(r);

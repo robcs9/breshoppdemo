@@ -16,16 +16,17 @@
                 
                 </nav>
             </div>
-            <% if(locals.sess.usuario == null) { %>
+            <%# if(locals.usuario == null) { %>
+            <%# if(locals.session == null) { %>
                 <div class="col-lg-3 mt-4 mb-4">
                     <a href="/login" class="header_entrar btn site-btn">Entrar</a>
                 </div>
-            <% } else { %>
-                <div class="col-sm-1 mt-4 mb-4"><h7>Olá, <%= locals.sess.usuario.nome %></h7></div>
+            <%# } else { %>
+                <!--<div class="col-sm-1 mt-4 mb-4"><h7>Olá, <%#= locals.usuario.nome %></h7></div>-->
                 <div class="col-lg-2 mt-4 mb-4">
-                    <a href="/logout" class="header_entrar btn site-btn">Sair</a>
+                    <a href="/auth/logout" class="header_sair btn site-btn">Sair</a>
                 </div>
-            <% } %>
+            <%# } %>
         <!--<div class="humberger__open">
             <i class="fa fa-bars"></i>
         </div>-->

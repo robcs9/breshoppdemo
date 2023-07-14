@@ -1,0 +1,95 @@
+<div class="row-lg-12">
+    <div class="card">
+        <div class="card-body table-responsive p-0">
+            <table class="table table-striped table-valign-middle">
+                <thead>
+                    <tr class="text-center">
+                        <th>Publicação</th>
+                        <th>Preço</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(elem of usuario.publicacaos) { %>
+                        <tr class="text-center">
+                            <td class="text-left">
+                                <img src="/img/<%= elem.foto.foto1 %>" alt="Product 1" class="img-circle img-size-32 mr-2">
+                                <a href="/publicacao/<%= elem.titulo %>-<%= elem.id %>"><%= elem.titulo %></a>
+                            </td>
+                            <td>R$ <%= elem.preco %></td>
+                            <td>
+                                <%= elem.finalizada %> <!-- alterar campo no model para enum "status" contendo as opções "finalizada, rejeitada, ativa, validando" -->
+                            </td>
+                        </tr>
+                    <% } %>
+                    <tr class="text-center">
+                        <td class="text-left">
+                            <img src="dist/img/airjordan.jpeg" alt="Product 1" class="img-circle img-size-32 mr-2">
+                            <a href="#">Nike Air Jordan</a>
+                            <a href="edit-publication.html">
+                                <span class="btn btn-secondary btn-sm ml-3">Editar</span>
+                            </a>
+                            <span class="btn btn-secondary btn-sm ml-3">Finalizar</span>
+                            <span class="btn btn-danger btn-sm ml-3">Excluir</span>
+                        </td>
+                        <td>Troca</td>
+                        <td>
+                            Validando
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td class="text-left">
+                            <img src="dist/img/petcage.jpg" alt="Product 1" class="img-circle img-size-32 mr-2">
+                            <a href="#">Gaiola para Pet</a>
+                            <a href="edit-publication.html">
+                                <span class="btn btn-primary btn-sm ml-3">Editar</span>
+                            </a>
+                            <span class="btn btn-secondary btn-sm ml-3">Finalizar</span>
+                            <span class="btn btn-danger btn-sm ml-3">Excluir</span>
+                            <span class="btn btn-warning btn-sm ml-3">Motivo</span>
+                        </td>
+                        <td>R$ 200,00</td>
+                        <td class="text-danger">
+                            Rejeitada
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td class="text-left">
+                            <img src="img/product/details/flamethrower1.webp" alt="Product 1"
+                                class="img-circle img-size-32 mr-2">
+                            <a href="details.html">Lança-chamas "Not A Flamethrower"</a>
+                            <a href="edit-publication.html">
+                                <span class="btn btn-primary btn-sm ml-3">Editar</span>
+                            </a>
+                            <span class="btn btn-success btn-sm ml-3">Finalizar</span>
+                            <span class="btn btn-danger btn-sm ml-3">Excluir</span>
+                        </td>
+                        <td>R$ 8350,00</td>
+                        <td class="text-success">
+                            Ativa
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="card card-body row">
+                <div class="col ml-2 mt-2">
+                    <div class="row">
+                        <div class="ml-2">Finalizada <input class="ml-1" type="checkbox"></div>
+                        <div class="ml-2">Ativa <input class="ml-1" type="checkbox"></div>
+                        <div class="ml-2">Rejeitada <input class="ml-1" type="checkbox"></div>
+                        <div class="ml-2">
+                            Validando <input class="ml-1" type="checkbox">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- /.card-body -->
+
+    </div><!-- /.card -->
+    <div class="card-title">
+        <a href="new-publication.html"><button type="button" class="btn btn-success btn-block">
+                <span class="fa fa-plus"> Criar Publicação</span>
+            </button></a>
+    </div>
+</div><!-- /.row -->

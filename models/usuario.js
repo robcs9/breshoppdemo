@@ -34,6 +34,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         foto: {
             type: DataTypes.STRING,
+            defaultValue: "avatar.jpg"
             //allowNull: true
         },
         vendas: {
@@ -48,10 +49,12 @@ module.exports = function (sequelize, DataTypes) {
         },
         suspenso: {
             type: DataTypes.BOOLEAN,
+            defaultValue: false
             //allowNull: false
         },
         motivo_suspensao: {
             type: DataTypes.TEXT,
+            defaultValue: ""
             //allowNull: true
         }
     }, {
