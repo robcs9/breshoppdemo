@@ -8,6 +8,7 @@
 require('dotenv').config();
 const express = require("express");
 const path = require('path');
+const axios = require('axios');
 //const bodyParser = require("body-parser");
 //const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const port = 3000;
@@ -58,22 +59,16 @@ db.sequelize.sync({ force: false, alter: false }).then(
     () => {
         console.log("Sincronização realizada com o BD!");
 
-        // Criando chaves estrangeiras de publicacao
-        //db.sequelize.query(`ALTER TABLE publicacao
-        //                ADD FOREIGN KEY(id_usuario) REFERENCES usuario(id),
-        //                ADD FOREIGN KEY(id_categoria) REFERENCES categoria(id),
-        //                ADD FOREIGN KEY(id_fotos) REFERENCES fotos(id)`).then(
-        //    (resultado) => {
-        //        console.log("Chaves estrangeiras criadas com sucesso.")
-        //    }
-        //).catch(
-        //    (err) => {
-        //        console.log("Falha na criação das chaves estrangeiras. Error: " + err);
-        //    }
-        //);
-
         app.listen(port, () => {
             console.log("Servidor escutando na porta " + port);
+            
+            db.sequelize.query("select * from administrador;").then(
+                (query) => {
+                    popularBase(query);
+                }
+            ).catch(
+                err => console.log('Error: ' + err)
+            )
         });
     }
 ).catch(
@@ -81,3 +76,13 @@ db.sequelize.sync({ force: false, alter: false }).then(
         console.log("Sincronização com o BD falhou. Error: " + err);
     }
 );
+
+const popularBase = async (selectAdmins) => {
+    if(selectAdmins[0].length < 1) {
+        await axios.post('http://localhost:3000/api/admin/popular-admin');
+        await axios.post('http://localhost:3000/api/usuario/popular-usuario');
+        await axios.post('http://localhost:3000/api/categoria/popular-categoria');
+        await axios.post('http://localhost:3000/api/fotos/popular-fotos');
+        await axios.post('http://localhost:3000/api/publicacao/popular-publicacao');
+    }
+}

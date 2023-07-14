@@ -15,7 +15,12 @@ exports.getTodosUsuario = (req, res) => {
 };
 
 exports.getUsuarioPorId = (req, res) => {
-    db.usuario.findByPk(req.params.id, { include: { all: true, nested: true } }).then(
+    /* {include: {all: true, nested: true}} */
+    db.usuario.findByPk(req.params.id, {
+        include: {
+            all: true, nested: true
+        }
+    }).then(
         (r) => {
             console.log(r);
             res.json(r);
