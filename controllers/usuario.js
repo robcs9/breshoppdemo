@@ -162,8 +162,8 @@ exports.excluirUsuario = (req, res) => {
 exports.inserirTodos = (req, res) => {
     db.usuario.bulkCreate(data.usuario).then(
         (r) => {
-            console.log(r);
-            res.send("Usuários inseridos com sucessso");
+            //console.log(r);
+            res.json({ msg: "Usuários inseridos com sucesso" });
         }
     ).catch(
         (err) => {

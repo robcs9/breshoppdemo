@@ -266,7 +266,7 @@ exports.inserirTodos = (req, res) => {
         (r) => {
             //console.log(r);
             //res.send("Publicações inseridas com sucesso");
-            res.json({msg:"Publicações inseridas com sucesso"});
+            res.json({ msg: "Publicações inseridas com sucesso" });
         }
     ).catch(
         (err) => {

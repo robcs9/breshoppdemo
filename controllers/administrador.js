@@ -200,7 +200,7 @@ exports.inserirTodos = (req, res) => {
     db.administrador.bulkCreate(data.administrador).then(
         (r) => {
             //console.log(r);
-            res.send("Administradores inseridos com sucesso.");
+            res.json({ msg: "Administradores inseridos com sucesso" });
         }
     ).catch(
         (err) => {

@@ -79,10 +79,17 @@ db.sequelize.sync({ force: false, alter: false }).then(
 
 const popularBase = async (selectAdmins) => {
     if(selectAdmins[0].length < 1) {
-        await axios.post('http://localhost:3000/api/admin/popular-admin');
-        await axios.post('http://localhost:3000/api/usuario/popular-usuario');
-        await axios.post('http://localhost:3000/api/categoria/popular-categoria');
-        await axios.post('http://localhost:3000/api/fotos/popular-fotos');
-        await axios.post('http://localhost:3000/api/publicacao/popular-publicacao');
+        const r1 = await axios.post('http://localhost:3000/api/admin/popular-admin');
+        const r2 = await axios.post('http://localhost:3000/api/usuario/popular-usuario');
+        const r3 = await axios.post('http://localhost:3000/api/categoria/popular-categoria');
+        const r4 = await axios.post('http://localhost:3000/api/fotos/popular-fotos');
+        const r5 = await axios.post('http://localhost:3000/api/publicacao/popular-publicacao');
+        console.log(
+            r1.data.msg + '\n'+
+            r2.data.msg + '\n'+
+            r3.data.msg + '\n'+
+            r4.data.msg + '\n'+
+            r5.data.msg + '\n'
+        );
     }
 }

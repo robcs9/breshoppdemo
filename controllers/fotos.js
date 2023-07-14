@@ -144,7 +144,7 @@ exports.inserirTodos = (req, res) => {
     db.fotos.bulkCreate(data.fotos).then(
         (r) => {
             //console.log(r);
-            res.send("Fotos inseridas com sucesso");
+            res.json({ msg: "Fotos inseridas com sucesso" });
         }
     ).catch(
         (err) => {

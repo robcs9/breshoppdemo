@@ -201,8 +201,8 @@ exports.limparTodos = (req, res) => {
 exports.inserirTodos = (req, res) => {
     db.categoria.bulkCreate(data.categoria).then(
         (r) => {
-            console.log(r);
-            res.send("Categorias inseridas com sucesso");
+            //console.log(r);
+            res.json({ msg: "Categorias inseridas com sucesso" });
         }
     ).catch(
         (err) => {
