@@ -14,6 +14,7 @@ const axios = require('axios');
 const port = 3000;
 const app = express();
 const db = require("./models");
+const mysql = require('mysql2/promise');
 
 //app.use(express.static('public'));
 app.use(express.static(__dirname + '/public')); // usar /public/ ?
@@ -53,43 +54,72 @@ app.use('/auth', require('./routes/auth'));
 // criar route para o view do painel admin
 
 
+inicializar().then(
+    () => {
+        db.sequelize.sync({ force: false, alter: false }).then(
+            () => {
+                console.log("Sincronização realizada com o BD!");
+        
+                app.listen(port, () => {
+                    console.log("Servidor escutando na porta " + port);
+                    
+                    db.sequelize.query("select * from administrador;").then(
+                        (query) => {
+                            popularBase(query);
+                        }
+                    ).catch(
+                        err => console.log('Error: ' + err)
+                    )
+                });
+            }
+        ).catch(
+            (err) => {
+                console.log("Sincronização com o BD falhou. Error: " + err);
+            }
+        )
+    }
+)
 // Sincronização inicial seguida pela inicialização do servidor
 // Se for realizar rebuild (force) da base, lembrar de fazer DROP FOREIGN KEY previamente para evitar erros.
-db.sequelize.sync({ force: false, alter: false }).then(
-    () => {
-        console.log("Sincronização realizada com o BD!");
-
-        app.listen(port, () => {
-            console.log("Servidor escutando na porta " + port);
-            
-            db.sequelize.query("select * from administrador;").then(
-                (query) => {
-                    popularBase(query);
-                }
-            ).catch(
-                err => console.log('Error: ' + err)
-            )
-        });
-    }
-).catch(
-    (err) => {
-        console.log("Sincronização com o BD falhou. Error: " + err);
-    }
-);
 
 const popularBase = async (selectAdmins) => {
     if(selectAdmins[0].length < 1) {
-        const r1 = await axios.post('http://localhost:3000/api/admin/popular-admin');
-        const r2 = await axios.post('http://localhost:3000/api/usuario/popular-usuario');
-        const r3 = await axios.post('http://localhost:3000/api/categoria/popular-categoria');
-        const r4 = await axios.post('http://localhost:3000/api/fotos/popular-fotos');
-        const r5 = await axios.post('http://localhost:3000/api/publicacao/popular-publicacao');
-        console.log(
-            r1.data.msg + '\n'+
-            r2.data.msg + '\n'+
-            r3.data.msg + '\n'+
-            r4.data.msg + '\n'+
-            r5.data.msg + '\n'
-        );
+        const r = [];
+        r.push(await axios.post('http://localhost:3000/api/admin/popular-admin'));
+        r.push(await axios.post('http://localhost:3000/api/usuario/popular-usuario'));
+        r.push(await axios.post('http://localhost:3000/api/categoria/popular-categoria'));
+        r.push(await axios.post('http://localhost:3000/api/fotos/popular-fotos'));
+        r.push(await axios.post('http://localhost:3000/api/publicacao/popular-publicacao'));
+        for(elem of r) {
+            console.log(elem.data.msg);
+        }
+        //const r1 = await axios.post('http://localhost:3000/api/admin/popular-admin');
+        //const r2 = await axios.post('http://localhost:3000/api/usuario/popular-usuario');
+        //const r3 = await axios.post('http://localhost:3000/api/categoria/popular-categoria');
+        //const r4 = await axios.post('http://localhost:3000/api/fotos/popular-fotos');
+        //const r5 = await axios.post('http://localhost:3000/api/publicacao/popular-publicacao');
+        //console.log(
+        //    r1.data.msg + '\n'+
+        //    r2.data.msg + '\n'+
+        //    r3.data.msg + '\n'+
+        //    r4.data.msg + '\n'+
+        //    r5.data.msg + '\n'
+        //);
+    }
+}
+
+async function inicializar () {
+    try {
+        // const { host, port, user, password, database } = config.database; // implemented with extra security
+        const connection = await mysql.createConnection({
+            host: 'localhost',
+            port: 3306,
+            user: 'breshopp',
+            password: 'breshopp'
+        });
+        const resultado = await connection.query(`CREATE DATABASE IF NOT EXISTS breshopp;`);
+        //console.log('Database "breshopp" foi criado com sucesso.');
+    } catch (err) {
+        console.log("Erro na criação de database: " + err);
     }
 }

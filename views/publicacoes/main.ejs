@@ -13,8 +13,14 @@
                     <% for(elem of usuario.publicacaos) { %>
                         <tr class="text-center">
                             <td class="text-left">
-                                <img src="/img/<%= elem.foto.foto1 %>" alt="Product 1" class="img-circle img-size-32 mr-2">
+                                <img src="/img/<%= elem.foto.foto1 %>" alt="Capa" class="img-circle img-size-32 mr-2">
                                 <a href="/publicacao/<%= elem.titulo %>-<%= elem.id %>"><%= elem.titulo %></a>
+                                <a href="/painel-usuario/editar-publicacao">
+                                    <span class="btn btn-primary btn-sm ml-3">Editar</span>
+                                </a>
+                                <span class="btn btn-secondary btn-sm ml-3">Finalizar</span>
+                                <span class="btn btn-danger btn-sm ml-3">Excluir</span>
+                                <span class="btn btn-warning btn-sm ml-3">Motivo</span>
                             </td>
                             <td>R$ <%= elem.preco %></td>
                             <td>
@@ -22,53 +28,6 @@
                             </td>
                         </tr>
                     <% } %>
-                    <tr class="text-center">
-                        <td class="text-left">
-                            <img src="dist/img/airjordan.jpeg" alt="Product 1" class="img-circle img-size-32 mr-2">
-                            <a href="#">Nike Air Jordan</a>
-                            <a href="edit-publication.html">
-                                <span class="btn btn-secondary btn-sm ml-3">Editar</span>
-                            </a>
-                            <span class="btn btn-secondary btn-sm ml-3">Finalizar</span>
-                            <span class="btn btn-danger btn-sm ml-3">Excluir</span>
-                        </td>
-                        <td>Troca</td>
-                        <td>
-                            Validando
-                        </td>
-                    </tr>
-                    <tr class="text-center">
-                        <td class="text-left">
-                            <img src="dist/img/petcage.jpg" alt="Product 1" class="img-circle img-size-32 mr-2">
-                            <a href="#">Gaiola para Pet</a>
-                            <a href="edit-publication.html">
-                                <span class="btn btn-primary btn-sm ml-3">Editar</span>
-                            </a>
-                            <span class="btn btn-secondary btn-sm ml-3">Finalizar</span>
-                            <span class="btn btn-danger btn-sm ml-3">Excluir</span>
-                            <span class="btn btn-warning btn-sm ml-3">Motivo</span>
-                        </td>
-                        <td>R$ 200,00</td>
-                        <td class="text-danger">
-                            Rejeitada
-                        </td>
-                    </tr>
-                    <tr class="text-center">
-                        <td class="text-left">
-                            <img src="img/product/details/flamethrower1.webp" alt="Product 1"
-                                class="img-circle img-size-32 mr-2">
-                            <a href="details.html">Lança-chamas "Not A Flamethrower"</a>
-                            <a href="edit-publication.html">
-                                <span class="btn btn-primary btn-sm ml-3">Editar</span>
-                            </a>
-                            <span class="btn btn-success btn-sm ml-3">Finalizar</span>
-                            <span class="btn btn-danger btn-sm ml-3">Excluir</span>
-                        </td>
-                        <td>R$ 8350,00</td>
-                        <td class="text-success">
-                            Ativa
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="card card-body row">
@@ -88,7 +47,7 @@
 
     </div><!-- /.card -->
     <div class="card-title">
-        <a href="new-publication.html"><button type="button" class="btn btn-success btn-block">
+        <a href="/painel-usuario/nova-publicacao"><button type="button" class="btn btn-success btn-block">
                 <span class="fa fa-plus"> Criar Publicação</span>
             </button></a>
     </div>
