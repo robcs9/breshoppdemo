@@ -1,15 +1,16 @@
 //multer
 const multer = require("multer");
-const upload = multer({ dest: "/img" });
+const upload = multer({ dest: "public/img/" });
+const axios = require('axios');
 
 // route to be created: router.post("/upload_fotos", upload.array("files"), uploadFotos);
 // route to be created: router.post("/upload_avatar", upload.single("file"), uploadAvatar);
 // Note that the files argument depends on the name of the input specified in formData.
 
 exports.uploadFotos = async (req, res, next) => {
-    console.log(req.body);
-    console.log(req.files);
-    res.json({ msg: "Upload de fotos bem sucedido"});
+  console.log(req.body);
+  console.log(req.files);
+  res.json({ msg: "Upload de fotos bem sucedido" });
 }
 
 /*
@@ -67,12 +68,32 @@ app.post('/stats', upload.single('uploaded_file'), function (req, res) {
  */
 // adicionar urlencodedParser à rota 
 exports.criarPublicacao = async (req, res, next) => {
-    const publicacao = {
-        titulo: req.body.titulo,
-        descricao_produto: req.body.descricao_produto
-    };
-    await axios.post(url, content-type, publicacao);
+  const categoria = await axios.get(`http://localhost:3000/api/categoria/nome/${req.body.categoria}`);
+  //if(req.body.tipo_negociacao == "troca") req.body.preco = 0;
+  const publicacao = {
+    id_usuario: req.session.usuario.data.id,
+    titulo: req.body.titulo,
+    descricao_produto: req.body.descricao_produto,
+    tipo_negociacao: req.body.tipo_negociacao,
+    preco: req.body.preco,
+    id_categoria: req.body.categoria[0].id,
+    descricao_vendedor: req.body.descricao_vendedor,
+    foto: {
+      foto1: req.body.foto1,
+      foto2: req.body.foto2,
+      foto3: req.body.foto3,
+      foto4: req.body.foto4,
+      foto5: req.body.foto5,
+      foto6: req.body.foto6,
+    }
+  };
+  const url = 'http://localhost:3000/api/cadastrar-publicacao';
+  const resultado = await axios.post(url, publicacao, {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  });
 }
 exports.renderNovaPublicacao = (req, res) => {
-    res.render('nova-publicacao');
+  res.render('nova-publicacao');
 }

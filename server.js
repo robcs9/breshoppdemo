@@ -30,7 +30,7 @@ app.use('/api/fotos', require('./routes/fotos'));
 // Session
 const session = require('express-session');
 app.use(session({
-    secret: 'sua_chave_secreta_aqui',
+    secret: 'I-wanna-Be-a-10x-Dev',
     resave: false,
     saveUninitialized: false,
     //store: store,
@@ -93,18 +93,6 @@ const popularBase = async (selectAdmins) => {
         for(elem of r) {
             console.log(elem.data.msg);
         }
-        //const r1 = await axios.post('http://localhost:3000/api/admin/popular-admin');
-        //const r2 = await axios.post('http://localhost:3000/api/usuario/popular-usuario');
-        //const r3 = await axios.post('http://localhost:3000/api/categoria/popular-categoria');
-        //const r4 = await axios.post('http://localhost:3000/api/fotos/popular-fotos');
-        //const r5 = await axios.post('http://localhost:3000/api/publicacao/popular-publicacao');
-        //console.log(
-        //    r1.data.msg + '\n'+
-        //    r2.data.msg + '\n'+
-        //    r3.data.msg + '\n'+
-        //    r4.data.msg + '\n'+
-        //    r5.data.msg + '\n'
-        //);
     }
 }
 

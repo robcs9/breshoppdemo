@@ -96,3 +96,19 @@ exports.getPublicacoesDeUsuario = async (req, res, next) => {
     res.locals.usuario = usuario.data;
     next();
 }
+
+exports.listarCategorias = (req, res, next) => {
+    fetch('http://localhost:3000/api/categoria').then(
+        (data) => data.json()
+    ).then(
+        (data) => {
+            res.locals.categorias = data;
+            /*res.render('home', {
+                categorias: data
+            });*/
+            next();
+        }
+    ).catch(
+        //err => res.render('home', erroCallback(err))
+    );
+}
