@@ -3,8 +3,12 @@ const urlencodedParser = require('body-parser').urlencoded({ extended: false });
 const router = express.Router();
 const controller = require('../controllers/publicacao');
 
+const multer = require('multer');
+const upload = multer({ dest: "public/img/" });
+
 // API
 router.get('/', controller.getTodosPublicacao);
+//router.post('/cadastrar-publicacao', upload.array('fotos', 6), controller.cadastrarPublicacao);
 router.post('/cadastrar-publicacao', urlencodedParser, controller.cadastrarPublicacao);
 router.get('/id/:id', controller.getPublicacaoPorId);
 router.get('/titulo/:titulo', controller.getPublicacaoPorTitulo);

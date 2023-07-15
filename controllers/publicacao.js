@@ -49,6 +49,7 @@ exports.getTodosPublicacao = (req, res) => {
 };*/
 
 exports.cadastrarPublicacao = (req, res) => {
+    if(req.body.tipo_negociacao == "troca") req.body.preco = 0;
     db.publicacao.create(
         {
             //id: req.body.id,

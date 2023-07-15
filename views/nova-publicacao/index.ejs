@@ -1,42 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <%- include('../painel-usuario/head') %>
 </head>
+
 <body class="hold-transition sidebar-mini sidebar-collapse">
   <div class="wrapper">
-    <%- include('../painel-usuario/navbar') %>  
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <%- include('../painel-usuario/sidebar') %>
-    </aside>
+    <%- include('../painel-usuario/navbar') %>
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <%- include('../painel-usuario/sidebar') %>
+      </aside>
 
-  <div class="content-wrapper">
-    <%- include('main') %>
-  </div><!-- /.wrapper -->
-  
+      <div class="content-wrapper">
+        <%- include('main') %>
+      </div><!-- /.wrapper -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <%- include('../painel-usuario/footer') %>
-  </footer>
-</div>
-<!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-<!-- jQuery -->
-<script src="/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/dist/js/adminlte.min.js"></script>
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <%- include('../painel-usuario/footer') %>
+      </footer>
+  </div>
+  <!-- ./wrapper -->
 
-<!-- OPTIONAL SCRIPTS -->
-<!--<script src="plugins/chart.js/Chart.min.js"></script>-->
-<script src="/dist/js/pages/dashboard3.js"></script><!-- ChartJS custom script-->
-<!-- DropZone -->
-<script src="/plugins/dropzone/min/dropzone.min.js"></script>
-<!-- Page specific scripts -->
-<script>
+  <!-- REQUIRED SCRIPTS -->
+  <!-- jQuery -->
+  <script src="/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/dist/js/adminlte.min.js"></script>
+
+  <!-- OPTIONAL SCRIPTS -->
+  <!--<script src="plugins/chart.js/Chart.min.js"></script>-->
+  <script src="/dist/js/pages/dashboard3.js"></script><!-- ChartJS custom script-->
+  <!-- DropZone -->
+  <script src="/plugins/dropzone/min/dropzone.min.js"></script>
+  <!-- Page specific scripts -->
+  <script>
+    /*var previewNode = document.querySelector("#template")
+    previewNode.id = ""
+    var previewTemplate = previewNode.parentNode.innerHTML
+    previewNode.parentNode.removeChild(previewNode)
+
+    var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+      url: "/painel-usuario/nova-publicacao-form", // Set the url
+      thumbnailWidth: 80,
+      thumbnailHeight: 80,
+      parallelUploads: 20,
+      previewTemplate: previewTemplate,
+      //autoQueue: false, // Make sure the files aren't queued until manually added
+      previewsContainer: "#previews", // Define the container to display the previews
+      clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+    });
+    */
+   
+    /*
     // DropzoneJS Demo Code Start
     Dropzone.autoDiscover = false
 
@@ -47,12 +67,12 @@
     previewNode.parentNode.removeChild(previewNode)
 
     var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-        url: "/target-url", // Set the url
+        url: "/painel-usuario/nova-publicacao-form", // Set the url
         thumbnailWidth: 80,
         thumbnailHeight: 80,
         parallelUploads: 20,
         previewTemplate: previewTemplate,
-        autoQueue: false, // Make sure the files aren't queued until manually added
+        //autoQueue: false, // Make sure the files aren't queued until manually added
         previewsContainer: "#previews", // Define the container to display the previews
         clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
     })
@@ -88,7 +108,8 @@
     document.querySelector("#actions .cancel").onclick = function () {
         myDropzone.removeAllFiles(true)
     }
-    // DropzoneJS Demo Code End
-</script>
+    // DropzoneJS Demo Code End*/
+  </script>
 </body>
+
 </html>

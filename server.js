@@ -30,7 +30,7 @@ app.use('/api/fotos', require('./routes/fotos'));
 // Session
 const session = require('express-session');
 app.use(session({
-    secret: 'I-wanna-Be-a-10x-Dev',
+    secret: 'I-Wanna-Be-A-10x-Dev',
     resave: false,
     saveUninitialized: false,
     //store: store,

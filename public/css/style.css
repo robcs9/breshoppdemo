@@ -1710,7 +1710,11 @@ ol {
 }
 
 .product__details__pic__item img {
-	min-width: 100%;
+	object-fit: contain;
+	width: 400px;
+	height: 400px;
+	/*originally*/
+	/*min-width: 100%;*/
 }
 
 .product__details__pic__slider img {
@@ -1718,7 +1722,9 @@ ol {
 }
 
 .product__details__pic__slider.owl-carousel .owl-item img {
+	object-fit: contain;
 	width: auto;
+	height: 200px;
 }
 
 .product__details__text h3 {

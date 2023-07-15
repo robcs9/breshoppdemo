@@ -1,4 +1,4 @@
-<form action="/painel-usuario/nova-publicacao-form" method="post">
+<form action="/painel-usuario/nova-publicacao-form" method="post" enctype="multipart/form-data">
     <div class="card card-outline">
         <div class="card-header">
             <h3 class="card-title">Preencha com os dados da publicação do seu produto</h3>
@@ -25,12 +25,12 @@
                 <input type="text" id="preco" name="preco" class="form-control">
             </div>
             <div class="form-group">
-                <label for="tipo_negociacao">Categoria</label>
+                <label for="id_categoria">Categoria</label>
                 <!-- <select id="tipo_negociacao" name="tipo_negociacao" class="form-control custom-select"> -->
-                <select id="tipo_negociacao" name="tipo_negociacao" multiple class="form-control custom-select">
+                <select id="id_categoria" name="id_categoria" multiple class="form-control custom-select">
                     <option selected="" disabled="">Selecione uma</option>
                     <% for(elem of categorias) { %>
-                        <option id="categoria-<%= elem.id %>" value="<%= elem.nome %>"><%= elem.nome %></option>
+                        <option id="categoria-<%= elem.id %>" value="<%= elem.id %>"><%= elem.nome %></option>
                     <% } %>
                 </select>
             </div>
@@ -46,15 +46,13 @@
         <div class="row">
           <h5 class="ml-3">Imagens</h5>
             <div class="col-md-12">
-                <!--<form action="" method="post" enctype="multipart/form-data">
-                    <input type="file" name="file" />
-                </form>
-                <form action="/profile" method="post" enctype="multipart/form-data">
-                <input type="file" name="avatar" />
-                </form>-->
                 <div class="">
                     <div class="card-body">
-                        <div id="actions" class="row">
+                        <input type="file" name="fotos" multiple required/>
+                        <!--<form action="" method="post" enctype="multipart/form-data">
+                            <input type="file" name="file" />
+                        </form>-->
+                        <!--<div id="actions" class="row">
                             <div class="col-lg-6">
                                 <div class="btn-group w-100">
                                     <span class="btn btn-success col fileinput-button">
@@ -120,7 +118,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <!-- /.card-body -->
                 </div>
