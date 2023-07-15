@@ -1,5 +1,5 @@
 # breshoppdemo
- Site do nosso projeto de PP1 (IFPE-JBG) 
+ Site de projeto da disciplina Projeto e Prática 1 (IFPE-Jaboatão) 
  
  Demo:
 
