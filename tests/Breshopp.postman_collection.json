@@ -4,7 +4,7 @@
 		"name": "Breshopp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "27758719",
-		"_collection_link": "https://restless-capsule-774078.postman.co/workspace/065b265d-92e5-46c5-8b7a-f262a111817f/collection/27758719-6ef3a763-0d36-4f4c-94df-c1043c4b9063?action=share&creator=27758719&source=collection_link"
+		"_collection_link": "https://restless-capsule-774078.postman.co/workspace/Breshopp~065b265d-92e5-46c5-8b7a-f262a111817f/collection/27758719-6ef3a763-0d36-4f4c-94df-c1043c4b9063?action=share&creator=27758719&source=collection_link"
 	},
 	"item": [
 		{
@@ -42,7 +42,7 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "admin3@example.com",
+									"value": "claudiapereira@gmail.com",
 									"type": "default"
 								}
 							]
@@ -406,7 +406,8 @@
 								{
 									"key": "id",
 									"value": "5",
-									"type": "default"
+									"type": "default",
+									"disabled": true
 								}
 							]
 						},
@@ -428,24 +429,21 @@
 				},
 				{
 					"name": "Buscar Usuario Por Email",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "admin3@example.com",
+									"value": "daviferreira@gmail.com",
 									"type": "default"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/api/usuario/email/bryanluna@example.com",
+							"raw": "localhost:3000/api/usuario/buscar-usuario",
 							"host": [
 								"localhost"
 							],
@@ -453,8 +451,7 @@
 							"path": [
 								"api",
 								"usuario",
-								"email",
-								"bryanluna@example.com"
+								"buscar-usuario"
 							]
 						}
 					},
@@ -705,7 +702,7 @@
 								},
 								{
 									"key": "id_usuario",
-									"value": "20",
+									"value": "2",
 									"type": "text"
 								},
 								{
@@ -741,6 +738,17 @@
 								{
 									"key": "id_fotos",
 									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "foto1",
+									"value": "f1.jpg",
+									"type": "text"
+								},
+								{
+									"key": "foto2",
+									"value": "f2.jpg",
 									"type": "text"
 								}
 							]
@@ -797,6 +805,31 @@
 								"publicacao",
 								"titulo",
 								"tituloqualquer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Publicacao Fuzzy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/publicacao?q=saia",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"publicacao"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "saia"
+								}
 							]
 						}
 					},
@@ -1035,6 +1068,26 @@
 					"response": []
 				},
 				{
+					"name": "Buscar Publicacoes da Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/categoria/5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categoria",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Cadastrar Categoria",
 					"request": {
 						"method": "POST",
@@ -1050,7 +1103,7 @@
 								},
 								{
 									"key": "nome",
-									"value": "Admin11",
+									"value": "Outros",
 									"type": "text"
 								}
 							]
