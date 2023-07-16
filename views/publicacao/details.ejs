@@ -11,25 +11,19 @@
                         <div class="owl-stage-outer">
                             <div class="owl-stage"
                                 style="transform: translate3d(-862px, 0px, 0px); transition: all 1.2s ease 0s; width: 1725px;">
-                                <div class="owl-item cloned" style="width: 123.75px; margin-right: 20px;"><img
-                                        data-imgbigurl="/img/<%= fotos.foto1 %>"
-                                        src="/img/<%= fotos.foto1 %>" alt=""></div>
-                                <div class="owl-item cloned" style="width: 123.75px; margin-right: 20px;"><img
-                                        data-imgbigurl="/img/<%= fotos.foto2 %>"
-                                        src="/img/<%= fotos.foto2 %>" alt=""></div>
-                                <div class="owl-item cloned" style="width: 123.75px; margin-right: 20px;"><img
-                                        data-imgbigurl="/img/<%= fotos.foto3 %>"
-                                        src="/img/<%= fotos.foto3 %>" alt=""></div>
-                                <div class="owl-item cloned" style="width: 123.75px; margin-right: 20px;"><img
-                                        data-imgbigurl="/img/<%= fotos.foto4 %>"
-                                        src="/img/<%= fotos.foto4 %>" alt=""></div>
+                                <% for(elem of Object.entries(fotos)) { %>
+                                    <div class="owl-item cloned" style="width: 123.75px; margin-right: 20px;"><img
+                                        data-imgbigurl="/img/<%= elem[1] %>"
+                                        src="/img/<%= elem[1] %>" alt=""></div>
+                                <% } %>
                             </div>
                         </div>
                         <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span
                                     aria-label="Previous">‹</span></button><button type="button" role="presentation"
                                 class="owl-next"><span aria-label="Next">›</span></button></div>
-                        <div class="owl-dots disabled"><button role="button"
-                                class="owl-dot active"><span></span></button></div>
+                        <div class="owl-dots disabled">
+                            <button role="button" class="owl-dot active"><span></span></button>
+                        </div>
                     </div>
                 </div>
             </div>

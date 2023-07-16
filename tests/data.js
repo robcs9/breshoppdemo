@@ -11,6 +11,37 @@ const data = {
             sobrenome: "Silva",
             email: "zesilva@gmail.com",
             senha: "qualqueruma"
+        },
+        {
+            nome: "Leonardo",
+            sobrenome: "Alves",
+            email: "leoalves1@gmail.com",
+            senha: "anhes!2#"
+        },
+        {
+            nome: "Davinte",
+            sobrenome: "Leo",
+            email: "da20@gmail.com",
+            senha: "senha!2#"
+        },
+        {
+            nome: "Rodrigo",
+            sobrenome: "Santoro",
+            email: "digo032222@gmail.com",
+            senha: "opw2293"
+        },
+        {
+            nome: "Sexta",
+            sobrenome: "Feira",
+            email: "dia623@gmail.com",
+            senha: "pass342*&"
+        },
+        {
+            nome: "Gugu",
+            sobrenome: "pinho",
+            email: "tudkji@gmail.com",
+            senha: "çauassuca"
+
         }
     ],
     usuario: [
@@ -114,7 +145,7 @@ const data = {
         }
     ],
     publicacao: [
-        {   
+        {
             id_categoria: 3,
             id_usuario: 1,
             id_fotos: 1,
@@ -126,7 +157,7 @@ const data = {
             descricao_vendedor:
                 "Sou colecionadora de várias franquias literárias e gosto de fazer bons negócios com os livros mais antigos que tenho ou compro de outros colecionadores. Faço envios para todo o país e meu contato é (77) 98888-0000"
         },
-        {   
+        {
             id_categoria: 2,
             id_usuario: 2,
             id_fotos: 2,
@@ -138,7 +169,7 @@ const data = {
             descricao_vendedor:
                 "Sou vendedora e atuo há mais de 15 anos em moda feminina, sempre de olho nas tendências a fim de proporcionar uma ótima experiência de compra no site. Faço envios para todo o país e meu contato é (77) 98888-6666"
         },
-        {   
+        {
             id_categoria: 4,
             id_usuario: 3,
             id_fotos: 3,
@@ -150,7 +181,7 @@ const data = {
             descricao_vendedor:
                 "Sou Davi Ferreira, atuo com vendas de DVDs de filmes clássicos. Faço envios para todo o Brasil, meu contato é (77) 98888-0000"
         },
-        {   
+        {
             id_categoria: 5,
             id_usuario: 4,
             id_fotos: 4,
@@ -162,7 +193,7 @@ const data = {
             descricao_vendedor:
                 "Vendedora Patrícia Silva, atuo com vendas de artigos esportivos. Faço envios para todo o Brasil e meu contato é (77) 98888-7777"
         },
-        {   
+        {
             id_categoria: 6,
             id_usuario: 5,
             id_fotos: 5,
@@ -174,7 +205,7 @@ const data = {
             descricao_vendedor:
                 "Vendedor Luiz Barros, atuo há mais de 20 anos no ramo de ferramentas e construção, sempre à disposição para proporcionar uma ótima experiência de compra. Faço envios para todo o país e meu contato é (77) 98888-4444"
         },
-        {   
+        {
             id_categoria: 6,
             id_usuario: 6,
             id_fotos: 6,
@@ -184,7 +215,7 @@ const data = {
             descricao_produto: "Kit 3 Tesouras Profissionais + Navalha + Estojo P/ Barbeiro - Dourado.",
             descricao_vendedor: "Vendedor  João Garcia, vendo materiais de barbearia profissional, sempre a disposição a fim de proporcionar uma excelente experiência de compra. Faço envios para todo o Brasil e meu contato é (77) 98888-2222"
         },
-        {   
+        {
             id_categoria: 3,
             id_usuario: 7,
             id_fotos: 7,
@@ -223,7 +254,7 @@ const data = {
         {
             foto1: "61k1irEbsdL.jpeg",
             foto2: "91rpwMrMAvL.jpeg",
-            
+
         },
         {
             foto1: "bola_futebl1_.jpg",
@@ -246,13 +277,13 @@ const data = {
         {
             foto1: "livro.jpg",
             foto2: "livro2.jpg"
-            
+
         },
         {
             foto1: "blusa1.jpg",
             foto2: "blusa2.jpg",
             foto3: "blusa3.jpg",
-            
+
         }
     ]
 };

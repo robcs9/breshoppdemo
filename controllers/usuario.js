@@ -4,7 +4,7 @@ const { erroCallback } = require('../utils/erroCallback')
 exports.getTodosUsuario = (req, res) => {
     db.usuario.findAll().then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -22,7 +22,7 @@ exports.getUsuarioPorId = (req, res) => {
         }
     }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -39,7 +39,7 @@ exports.getUsuarioPorEmail = (req, res) => {
         }
     }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -80,7 +80,7 @@ exports.cadastrarUsuario = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Usuário cadastrado com sucesso");
         }
     ).catch(
@@ -111,7 +111,7 @@ exports.setUsuario = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Usuário atualizado com sucesso");
         }
     ).catch(
@@ -130,7 +130,7 @@ exports.finalizarPublicacao = (req, res) => {
         }
     }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Publicação finalizada com sucesso");
         }
     ).catch(
@@ -149,7 +149,7 @@ exports.excluirUsuario = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Usuário excluído com sucesso");
         }
     ).catch(
@@ -181,7 +181,7 @@ exports.limparTodos = (req, res) => {
                 }
             ).then(
                 (r) => {
-                    console.log(r);
+                    //console.log(r);
                     res.send("Usuários excluídos com sucesso");
                 }
             ).catch(
@@ -206,7 +206,7 @@ exports.recriarTabela = (req, res) => {
         () => {
             db.usuario.sync({ force: true }).then(
                 (r) => {
-                    console.log(r);
+                    //console.log(r);
                     res.send("Tabela usuario recriada com sucesso");
                 }
             ).catch(
@@ -229,7 +229,7 @@ exports.recriarTabela = (req, res) => {
 exports.alterarTabela = (req, res) => {
     db.usuario.sync({ alter: true }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Tabela usuário alterada com sucesso");
         }
     ).catch(

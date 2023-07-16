@@ -2,24 +2,21 @@
 // app.use(express.urlencoded({ extended: true }));
 // handling JSON requests
 // app.use(express.json());
-//const md5 = require("md5");
 //const lib = require("./lib/");
 
 require('dotenv').config();
 const express = require("express");
 const path = require('path');
 const axios = require('axios');
-//const bodyParser = require("body-parser");
-//const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const port = 3000;
 const app = express();
 const db = require("./models");
 const mysql = require('mysql2/promise');
 
-//app.use(express.static('public'));
-app.use(express.static(__dirname + '/public')); // usar /public/ ?
+app.use(express.static(__dirname + '/public'));
 //app.use(express.static(path.join(__dirname, '/public')));
 //app.use('/', express.static(path.join(__dirname, '/public')))
+
 // APIs
 app.use('/api/admin', require('./routes/administrador'));
 app.use('/api/usuario', require('./routes/usuario'));
@@ -50,9 +47,9 @@ app.use('/registro', require('./routes/registro'));
 app.use('/', require('./routes/home'));
 app.use('/publicacao', require('./routes/tela-publicacao'));
 app.use('/painel-usuario', require('./routes/painel-usuario'));
-app.use('/auth', require('./routes/auth'));
-// criar route para o view do painel admin
+//app.use('/painel-admin', require('./routes/painel-admin'));
 
+app.use('/auth', require('./routes/auth'));
 
 inicializar().then(
     () => {
@@ -111,3 +108,14 @@ async function inicializar () {
         console.log("Erro na criação de database: " + err);
     }
 }
+
+//404 Errors
+app.use(function(req,res){
+    res.status(404).render('404');
+});
+
+//500 Errors
+app.use(function(error,req,res,next){
+    console.log(error);
+    res.status(500).render('500');
+});

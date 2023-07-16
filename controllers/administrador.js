@@ -17,7 +17,7 @@ exports.getTodosAdmins = (req, res) => {
 exports.getAdminPorId = (req, res) => {
     db.administrador.findByPk(req.params.id).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -30,7 +30,7 @@ exports.getAdminPorId = (req, res) => {
 exports.getAdminIdPorEmail = (req, res) => {
     db.administrador.findOne({ where: { email: req.params.email } }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(

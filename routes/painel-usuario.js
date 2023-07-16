@@ -4,6 +4,8 @@ const router = express.Router();
 const controller = require('../controllers/painel-usuario');
 const novaPublicacaoController = require('../controllers/nova-publicacao');
 const auth = require('../controllers/auth');
+const multer = require("multer");
+const upload = multer({ dest: "public/img/" });
 
 router.get('/', controller.autenticarUsuario, controller.getUsuario, controller.crumbsInicio, controller.renderPainelUsuario);
 // implementar controller.atualizarPerfil
@@ -14,13 +16,8 @@ router.get('/nova-publicacao', controller.autenticarUsuario, controller.getUsuar
 // Forms com uploads
 // route to be created: router.post("/upload_fotos", upload.array("files"), uploadFotos);
 // route to be created: router.post("/upload_avatar", upload.single("file"), uploadAvatar);
-// Note that the files argument depends on the name of the input specified in formData.
-const multer = require("multer");
-const upload = multer({ dest: "public/img/" });
-router.post('/nova-publicacao-form', auth.autenticarUsuario, upload.array('fotos', 6), novaPublicacaoController.criarPublicacao); // multer, uploadFotos
-//router.post('/upload', file.multiple, novaPublicacaoController.criarPublicacao)
-
-//router.post('/atualizar-perfil', controller.atualizarPerfil);
+router.post('/nova-publicacao-form', auth.autenticarUsuario, upload.array('fotos', 6), novaPublicacaoController.criarPublicacao);
+//router.post('/atualizar-perfil-form', auth.autenticarUsuario, upload.single('avatar'), controller.atualizarPerfil);
 //router.get('/editar-publicacao/:id', controller.crumbsEditarPublicacao, controller.renderEditarPublicacao);
 
 module.exports = router;

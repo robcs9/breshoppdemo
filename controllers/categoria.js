@@ -4,7 +4,7 @@ const { erroCallback } = require("../utils/erroCallback");
 exports.getTodosCategoria = (req, res) => {
     db.categoria.findAll().then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -22,7 +22,7 @@ exports.cadastrarCategoria = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Categoria cadastrada com sucesso.");
         }
     ).catch(
@@ -35,7 +35,7 @@ exports.cadastrarCategoria = (req, res) => {
 exports.getCategoriaPorId = (req, res) => {
     db.categoria.findByPk(req.params.id).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -52,7 +52,7 @@ exports.getCategoriaPorNome = (req, res) => {
         }
     }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -70,7 +70,7 @@ exports.getPublicacoesDaCategoria = (req, res) => {
         }
     }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -126,7 +126,7 @@ exports.excluirCategoria = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Categoria excluída com sucesso");
         }
     ).catch(
@@ -146,7 +146,7 @@ exports.setCategoria = (req, res) => {
         }
     }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Categoria atualizada com sucesso.");
         }
     ).catch(
@@ -165,7 +165,7 @@ exports.limparTodos = (req, res) => {
                 }
             ).then(
                 (r) => {
-                    console.log(r);
+                    //console.log(r);
                     res.send("Categorias excluídas com sucesso");
                 }
             ).catch(
@@ -216,7 +216,7 @@ exports.recriarTabela = (req, res) => {
         () => {
             db.categoria.sync({ force: true }).then(
                 (r) => {
-                    console.log(r);
+                    //console.log(r);
                     res.send("Tabela categoria recriada com sucesso");
                 }
             ).catch(
@@ -239,7 +239,7 @@ exports.recriarTabela = (req, res) => {
 exports.alterarTabela = (req, res) => {
     db.categoria.sync({ alter: true }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Tabela categoria alterada com sucesso");
         }
     ).catch(

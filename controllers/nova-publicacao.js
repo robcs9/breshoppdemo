@@ -15,7 +15,7 @@ exports.criarPublicacao = async (req, res, next) => {
     if (req.files[i] != null) {
       foto['foto' + (i + 1)] = req.files[i].filename;
     } else {
-      foto['foto' + (i + 1)] = '';
+      foto['foto' + (i + 1)] = 'default-image.png';
     }
   }
   const publicacao = {
@@ -33,27 +33,24 @@ exports.criarPublicacao = async (req, res, next) => {
     foto5: foto.foto5,
     foto6: foto.foto6,
   };
-  
+
   const url = 'http://localhost:3000/api/publicacao/cadastrar-publicacao';
-  /*axios.post(url, publicacao, {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  }).then(
-    resultado => { return res.send(resultado.data) }
-  ).catch(
-    err => console.log("Erro durante Axios POST: " + err)
-  );*/
-  
-  
+
   try {
     const resultado = await axios.post(url, publicacao, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     });
-    console.log('Publicação criada com sucesso!\n' + resultado.data);
-    res.redirect('/painel-usuario/publicacoes');
+    if (resultado.data.status == 200) {
+      console.log('Publicação criada com sucesso!\n' + resultado.data);
+      res.redirect('/painel-usuario/publicacoes');
+    } else {
+      console.log('Falha na criação.\nErro: ' + err);
+      res.redirect('/painel-usuario/nova-publicacao');
+    }
+    //console.log('Publicação criada com sucesso!\n' + resultado.data);
+    //res.redirect('/painel-usuario/publicacoes');
   } catch (err) {
     console.log('Falha na criação da publicação.\nErro: ' + err);
     res.redirect('/painel-usuario/nova-publicacao');

@@ -4,7 +4,7 @@ const { erroCallback } = require('../utils/erroCallback')
 exports.getFotosById = (req, res) => {
     db.fotos.findByPk(req.params.id).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -19,7 +19,7 @@ exports.getFotosById = (req, res) => {
 exports.getTodosFotos = (req, res) => {
     db.fotos.findAll().then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.json(r);
         }
     ).catch(
@@ -42,7 +42,7 @@ exports.cadastrarFotos = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Foto(s) cadastradas com sucesso");
         }
     ).catch(
@@ -68,7 +68,7 @@ exports.setFotos = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Foto(s) atualizadas com sucesso");
         }
     ).catch(
@@ -87,7 +87,7 @@ exports.excluirFotos = (req, res) => {
         }
     ).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Foto(s) excluídas com sucessso");
         }
     ).catch(
@@ -106,7 +106,7 @@ exports.limparTodos = (req, res) => {
                 }
             ).then(
                 (r) => {
-                    console.log(r);
+                    //console.log(r);
                     res.send("Todas as fotos excluídas com sucesso");
                 }
             ).catch(
@@ -158,7 +158,7 @@ exports.recriarTabela = (req, res) => {
         () => {
             db.fotos.sync({ force: true }).then(
                 (r) => {
-                    console.log(r);
+                    //console.log(r);
                     res.send("Tabela fotos recriada com sucesso");
                 }
             ).catch(
@@ -182,7 +182,7 @@ exports.recriarTabela = (req, res) => {
 exports.alterarTabela = (req, res) => {
     db.fotos.sync({ alter: true }).then(
         (r) => {
-            console.log(r);
+            //console.log(r);
             res.send("Tabela fotos alterada com sucesso");
         }
     ).catch(
