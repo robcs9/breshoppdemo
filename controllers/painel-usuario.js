@@ -139,7 +139,11 @@ exports.atualizarPerfil = async (req, res, next) => {
         //if (resultado.data != null) {
         if (resultado.status == 200) {
             console.log('Perfil atualizado com sucesso');
-            // destruir sessão
+            req.session.destroy(
+                (err) => {
+                    console.log("Tentativa de destruir a sessão do usuário. Erro: " + err);
+                }
+            );
         } else {
             console.log('Falha na atualização do Perfil.\n' + resultado);
         }

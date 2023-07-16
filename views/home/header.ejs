@@ -11,17 +11,17 @@
                     <ul>
                         <li><a href="/painel-usuario/nova-publicacao">Vender/Trocar</a>
                         </li><li><a href="/painel-usuario">Painel Usuário</a></li>
-                        <a href="/auth/logout" class="header_sair btn site-btn"><li>Sair</li></a>
                         <!--<li><a href="/painel-admin">Painel Admin</a></li>-->
                     </ul>
-                
                 </nav>
             </div>
-            <%# if(locals.usuario == null) { %>
-            <%# if(locals.session == null) { %>
-                <div class="col-lg-3 mt-4 mb-4">
+            <div class="col-lg-3 mt-4 mb-4">
+                <% if(locals.session && locals.session.usuario != null) { %>
+                    <a href="/auth/logout" class="header_sair btn site-btn">Sair</a>
+                <% } else { %>
                     <a href="/login" class="header_entrar btn site-btn">Entrar</a>
-                </div>
+                <% } %>
+            </div>
             <%# } else { %>
                 <!--<div class="col-sm-1 mt-4 mb-4"><h7>Olá, <%#= locals.usuario.nome %></h7></div>-->
                 

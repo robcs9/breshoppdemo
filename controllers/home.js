@@ -135,7 +135,7 @@ exports.exibirResultadoBusca = async (req, res, next) => {
 }
 
 exports.checarAutenticacao = (req, res, next) => {
-    //return res.json(req.session)
-    res.locals.sess = req.session;
+    res.locals.session = req.session;
+    //return res.json(res.locals);
     next();
 }

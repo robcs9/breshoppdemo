@@ -147,7 +147,9 @@ exports.fazerLogin1 = async (req, res, next) => {
                 if (u.motivo_suspensao == null) u.motivo_suspensao = "";
                 req.session.usuario = u;
                 res.locals.session = req.session;
-                return res.redirect('/painel-usuario');
+                return res.redirect('..');
+                //return res.redirect('back');
+                //return res.redirect('/painel-usuario');
             } else {
                 const msg = "Senha do usuário incorreta.";
                 res.locals.msg = msg;

@@ -3,6 +3,7 @@
 exports.autenticarUsuario = (req, res, next) => {
     if(req.session.usuario) {
         console.log("Bem vindo " + req.session.usuario.nome);
+        res.locals.session = req.session;
         next();
     } else {
         console.log("Faça login para acessar esta área do site");
@@ -28,4 +29,10 @@ exports.fazerLogout = async (req, res, next) => {
             res.redirect('/');
         }
     });
+}
+
+exports.checarAutenticacao = (req, res, next) => {
+    res.locals.session = req.session;
+    //return res.json(res.locals);
+    next();
 }
