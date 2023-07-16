@@ -112,3 +112,16 @@ exports.listarCategorias = (req, res, next) => {
         //err => res.render('home', erroCallback(err))
     );
 }
+
+exports.atualizarPerfil = async (req, res, next) => {
+    //for(elem of Object.entries(req.body)) {}
+    const perfilAtualizado = req.body;
+    return res.json(perfilAtualizado);
+    const resultado = await axios.patch(url, perfilAtualizado);
+    if(resultado.data != null) {
+        console.log('Perfil atualizado com sucesso')
+    } else {
+        console.log('Perfil não atualizado.\n' + resultado);
+    }
+    res.redirect('/painel-usuario/perfil')
+}

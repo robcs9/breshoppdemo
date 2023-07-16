@@ -17,7 +17,7 @@ router.get('/nova-publicacao', controller.autenticarUsuario, controller.getUsuar
 // route to be created: router.post("/upload_fotos", upload.array("files"), uploadFotos);
 // route to be created: router.post("/upload_avatar", upload.single("file"), uploadAvatar);
 router.post('/nova-publicacao-form', auth.autenticarUsuario, upload.array('fotos', 6), novaPublicacaoController.criarPublicacao);
-//router.post('/atualizar-perfil-form', auth.autenticarUsuario, upload.single('avatar'), controller.atualizarPerfil);
+router.post('/atualizar-perfil-form', auth.autenticarUsuario, upload.single('avatar'), controller.atualizarPerfil);
 //router.get('/editar-publicacao/:id', controller.crumbsEditarPublicacao, controller.renderEditarPublicacao);
 
 module.exports = router;

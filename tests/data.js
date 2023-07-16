@@ -120,33 +120,81 @@ const data = {
     ],
     categoria: [
         {
-            nome: "outros"
+            nome: "Agro"
         },
         {
-            nome: "roupas"
+            nome: "Animais"
         },
         {
-            nome: "livros"
+            nome: "Antiguidade e Coleções"
         },
         {
-            nome: "dvd"
+            nome: "Arte"
         },
         {
-            nome: "esportes"
+            nome: "Automotivo"
         },
         {
-            nome: "ferramentas e construcao"
+            nome: "Bebês"
         },
         {
-            nome: "beleza"
+            nome: "Beleza"
         },
         {
-            nome: "roupas esportivas"
+            nome: "Bolsas"
+        },
+        {
+            nome: "Brinquedos"
+        },
+        {
+            nome: "Calçados"
+        },
+        {
+            nome: "Casa"
+        },
+        {
+            nome: "Eletrodomésticos"
+        },
+        {
+            nome: "Eletrônicos"
+        },
+        {
+            nome: "Esportes e Fitness"
+        },
+        {
+            nome: "Ferramentas e Construção"
+        },
+        {
+            nome: "Filmes e Seriados"
+        },
+        {
+            nome: "Fotografia"
+        },
+        {
+            nome: "Jogos"
+        },
+        {
+            nome: "Joias"
+        },
+        {
+            nome: "Livros"
+        },
+        {
+            nome: "Moda"
+        },
+        {
+            nome: "Música e Instrumentos"
+        },
+        {
+            nome: "Outros"
+        },
+        {
+            nome: "Saúde"
         }
     ],
     publicacao: [
         {
-            id_categoria: 3,
+            id_categoria: 20,
             id_usuario: 1,
             id_fotos: 1,
             titulo: "Box de Livros Percy Jackson",
@@ -158,7 +206,7 @@ const data = {
                 "Sou colecionadora de várias franquias literárias e gosto de fazer bons negócios com os livros mais antigos que tenho ou compro de outros colecionadores. Faço envios para todo o país e meu contato é (77) 98888-0000"
         },
         {
-            id_categoria: 2,
+            id_categoria: 21,
             id_usuario: 2,
             id_fotos: 2,
             titulo: "Vestido feminino",
@@ -170,10 +218,10 @@ const data = {
                 "Sou vendedora e atuo há mais de 15 anos em moda feminina, sempre de olho nas tendências a fim de proporcionar uma ótima experiência de compra no site. Faço envios para todo o país e meu contato é (77) 98888-6666"
         },
         {
-            id_categoria: 4,
+            id_categoria: 16,
             id_usuario: 3,
             id_fotos: 3,
-            titulo: "Dvd Star Wars A Nova Trilogia",
+            titulo: "DVD Star Wars A Nova Trilogia",
             tipo_negociacao: "venda",
             preco: 40,
             descricao_produto:
@@ -182,7 +230,7 @@ const data = {
                 "Sou Davi Ferreira, atuo com vendas de DVDs de filmes clássicos. Faço envios para todo o Brasil, meu contato é (77) 98888-0000"
         },
         {
-            id_categoria: 5,
+            id_categoria: 14,
             id_usuario: 4,
             id_fotos: 4,
             titulo: "Bola de futebol",
@@ -194,7 +242,7 @@ const data = {
                 "Vendedora Patrícia Silva, atuo com vendas de artigos esportivos. Faço envios para todo o Brasil e meu contato é (77) 98888-7777"
         },
         {
-            id_categoria: 6,
+            id_categoria: 15,
             id_usuario: 5,
             id_fotos: 5,
             titulo: "Maleta de ferramentas",
@@ -206,7 +254,7 @@ const data = {
                 "Vendedor Luiz Barros, atuo há mais de 20 anos no ramo de ferramentas e construção, sempre à disposição para proporcionar uma ótima experiência de compra. Faço envios para todo o país e meu contato é (77) 98888-4444"
         },
         {
-            id_categoria: 6,
+            id_categoria: 23,
             id_usuario: 6,
             id_fotos: 6,
             titulo: "Tesouras profissionais",
@@ -216,7 +264,7 @@ const data = {
             descricao_vendedor: "Vendedor  João Garcia, vendo materiais de barbearia profissional, sempre a disposição a fim de proporcionar uma excelente experiência de compra. Faço envios para todo o Brasil e meu contato é (77) 98888-2222"
         },
         {
-            id_categoria: 3,
+            id_categoria: 20,
             id_usuario: 7,
             id_fotos: 7,
             titulo: "Livro de direito",
@@ -226,7 +274,7 @@ const data = {
             descricao_vendedor: "Vendedor  Marcos Moraes, vendo livros acadêmicos usados. Faço envios para todo o Brasil e meu contato é (77) 90000-2222"
         },
         {
-            id_categoria: 8,
+            id_categoria: 21,
             id_usuario: 8,
             id_fotos: 8,
             titulo: "Camiseta fitness",
@@ -236,7 +284,49 @@ const data = {
                 "Blusa Camiseta Fitness Feminina Caminhada Academia Treino.",
             descricao_vendedor:
                 "Vendedora Maria Costa, vendo vestuários esportivos. Faço envios para todo o Brasil e meu contato é (77) 98888-3333"
-        }
+        },
+        {
+            id_categoria: 6,
+            id_usuario: 1,
+            id_fotos: 9,
+            titulo: "bebe conforto",
+            tipo_negociacao: "venda",
+            preco: 200,
+            descricao_produto: "Comprei mas tinha ganho outra está nova nunca foi usada ainda está na caixa.",
+            descricao_vendedor: "Retirada em minha residência(moro  em rua 12 ,36 areias ,Recife ,Pe - meu fone (81) 999557519"
+        },
+        {
+            id_categoria: 22,
+            id_usuario: 2,
+            id_fotos: 10,
+            titulo: "violao",
+            tipo_negociacao: "venda",
+            preco: 150,
+            descricao_produto: "violão gianini .",
+            descricao_vendedor:  "pouco uso, braço reto fone (81)998653214"
+        },
+        {   
+            id_categoria: 21,
+            id_usuario: 3,
+            id_fotos: 11,
+            titulo: "blusa pp",
+            tipo_negociacao: "venda",
+            preco: 15,
+            descricao_produto: " blusa linha preta pp.",
+            descricao_vendedor:  "pouco usada fone (81)96545623"
+        },
+        {
+            id_categoria: 10,
+            id_usuario: 4,
+            id_fotos: 12,
+            titulo: "bota cano alto",
+            tipo_negociacao: "venda",
+            preco: 60,
+            descricao_produto: "bota tamanho 36 marrom .",
+            descricao_vendedor:  "seminova fone (81)92658945"
+        },
+
+
     ],
     fotos: [
         {
@@ -284,7 +374,24 @@ const data = {
             foto2: "blusa2.jpg",
             foto3: "blusa3.jpg",
 
-        }
+        },
+        {
+            foto1: "61qP3LJx53S._AC_SL1100_.jpg",
+            foto2: "517zNDTB6hS._AC_SL1100_.jpg",
+            foto3: "616lwoOJXGS._AC_SL1100_.jpg"
+        },
+        {
+            foto1: "233329140663699.webp",
+            
+        },
+        {
+            foto1: "img_1647_20.jpg",
+            foto2:"img_3299_24.jpg"
+        },
+        {
+            foto1: "O01-1783-138_zoom1.webp",
+        },
+
     ]
 };
 

@@ -42,11 +42,11 @@ exports.criarPublicacao = async (req, res, next) => {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     });
-    if (resultado.data.status == 200) {
+    if (resultado.status == 200) {
       console.log('Publicação criada com sucesso!\n' + resultado.data);
       res.redirect('/painel-usuario/publicacoes');
     } else {
-      console.log('Falha na criação.\nErro: ' + err);
+      console.log('Falha na criação.\nErro: ' + resultado.data);
       res.redirect('/painel-usuario/nova-publicacao');
     }
     //console.log('Publicação criada com sucesso!\n' + resultado.data);
