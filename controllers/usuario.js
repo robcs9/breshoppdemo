@@ -95,7 +95,7 @@ exports.setUsuario = (req, res) => {
         {
             nome: req.body.nome,
             sobrenome: req.body.sobrenome,
-            //email: req.body.email,
+            email: req.body.email,
             //cpf: req.body.cpf,
             senha: req.body.senha,
             telefone: req.body.telefone,

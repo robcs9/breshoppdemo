@@ -10,8 +10,8 @@ exports.getUsuario = (req, res, next) => {
 exports.crumbsInicio = (req, res, next) => {
     //res.locals.breadcrumb = ["Painel"];
     res.locals.breadcrumb = [
-        {titulo: "Home", rota: "/"},
-        {titulo: "Painel", rota: "/painel-usuario"}
+        { titulo: "Home", rota: "/" },
+        { titulo: "Painel", rota: "/painel-usuario" }
     ];
     next();
 }
@@ -19,9 +19,9 @@ exports.crumbsInicio = (req, res, next) => {
 exports.crumbsPerfil = (req, res, next) => {
     //res.locals.breadcrumb = ["Painel", "Perfil"];
     res.locals.breadcrumb = [
-        {titulo: "Home", rota: "/"},
-        {titulo: "Painel", rota: "/painel-usuario"},
-        {titulo: "Perfil", rota: "/painel-usuario/perfil"}
+        { titulo: "Home", rota: "/" },
+        { titulo: "Painel", rota: "/painel-usuario" },
+        { titulo: "Perfil", rota: "/painel-usuario/perfil" }
     ];
     next();
 }
@@ -29,9 +29,9 @@ exports.crumbsPerfil = (req, res, next) => {
 exports.crumbsPublicacoes = (req, res, next) => {
     //res.locals.breadcrumb = ["Painel", "Publicações"];
     res.locals.breadcrumb = [
-        {titulo: "Home", rota: "/"},
-        {titulo: "Painel", rota: "/painel-usuario"},
-        {titulo: "Publicações", rota: "/painel-usuario/publicacoes"},
+        { titulo: "Home", rota: "/" },
+        { titulo: "Painel", rota: "/painel-usuario" },
+        { titulo: "Publicações", rota: "/painel-usuario/publicacoes" },
     ];
     next();
 }
@@ -39,11 +39,11 @@ exports.crumbsPublicacoes = (req, res, next) => {
 exports.crumbsNovaPublicacao = (req, res, next) => {
     //res.locals.breadcrumb = ["Painel", "Perfil", "Publicações", "Criar Publicação"];
     res.locals.breadcrumb = [
-        {titulo: "Home", rota: "/"},
-        {titulo: "Painel", rota: "/painel-usuario"},
-        {titulo: "Perfil", rota: "/painel-usuario/perfil"},
-        {titulo: "Publicações", rota: "/painel-usuario/publicacoes"},
-        {titulo: "Criar Publicação", rota: "/painel-usuario/nova-publicacao"},
+        { titulo: "Home", rota: "/" },
+        { titulo: "Painel", rota: "/painel-usuario" },
+        { titulo: "Perfil", rota: "/painel-usuario/perfil" },
+        { titulo: "Publicações", rota: "/painel-usuario/publicacoes" },
+        { titulo: "Criar Publicação", rota: "/painel-usuario/nova-publicacao" },
     ];
     next();
 }
@@ -51,17 +51,17 @@ exports.crumbsNovaPublicacao = (req, res, next) => {
 exports.crumbsEditarPublicacao = (req, res, next) => {
     //res.locals.breadcrumb = ["Painel", "Perfil", "Publicações", "Editar Publicação"];
     res.locals.breadcrumb = [
-        {titulo: "Home", rota: "/"},
-        {titulo: "Painel", rota: "/painel-usuario"},
-        {titulo: "Perfil", rota: "/painel-usuario/perfil"},
-        {titulo: "Publicações", rota: "/painel-usuario/publicacoes"},
-        {titulo: "Editar Publicação", rota: "/painel-usuario/editar-publicacao"},
+        { titulo: "Home", rota: "/" },
+        { titulo: "Painel", rota: "/painel-usuario" },
+        { titulo: "Perfil", rota: "/painel-usuario/perfil" },
+        { titulo: "Publicações", rota: "/painel-usuario/publicacoes" },
+        { titulo: "Editar Publicação", rota: "/painel-usuario/editar-publicacao" },
     ];
     next();
 }
 
 exports.autenticarUsuario = (req, res, next) => {
-    if(req.session.usuario) {
+    if (req.session.usuario) {
         console.log("Bem vindo " + req.session.usuario.nome);
         next();
     } else {
@@ -114,14 +114,37 @@ exports.listarCategorias = (req, res, next) => {
 }
 
 exports.atualizarPerfil = async (req, res, next) => {
-    //for(elem of Object.entries(req.body)) {}
-    const perfilAtualizado = req.body;
-    return res.json(perfilAtualizado);
-    const resultado = await axios.patch(url, perfilAtualizado);
-    if(resultado.data != null) {
-        console.log('Perfil atualizado com sucesso')
+    let novoPerfil = {};
+    for (elem of Object.entries(req.body)) {
+        if (elem[1] != "") {
+            if (elem[0] == "confirmacao" && novoPerfil.senha != elem[1]) {
+                delete novoPerfil.senha;
+            } else {
+                novoPerfil[elem[0]] = elem[0] == "telefone" ? parseInt(elem[1]) : elem[1];
+            }
+
+        }
+    }
+    if (req.file != null) novoPerfil.foto = req.file.filename;
+    if (Object.entries(novoPerfil).length > 0) {
+        novoPerfil.id = req.session.usuario.id;
+        // prossiga com a atualização usando API de atualizar usuario
+        const url = 'http://localhost:3000/api/usuario/atualizar-usuario';
+        const headers = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+        const resultado = await axios.patch(url, novoPerfil, headers);
+        //if (resultado.data != null) {
+        if (resultado.status == 200) {
+            console.log('Perfil atualizado com sucesso');
+            // destruir sessão
+        } else {
+            console.log('Falha na atualização do Perfil.\n' + resultado);
+        }
     } else {
-        console.log('Perfil não atualizado.\n' + resultado);
+        console.log("Nenhum dado fornecido para atualização de perfil.")
     }
     res.redirect('/painel-usuario/perfil')
 }
