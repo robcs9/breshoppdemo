@@ -1,283 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <%- include('../head') %>
+  <%- include('../painel-usuario/head') %>
 </head>
 <body class="hold-transition sidebar-mini sidebar-collapse">
   <div class="wrapper">
-    
-    <%- include('../navbar') %>
-  
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="index.html" class="brand-link">
-        <img src="./dist/img/logo.jpg" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Breshopp</span>
-      </a>
-  
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="./dist/img/avatarElon.webp" alt="avatar" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="profile.html" class="d-block">Elon Junior</a>
-          </div>
-        </div>
-  
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-            <!--<li class="nav-item">
-              <a href="history.html" class="nav-link">
-                <i class="nav-icon fas fa-handshake"></i>
-                <p>Criar Publicação</p>
-              </a>
-            </li>-->
-            <li class="nav-item">
-              <a href="user.html" class="nav-link">
-                <i class="nav-icon fa fa-clipboard"></i>
-                <p>Visão Geral</p>
-              </a>
-            </li>
-            <!--<li class="nav-item">
-              <a href="profile.html" class="nav-link">
-                <i class="nav-icon fa fa-user"></i>
-                <p>Perfil e Conta</p>
-              </a>
-            </li>-->
-            <li class="nav-item">
-              <a href="history.html" class="nav-link">
-                <i class="nav-icon fa-sharp fas fa-file"></i>
-                <p>Publicações</p>
-              </a>
-            </li>
-            <!--<li class="nav-item">
-              <a href="history.html" class="nav-link">
-                <i class="nav-icon fas fa-handshake"></i>
-                <p>Negociações</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="user-reports.html" class="nav-link">
-                <i class="nav-icon fas fa-chart-bar"></i>
-                <p>
-                  Relatórios
-                </p>
-              </a>
-            </li>-->
-          </ul>
-        </nav><!-- /.sidebar-menu -->
-      </div><!-- /.sidebar -->
-    </aside>
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Editar Publicação</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="user.html">Painel</a></li>
-              <li class="breadcrumb-item"><a href="history.html">Publicações</a></li>
-              <li class="breadcrumb-item active">Editar Publicação</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div><!-- /.content-header -->
-    <!-- Main Content Begin -->
-    <section>
-      <div class="container">
-          <div class="row">
-              <div class="col">
-                  <div class="card card-outline">
-                      <!-- <div class="card-header">
-                          <h3 class="card-title">Nova Publicação</h3>
-
-                          <div class="card-tools">
-                              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                  <i class="fas fa-minus"></i>
-                              </button>
-                          </div>
-                      </div>-->
-                      <div class="card-header">
-                          <h3 class="card-title">Preencha com os dados da publicação do seu produto</h3>
-                      </div>
-                      <div class="card-body">
-                          <div class="form-group">
-                              <label for="inputName">Título da Publicação</label>
-                              <input type="text" id="inputName" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label for="inputDescription">Descrição</label>
-                              <textarea id="inputDescription" class="form-control" rows="4"></textarea>
-                          </div>
-                          <div class="form-group">
-                              <label for="inputStatus">Tipo de Negociação</label>
-                              <select id="inputStatus" class="form-control custom-select">
-                                  <option selected="" disabled="">Selecione uma</option>
-                                  <option>Venda</option>
-                                  <option>Troca</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <label for="inputClientCompany">Preço ou item(s) de troca desejado(s)</label>
-                              <input type="text" id="inputClientCompany" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label for="inputClientCompany">Categoria(s)</label>
-                              <input type="text" id="inputClientCompany" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label for="inputProjectLeader">Informações do Anunciante</label>
-                              <textarea id="inputProjectLeader" class="form-control" rows="4"
-                                  placeholder="Informações adicionais sobre si mesmo."></textarea>
-                          </div>
-                          <!-- /.form-group-->
-                      </div>
-                      <!-- /.card-body -->
-
-                      <div class="row">
-                        <h5 class="ml-3">Imagens</h5>
-                          <div class="col-md-12">
-                              <div class="">
-                                  <div class="card-body">
-                                      <div id="actions" class="row">
-                                          <div class="col-lg-6">
-                                              <div class="btn-group w-100">
-                                                  <span class="btn btn-success col fileinput-button">
-                                                      <i class="fas fa-plus"></i>
-                                                      <span>Adicionar arquivos</span>
-                                                  </span>
-                                                  <button type="submit" class="btn btn-primary col start">
-                                                      <i class="fas fa-upload"></i>
-                                                      <span>Carregar</span>
-                                                  </button>
-                                                  <button type="reset" class="btn btn-danger col cancel">
-                                                      <i class="fas fa-times-circle"></i>
-                                                      <span>Cancelar</span>
-                                                  </button>
-                                              </div>
-                                          </div>
-                                          <div class="col-lg-6 d-flex align-items-center">
-                                              <div class="fileupload-process w-100">
-                                                  <div id="total-progress" class="progress progress-striped active"
-                                                      role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                                                      aria-valuenow="0">
-                                                      <div class="progress-bar progress-bar-success" style="width:0%;"
-                                                          data-dz-uploadprogress></div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="table table-striped files" id="previews">
-                                          <div id="template" class="row mt-2">
-                                              <div class="col-auto">
-                                                  <span class="preview"><img src="data:," alt=""
-                                                          data-dz-thumbnail /></span>
-                                              </div>
-                                              <div class="col d-flex align-items-center">
-                                                  <p class="mb-0">
-                                                      <span class="lead" data-dz-name></span>
-                                                      (<span data-dz-size></span>)
-                                                  </p>
-                                                  <strong class="error text-danger" data-dz-errormessage></strong>
-                                              </div>
-                                              <div class="col-4 d-flex align-items-center">
-                                                  <div class="progress progress-striped active w-100"
-                                                      role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                                                      aria-valuenow="0">
-                                                      <div class="progress-bar progress-bar-success" style="width:0%;"
-                                                          data-dz-uploadprogress></div>
-                                                  </div>
-                                              </div>
-                                              <div class="col-auto d-flex align-items-center">
-                                                  <div class="btn-group">
-                                                      <button class="btn btn-primary start">
-                                                          <i class="fas fa-upload"></i>
-                                                          <span>Start</span>
-                                                      </button>
-                                                      <button data-dz-remove class="btn btn-warning cancel">
-                                                          <i class="fas fa-times-circle"></i>
-                                                          <span>Cancel</span>
-                                                      </button>
-                                                      <button data-dz-remove class="btn btn-danger delete">
-                                                          <i class="fas fa-trash"></i>
-                                                          <span>Delete</span>
-                                                      </button>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <!-- /.card-body -->
-                              </div>
-                              <!-- /.card -->
-                          </div>
-                      </div>
-                      <!-- /.row -->
-                  </div>
-                  <!-- /.card -->
-                  <div class="row">
-                      <div class="col">
-                          <a href="#" class="btn btn-secondary">Cancelar</a>
-                          <input type="submit" value="Salvar" class="btn btn-success float-right">
-                      </div>
-                  </div> <!-- /.row -->
-              </div> <!-- /.col -->
-          </div> <!-- /.row -->
-      </div> <!-- container -->
-  </section>
-  <!-- Main Content End -->
-  </div><!-- /.wrapper -->
-  <!-- Control Sidebar -->
-  <!--<aside class="control-sidebar control-sidebar-dark">-->
-    <!-- Control sidebar content goes here -->
-    <!--<div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
+    <%- include('../painel-usuario/navbar') %>
+    <%- include('../painel-usuario/sidebar') %>
+    <div class="content-wrapper">
+      <%- include('../painel-usuario/header') %>
+      <%- include('main') %>
+      <%- include('../painel-usuario/footer') %>
     </div>
-  </aside>-->
-  <!-- /.control-sidebar -->
+  </div>
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      &copy; 2023 Breshopp Team
-    </div>
-    <!-- Default to the left -->
-    <strong>Template by <a href="https://adminlte.io">AdminLTE.io</a></strong>
-  </footer>
-</div>
-<!-- ./wrapper -->
+  <!-- REQUIRED SCRIPTS -->
+  <!-- jQuery -->
+  <script src="/public/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/public/dist/js/adminlte.min.js"></script>
 
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-
-<!-- OPTIONAL SCRIPTS -->
-<!--<script src="plugins/chart.js/Chart.min.js"></script>-->
-<script src="dist/js/pages/dashboard3.js"></script><!-- ChartJS custom script-->
-<!-- DropZone -->
-<script src="plugins/dropzone/min/dropzone.min.js"></script>
-<!-- Page specific scripts -->
-<script>
+  <!-- OPTIONAL SCRIPTS -->
+  <!--<script src="plugins/chart.js/Chart.min.js"></script>-->
+  <script src="/public/dist/js/pages/dashboard3.js"></script><!-- ChartJS custom script-->
+  <!-- DropZone -->
+  <script src="/public/plugins/dropzone/min/dropzone.min.js"></script>
+  <!-- Page specific scripts -->
+  <script>
     // DropzoneJS Demo Code Start
     Dropzone.autoDiscover = false
 
@@ -288,48 +40,49 @@
     previewNode.parentNode.removeChild(previewNode)
 
     var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-        url: "/target-url", // Set the url
-        thumbnailWidth: 80,
-        thumbnailHeight: 80,
-        parallelUploads: 20,
-        previewTemplate: previewTemplate,
-        autoQueue: false, // Make sure the files aren't queued until manually added
-        previewsContainer: "#previews", // Define the container to display the previews
-        clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+      url: "/target-url", // Set the url
+      thumbnailWidth: 80,
+      thumbnailHeight: 80,
+      parallelUploads: 20,
+      previewTemplate: previewTemplate,
+      autoQueue: false, // Make sure the files aren't queued until manually added
+      previewsContainer: "#previews", // Define the container to display the previews
+      clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
     })
 
     myDropzone.on("addedfile", function (file) {
-        // Hookup the start button
-        file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file) }
+      // Hookup the start button
+      file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file) }
     })
 
     // Update the total progress bar
     myDropzone.on("totaluploadprogress", function (progress) {
-        document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+      document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
     })
 
     myDropzone.on("sending", function (file) {
-        // Show the total progress bar when upload starts
-        document.querySelector("#total-progress").style.opacity = "1"
-        // And disable the start button
-        file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+      // Show the total progress bar when upload starts
+      document.querySelector("#total-progress").style.opacity = "1"
+      // And disable the start button
+      file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
     })
 
     // Hide the total progress bar when nothing's uploading anymore
     myDropzone.on("queuecomplete", function (progress) {
-        document.querySelector("#total-progress").style.opacity = "0"
+      document.querySelector("#total-progress").style.opacity = "0"
     })
 
     // Setup the buttons for all transfers
     // The "add files" button doesn't need to be setup because the config
     // `clickable` has already been specified.
     document.querySelector("#actions .start").onclick = function () {
-        myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
+      myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
     }
     document.querySelector("#actions .cancel").onclick = function () {
-        myDropzone.removeAllFiles(true)
+      myDropzone.removeAllFiles(true)
     }
     // DropzoneJS Demo Code End
-</script>
+  </script>
 </body>
+
 </html>

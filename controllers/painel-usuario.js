@@ -6,6 +6,27 @@ exports.getUsuario = (req, res, next) => {
     res.locals.usuario = req.session.usuario;
     next();
 }
+
+exports.getPublicacao = (req, res, next) => {
+    if (req.session.usuario.publicacaos != null) {
+        for (elem of req.session.usuario.publicacaos) {
+            if (elem.id == req.params.id) {
+                //publicacao = elem;
+                res.locals.publicacao = elem;
+                return next();
+            }
+        }
+    }
+    console.log('Publicação editável não encontrada');
+    return res.redirect('/painel-usuario/publicacoes');
+    /*if (Object.entries(publicacao) > 0) {
+        res.locals.publicacao = publicacao;
+        next();
+    } else {
+        console.log('Publicação editável não encontrada');
+        res.redirect('/painel-usuario/publicacoes');
+    }*/
+}
 // Breadcrumbs + Título da Tela
 exports.crumbsInicio = (req, res, next) => {
     //res.locals.breadcrumb = ["Painel"];
@@ -91,6 +112,8 @@ exports.renderEditarPublicacao = (req, res) => {
 }
 
 exports.getPublicacoesDeUsuario = async (req, res, next) => {
+    //const url = `http://localhost:3000/api/usuario/id/${res.locals.session.usuario.id}`;
+    //const url = `http://localhost:3000/api/usuario/id/${req.session.usuario.id}`;
     const url = `http://localhost:3000/api/usuario/id/${res.locals.usuario.id}`;
     const usuario = await axios.get(url);
     res.locals.usuario = usuario.data;
@@ -151,4 +174,8 @@ exports.atualizarPerfil = async (req, res, next) => {
         console.log("Nenhum dado fornecido para atualização de perfil.")
     }
     res.redirect('/painel-usuario/perfil')
+}
+
+exports.atualizarPublicacao = async (req, res, next) => {
+    return res.json(req.session.usuario);
 }

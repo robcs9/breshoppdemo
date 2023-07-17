@@ -1,0 +1,77 @@
+<form action="/painel-usuario/editar-publicacao-form" method="post" enctype="multipart/form-data">
+    <div class="card card-outline">
+        <div class="card-header">
+            <h3 class="card-title">Preencha com os dados da publicação do seu produto</h3>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="titulo">Título da Publicação</label>
+                <input type="text" id="titulo" name="titulo" class="form-control" placeholder="<%= locals.publicacao.titulo %>">
+            </div>
+            <div class="form-group">
+                <label for="descricao_produto">Descrição</label>
+                <textarea id="descricao_produto" name="descricao_produto" class="form-control" rows="4" placeholder="<%= locals.publicacao.descricao_produto %>"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="tipo_negociacao">Tipo de Negociação</label>
+                <select id="tipo_negociacao" name="tipo_negociacao" class="form-control custom-select">
+                    <option selected="" disabled="">Selecione uma</option>
+                    <% for(elem of ["venda", "troca"]) { %>
+                        <% if(elem == locals.publicacao.tipo_negociacao) { %>
+                            <option id="<%= elem %>" value="<%= elem %>" selected><%= elem %></option>
+                        <% } else { %>
+                        <option id="<%= elem %>" value="<%= elem %>" ><%= elem %></option>
+                        <% } %>
+                    <% } %>
+                    <!--<option id="venda" value="venda" >Venda</option>
+                    <option id="troca" value="troca">Troca</option>-->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="preco">Preço ou item(s) de troca desejado(s)</label>
+                <input type="text" id="preco" name="preco" class="form-control" pattern="^$|[0-9]{1,3}(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\.[0-9]{2})?|(?:\.[0-9]{3})*(?:,[0-9]{2})?)$" placeholder="<%= locals.publicacao.preco %>">
+            </div>
+            <div class="form-group">
+                <label for="id_categoria">Categoria</label>
+                <!-- <select id="tipo_negociacao" name="tipo_negociacao" class="form-control custom-select"> -->
+                <select id="id_categoria" name="id_categoria" multiple class="form-control custom-select">
+                    <option disabled="">Selecione uma</option>
+                    <% for(elem of categorias) { %>
+                        <% if(elem.id == locals.publicacao.id_categoria) { %>
+                            <option id="categoria-<%= elem.id %>" value="<%= elem.id %>" selected><%= elem.nome %></option>
+                        <% } else { %>
+                            <option id="categoria-<%= elem.id %>" value="<%= elem.id %>"><%= elem.nome %></option>
+                        <% } %>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="descricao_vendedor">Informações do Anunciante</label>
+                <textarea id="descricao_vendedor" name="descricao_vendedor" class="form-control" rows="4"
+                    placeholder="<%= locals.publicacao.descricao_vendedor %>"></textarea>
+            </div>
+            <!-- /.form-group-->
+        </div>
+        <!-- /.card-body -->
+        <div class="row">
+            <h5 class="ml-3">Imagens</h5>
+            <div class="col-md-12">
+                <div class="">
+                    <div class="card-body">
+                        <input type="file" name="fotos" multiple/>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.card -->
+    <div class="row">
+        <div class="col">
+            <!--<a href="#" class="btn btn-secondary">Cancelar</a>-->
+            <input type="submit" value="Salvar" class="btn btn-success float-right">
+        </div>
+    </div> <!-- /.row -->
+</form>

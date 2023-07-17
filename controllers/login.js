@@ -147,7 +147,8 @@ exports.fazerLogin1 = async (req, res, next) => {
                 if (u.motivo_suspensao == null) u.motivo_suspensao = "";
                 req.session.usuario = u;
                 res.locals.session = req.session;
-                return res.redirect('..');
+                return res.redirect('/painel-usuario/publicacoes')
+                //return res.redirect('..');
                 //return res.redirect('back');
                 //return res.redirect('/painel-usuario');
             } else {
@@ -159,7 +160,10 @@ exports.fazerLogin1 = async (req, res, next) => {
         } else if (a != null) {
             if (req.body.senha == a.senha) {
                 req.session.admin = a;
-                return res.redirect('painel-admin');
+                return res.redirect('/');
+                //return res.redirect('/painel-admin');
+                //return res.redirect('back');
+                //return res.redirect('..');
             } else {
                 const msg = "Senha do administrador incorreta.";
                 res.locals.msg = msg;
@@ -174,7 +178,7 @@ exports.fazerLogin1 = async (req, res, next) => {
         }
     }
     catch (err) {
-        console.log(err);
+        //console.log(err);
         res.json({ msg: "Erro: " + err });
     }
 }

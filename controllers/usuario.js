@@ -50,7 +50,7 @@ exports.getUsuarioPorEmail = (req, res) => {
 };
 
 exports.getUsuarioPorEmailForm = (req, res) => {
-    db.usuario.findOne({ where: { email: req.body.email }, include: db.publicacao }).then(
+    db.usuario.findOne({ where: { email: req.body.email }, include: { model: db.publicacao, include: db.fotos } }).then(
         (r) => {
             //console.log(r);
             res.json(r);
