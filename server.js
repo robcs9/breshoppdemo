@@ -96,6 +96,7 @@ const popularBase = async (selectAdmins) => {
 async function inicializar () {
     try {
         // const { host, port, user, password, database } = config.database; // implemented with extra security
+        //const r = await db.sequelize.query('CREATE DATABASE IF NOT EXISTS breshopp;', { raw: true }); // tentar sem mysql/promise connection
         const connection = await mysql.createConnection({
             host: 'localhost',
             port: 3306,
