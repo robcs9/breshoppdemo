@@ -3,11 +3,11 @@ const { Op } = require('sequelize');
 const { erroCallback } = require('../utils/erroCallback');
 
 exports.getTodosPublicacao = (req, res) => {
-    if(req.query.q != null) {
+    if (req.query.q != null) {
         this.buscarPublicacao(req, res);
     } else {
         db.publicacao.findAll(
-            {include: db.fotos}
+            { include: db.fotos }
         ).then(
             (r) => {
                 //console.log(r);
@@ -49,7 +49,7 @@ exports.getTodosPublicacao = (req, res) => {
 };*/
 
 exports.cadastrarPublicacao = (req, res) => {
-    if(req.body.tipo_negociacao == "troca") req.body.preco = 0;
+    if (req.body.tipo_negociacao == "troca") req.body.preco = 0;
     db.publicacao.create(
         {
             //id: req.body.id,
@@ -151,22 +151,34 @@ exports.buscarPublicacao = (req, res) => {
 
 exports.setPublicacao = (req, res) => {
     db.publicacao.update(
-        {
+        {   
             id_categoria: req.body.id_categoria,
             titulo: req.body.titulo,
             tipo_negociacao: req.body.tipo_negociacao,
             preco: req.body.preco,
             descricao_produto: req.body.descricao_produto,
             descricao_vendedor: req.body.descricao_vendedor,
+            //foto: {
+            //    foto1: req.body.foto1,
+            //    foto2: req.body.foto2,
+            //    foto3: req.body.foto3,
+            //    foto4: req.body.foto4,
+            //    foto5: req.body.foto5,
+            //    foto6: req.body.foto6,
+            //},
             //id_fotos:req.body.id_fotos,
             //validada:req.body.validada,
             //finalizada:req.body.finalizada,
             //motivo_rejeicao:req.body.motivo_rejeicao
-        }, {
-        where: {
-            id: req.body.id
+        },
+        {
+            where: {
+                id: req.body.id
+            },
+            //include: {
+            //    models: db.fotos
+            //}
         }
-    }
     ).then(
         (r) => {
             //console.log(r);
