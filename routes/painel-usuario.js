@@ -14,7 +14,7 @@ router.get('/nova-publicacao', controller.autenticarUsuario, controller.getUsuar
 
 router.get('/editar-publicacao/:id', controller.autenticarUsuario, controller.getUsuario, controller.getPublicacao, controller.listarCategorias, controller.crumbsEditarPublicacao, controller.renderEditarPublicacao);
 
-router.delete('/excluir-publicacao/:id', controller.autenticarUsuario, controller.getPublicacao, controller.excluirPublicacao);
+router.get('/excluir-publicacao/:id', controller.autenticarUsuario, controller.getPublicacao, controller.excluirPublicacao);
 
 // Forms com uploads
 router.post('/nova-publicacao-form', auth.autenticarUsuario, upload.array('fotos', 6), novaPublicacaoController.criarPublicacao);

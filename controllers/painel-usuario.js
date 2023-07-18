@@ -275,8 +275,8 @@ exports.atualizarPublicacao = async (req, res) => {
 
 exports.excluirPublicacao = async (req, res) => {
     // autenticar se a id do usuário bate com a chave estrangeira na publicação (já é feito pelo getPublicacao)
-    return res.json('test')
     let url0 = `http://localhost:3000/api/publicacao/id/${req.params.id}`;
+    let url1 = `http://localhost:3000/api/publicacao/excluir-publicacao`;
     const headers = {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -284,17 +284,16 @@ exports.excluirPublicacao = async (req, res) => {
     }
     let publicacao = await axios.get(url0);
     let p = publicacao.data;
+    let id = { id: p.id };
     if(publicacao.status == 200 && req.session.usuario.id == p.id_usuario) {
-        return res.json(p);
+        let d = await axios.post(url1, id, headers);
+        if (d.status == 200) {
+            console.log('Publicação deletada com sucesso');
+        } else {
+            console.log('Falha na deleção da Publicação.\n' + d);
+        }
     } else {
-        return res.send('nothing found')
-    }
-    const url = 'http://localhost:3000/api/publicacao/excluir-publicacao';
-    const resultado = await axios.delete(url, { id: res.locals.publicacao.id }, headers);
-    if (resultado.status == 200) {
-        console.log('Publicação deletada com sucesso');
-    } else {
-        console.log('Falha na deleção da Publicação.\n' + resultado);
+        return res.send('Publicação a deletar não encontrada');
     }
     res.redirect('/painel-usuario/publicacoes');
 }

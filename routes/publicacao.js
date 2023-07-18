@@ -13,7 +13,8 @@ router.post('/cadastrar-publicacao', urlencodedParser, controller.cadastrarPubli
 router.get('/id/:id', controller.getPublicacaoPorId);
 router.get('/titulo/:titulo', controller.getPublicacaoPorTitulo);
 router.patch('/atualizar-publicacao', urlencodedParser, controller.setPublicacao);
-router.delete('/excluir-publicacao', urlencodedParser, controller.excluirPublicacao);
+//router.delete('/excluir-publicacao', urlencodedParser, controller.excluirPublicacao);
+router.post('/excluir-publicacao', urlencodedParser, controller.excluirPublicacao);
 router.delete('/limpar-publicacao', controller.limparTodos);
 router.post('/popular-publicacao', controller.inserirTodos);
 router.put('/recriar-publicacao', controller.recriarTabela);
