@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "breshopp",
-    "password": "breshopp",
+    "username": "aluno",
+    "password": "ifpe2023",
     "database": "breshopp",
     "host": "localhost",
     "dialect": "mysql",
@@ -10,8 +10,8 @@
     }
   },
   "test": {
-    "username": "breshopp",
-    "password": "breshopp",
+    "username": "aluno",
+    "password": "ifpe2023",
     "database": "breshopp",
     "host": "localhost",
     "dialect": "mysql",
@@ -20,8 +20,8 @@
     }
   },
   "production": {
-    "username": "breshopp",
-    "password": "breshopp",
+    "username": "aluno",
+    "password": "ifpe2023",
     "database": "breshopp",
     "host": "localhost",
     "dialect": "mysql",

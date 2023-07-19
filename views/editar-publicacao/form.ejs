@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label for="id_categoria">Categoria</label>
                 <!-- <select id="tipo_negociacao" name="tipo_negociacao" class="form-control custom-select"> -->
-                <select id="id_categoria" name="id_categoria" multiple class="form-control custom-select">
+                <select id="id_categoria" name="id_categoria" class="form-control custom-select">
                     <option disabled="">Selecione uma</option>
                     <% for(elem of categorias) { %>
                         <% if(elem.id == locals.publicacao.id_categoria) { %>

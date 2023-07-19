@@ -100,8 +100,8 @@ async function inicializar () {
         const connection = await mysql.createConnection({
             host: 'localhost',
             port: 3306,
-            user: 'breshopp',
-            password: 'breshopp'
+            user: 'aluno',
+            password: 'ifpe2023'
         });
         const resultado = await connection.query(`CREATE DATABASE IF NOT EXISTS breshopp;`);
         //console.log('Database "breshopp" foi criado com sucesso.');

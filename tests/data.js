@@ -116,7 +116,70 @@ const data = {
             senha: 4444,
             telefone: "77988883333",
             foto: "maria.jpeg"
-        }
+        },
+        {
+            nome: "Lionel Andrés",
+            sobrenome: "Messi",
+            email: "Lionelmessi@hotmail.com",
+            cpf: "87509345821",
+            senha: 87432,
+            telefone: "81987643021",
+            foto: "MessiPerfil.jpg"
+        },
+        {
+            nome: "Elon Reeve",
+            sobrenome: "Musk",
+            email: "elonteslamusk@outlook.com",
+            cpf: "13290748561",
+            senha: 6326423,
+            telefone: "8876342981",
+            foto: "elon-musk.webp"
+        },
+        {
+            nome: "Robyn Rihanna",
+            sobrenome: "Fenty",
+            email: "ririfenty@gmail.com",
+            cpf: "98439213458",
+            senha: 928312,
+            telefone: "8732743897",
+            foto: "rihannaPerfil.jpg"
+        },
+        {
+            nome: "Guccio Rossi",
+            sobrenome: "Gucci",
+            email: "ggeasy21@gmail.com",
+            cpf: "64390821348",
+            senha: 672372,
+            telefone: "8876390234",
+            foto: "Guccio_Gucci.jpg"
+        },
+        {
+            nome: "Jennifer Aniston",
+            sobrenome: "Oliver",
+            email: "jenniaoliver3@gmail.com",
+            cpf: "64890213985",
+            senha: 832321,
+            telefone: "8398623401",
+            foto: "jenniferaniston.jpg"
+        },
+        {
+            nome: "Lúcio Barros",
+            sobrenome: "Gelado",
+            email: "ficafrioai2@gmail.com",
+            cpf: "63982019834",
+            senha: 123300,
+            telefone: "8987325049",
+            foto: "gelado.jpg"
+        },
+        {
+            nome: "Dominic Toretto",
+            sobrenome: "Velossi",
+            email: "domtoretto3@gmail.com",
+            cpf: "53789201983",
+            senha: 399382,
+            telefone: "8187304377",
+            foto: "domtoretto.webp"
+        },
     ],
     categoria: [
         {
@@ -303,9 +366,9 @@ const data = {
             tipo_negociacao: "venda",
             preco: 150,
             descricao_produto: "violão gianini .",
-            descricao_vendedor:  "pouco uso, braço reto fone (81)998653214"
+            descricao_vendedor: "pouco uso, braço reto fone (81)998653214"
         },
-        {   
+        {
             id_categoria: 21,
             id_usuario: 3,
             id_fotos: 11,
@@ -313,7 +376,7 @@ const data = {
             tipo_negociacao: "venda",
             preco: 15,
             descricao_produto: " blusa linha preta pp.",
-            descricao_vendedor:  "pouco usada fone (81)96545623"
+            descricao_vendedor: "pouco usada fone (81)96545623"
         },
         {
             id_categoria: 10,
@@ -323,7 +386,77 @@ const data = {
             tipo_negociacao: "venda",
             preco: 60,
             descricao_produto: "bota tamanho 36 marrom .",
-            descricao_vendedor:  "seminova fone (81)92658945"
+            descricao_vendedor: "seminova fone (81)92658945"
+        },
+        {
+            id_categoria: 14,
+            id_usuario: 5,
+            id_fotos: 13,
+            titulo: "Bola da copa do mundo de 2014",
+            tipo_negociacao: "venda",
+            preco: 200,
+            descricao_produto: "Bola usada na final da copa do mundo,bem conservada e no plástico ainda",
+            descricao_vendedor: "Amante do futebol,e apaixonado por colecionar momentos do futebol,seja através de bolas de futebol até camisa autografadas.Para obter algum produto que eu esteja vendendo é só me ligar,meu número é (81)987643021."
+        },
+        {
+            id_categoria: 13,
+            id_usuario: 5,
+            id_fotos: 14,
+            titulo: "Iphone 8 plus 64gb",
+            tipo_negociacao: "Troca",
+            preco: 0,
+            descricao_produto: "Produto com um ano de uso,sem avarias,mas com um pequeno problema na tela,gostaria de trocar pelo samsung S21",
+            descricao_vendedor: "A vida é uma troca com troco,saiba fazer as contas."
+        },
+        {
+            id_categoria: 7,
+            id_usuario: 6,
+            id_fotos: 15,
+            titulo: "Base Fenty Beauty",
+            tipo_negociacao: "venda",
+            preco: 221.00,
+            descricao_produto: "Base Fenty marca da queridinha Rihanna,na cor matte suave de longa duração com cobertura média a alta,que possibilita construir camadas,em uma variedade sem limites de 50 tonalidades",
+            descricao_vendedor: "Qual é a maquiagem que mais te faz FELIZ? Conheça a nossa loja e comprove por si mesma a felicidade em formato de MAQUIAGEM."
+        },
+        {   
+            id_categoria: 8,
+            id_usuario: 7,
+            id_fotos: 16,
+            titulo: "Gucci Bolsa GG Marmont Mini",
+            tipo_negociacao: "venda",
+            preco: 14520.00,
+            descricao_produto: "Bolsa Gucci mini branca de couro chevron,com alça de ombro removível em couro e corrente com 54,6 cm,duplo G,detalhe de coração na parte posterior",
+            descricao_vendedor: " Se não for para desfilar com minha linda bolsa, nem vou."
+        },
+        {   
+            id_categoria: 11,
+            id_usuario: 8,
+            id_fotos: 17,
+            titulo: "Sofá Retrátil e Reclinável Cama inBox Compact 1,50m Tecido Suede Velusoft Cinza",
+            tipo_negociacao: "venda",
+            preco: 799.90,
+            descricao_produto: "Ideal para ambientes compactos e sofisticados, o Sofá Cama inBox Compact de 2 lugares irá renovar a beleza da sua sala, assim como trazer muito conforto para você.",
+            descricao_vendedor: "Quer conforto ? compre um sofá"
+        },
+        {   
+            id_categoria: 12,
+            id_usuario: 1,
+            id_fotos: 18,
+            titulo: "Geladeira usada em ótima conservação",
+            tipo_negociacao: "venda",
+            preco: 500.00,
+            descricao_produto: "Geladeira Dako 380 litros funcionando e em ótima conservação.Produto usado !",
+            descricao_vendedor: "Fica frio aí"
+        },
+        {   
+            id_categoria: 9,
+            id_usuario: 2,
+            id_fotos: 19,
+            titulo: "Pacote 5 Carros Sortidos, Hot Wheels, Mattel",
+            tipo_negociacao: "venda",
+            preco: 65.08,
+            descricao_produto: "Os meninos vão adorar este combo da Mattel, pois vem com cinco veículos fantásticos! Todos em die-cast. Cada embalagem é uma nova coleção, velocidade e aventura com Hot Wheels!",
+            descricao_vendedor: "E aí vai encarar ?"
         },
 
 
@@ -382,16 +515,57 @@ const data = {
         },
         {
             foto1: "233329140663699.webp",
-            
+
         },
         {
             foto1: "img_1647_20.jpg",
-            foto2:"img_3299_24.jpg"
+            foto2: "img_3299_24.jpg"
         },
         {
             foto1: "O01-1783-138_zoom1.webp",
         },
-
+        {
+            foto1: "brazucaFt1.jpg",
+            foto2: "brazucaFt2.jpg",
+            foto3: "brazucaFt3.jpg",
+            foto4: "brazucaFt4.jpg"
+        },
+        {
+            foto1: "iphone1.jpg",
+            foto2: "iphone2.jpg",
+            foto3: "iphone3.jpg",
+            foto4: "iphone4.jpg"
+        },
+        {
+            foto1: "base1.webp",
+            foto2: "base2.webp",
+            foto3: "base3.webp",
+            foto4: "base4.webp"
+        },
+        {
+            foto1: "bolsagg1.webp",
+            foto2: "bolsagg2.webp",
+            foto3: "bolsagg3.webp",
+            foto4: "bolsagg4.webp"
+        },
+        {
+            foto1: "sofa1.webp",
+            foto2: "sofa2.webp",
+            foto3: "sofa3.webp",
+            foto4: "sofa4.webp"
+        },
+        {
+            foto1: "geladeira1.webp",
+            foto2: "geladeira2.webp",
+            foto3: "geladeira3.webp",
+            foto4: "geladeira4.webp"
+        },
+        {
+            foto1: "carrinho1.jpg",
+            foto2: "carrinho2.webp",
+            foto3: "carrinho3.webp",
+            foto4: "carrinho4.webp"
+        },
     ]
 };
 
